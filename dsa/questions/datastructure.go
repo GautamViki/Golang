@@ -46,3 +46,32 @@ func (ds *DataStructure) ValidParentheses() bool {
 	}
 	return len(arr) == 0
 }
+
+func (ds *DataStructure) MergeTwoSortedLists() []int {
+	list1 := []int{1,9}
+	list2 := []int{1, 3, 4}
+	var result []int
+	var i, j int
+	for len(list1) > j || len(list2) > i {
+		if len(list1) > j && len(list2) > i {
+			if list1[j] == list2[i] {
+				result = append(result, list1[j], list2[i])
+				i++
+				j++
+			} else if list1[j] < list2[i] {
+				result = append(result, list1[j])
+				j++
+			} else if list1[j] > list2[i] {
+				result = append(result, list2[i])
+				i++
+			}
+		} else if len(list1) > j {
+			result = append(result, list1[j])
+			j++
+		} else if len(list2) > i {
+			result = append(result, list2[i])
+			i++
+		}
+	}
+	return result
+}
