@@ -1,6 +1,7 @@
 package questions
 
 import (
+	"fmt"
 	"sort"
 )
 
@@ -48,7 +49,7 @@ func (ds *DataStructure) ValidParentheses() bool {
 }
 
 func (ds *DataStructure) MergeTwoSortedLists() []int {
-	list1 := []int{1,9}
+	list1 := []int{1, 9}
 	list2 := []int{1, 3, 4}
 	var result []int
 	var i, j int
@@ -74,4 +75,20 @@ func (ds *DataStructure) MergeTwoSortedLists() []int {
 		}
 	}
 	return result
+}
+
+func (ds *DataStructure) LengthOfLastWord() {
+	str := " cxx  "
+	n := len(str) - 1
+	count := 0
+	for n >= 0 {
+		if str[n] == ' ' && count == 0 {
+			n--
+		} else if str[n] != ' ' {
+			count++
+			n--
+		} else if str[n] == ' ' && count != 0 {
+			break
+		}
+	}
 }
