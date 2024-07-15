@@ -91,4 +91,46 @@ func (ds *DataStructure) LengthOfLastWord() {
 			break
 		}
 	}
+	fmt.Println("LengthOfLastWord ", count)
+}
+
+func (ds *DataStructure) SquareRoot() {
+	x := 10
+	mid := 0
+
+	if x == 0 {
+		mid = 0
+	} else if x < 3 {
+		mid = 1
+	} else if x < 8 {
+		mid = 2
+	}
+
+	n := x / 2
+	i := 1
+	j := n
+	for i < j {
+		mid = (i + j) / 2
+		if mid*mid < x {
+			i = mid + 1
+		} else if mid*mid > x {
+			j = mid - 1
+		} else {
+			break
+		}
+	}
+	fmt.Println("SquareRoot ", j)
+}
+
+var cache = make(map[int]int)
+
+func (ds *DataStructure) ClimbingStairs(n int) int {
+	if n < 3 {
+		return n
+	}
+	if val, ok := cache[n]; ok {
+		return val
+	}
+	cache[n] = ds.ClimbingStairs(n-1) + ds.ClimbingStairs(n-2)
+	return cache[n]
 }
