@@ -15,9 +15,7 @@ func ChannelInGo1(s []int, c chan int) {
 		count1++
 		fmt.Println("count1", count1)
 	}
-
 	c <- sum // send sum to c
-
 }
 
 var count2 = 0
@@ -29,7 +27,5 @@ func ChannelInGo2(s []int, c chan int) {
 		count2++
 		fmt.Println("count2", count2)
 	}
-
 	c <- sum // send sum to c
-
 }
