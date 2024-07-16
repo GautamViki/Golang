@@ -14,4 +14,6 @@ func main() {
 	dsa.LengthOfLastWord()
 	dsa.SquareRoot()
 	fmt.Println("ClimbingStairs ", dsa.ClimbingStairs(37))
+	fmt.Println("ThreeConsecutiveOdds ", dsa.ThreeConsecutiveOdds())
+	fmt.Println("ValidPalindrome",dsa.ValidPalindrome())
 }

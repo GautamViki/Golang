@@ -3,6 +3,8 @@ package questions
 import (
 	"fmt"
 	"sort"
+	"strings"
+	"unicode"
 )
 
 type DataStructure struct{}
@@ -133,4 +135,37 @@ func (ds *DataStructure) ClimbingStairs(n int) int {
 	}
 	cache[n] = ds.ClimbingStairs(n-1) + ds.ClimbingStairs(n-2)
 	return cache[n]
+}
+
+func (ds *DataStructure) ThreeConsecutiveOdds() bool {
+	arr := []int{1, 2, 3}
+	for i := 0; i <= len(arr)-3; i++ {
+		if arr[i]%2 == 0 {
+			continue
+		}
+		if arr[i]%2 == 1 && arr[i+1]%2 == 1 && arr[i+2]%2 == 1 {
+			return true
+		}
+	}
+	return false
+}
+
+func (ds *DataStructure) ValidPalindrome() bool {
+	s := "0P0,"
+	f := func(r rune) rune {
+		if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
+			return -1
+		}
+		return unicode.ToLower(r)
+	}
+	s = strings.Map(f, s)
+	i, j := 0, len(s)-1
+	for i < j {
+		if s[i] != s[j] {
+			return false
+		}
+		i++
+		j--
+	}
+	return true
 }
