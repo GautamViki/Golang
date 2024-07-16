@@ -169,3 +169,32 @@ func (ds *DataStructure) ValidPalindrome() bool {
 	}
 	return true
 }
+
+func (ds *DataStructure) MajorityElement() {
+	nums := []int{2, 2, 1, 1, 1, 2, 2}
+	// hash := make(map[int]int)
+	// for i := 0; i < len(nums); i++ {
+	// 	hash[nums[i]] = hash[nums[i]] + 1
+	// }
+	// count := hash[nums[0]]
+	// max := nums[0]
+	// for val := range hash {
+	// 	if hash[val] > count {
+	// 		max = val
+	// 	}
+	// }
+
+	var ans int
+	var count int
+	for _, val := range nums {
+		if count == 0 {
+			ans = val
+		}
+		if ans == val {
+			count++
+		} else {
+			count--
+		}
+	}
+	fmt.Println("MajorityElement", ans)
+}

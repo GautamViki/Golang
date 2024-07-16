@@ -15,5 +15,6 @@ func main() {
 	dsa.SquareRoot()
 	fmt.Println("ClimbingStairs ", dsa.ClimbingStairs(37))
 	fmt.Println("ThreeConsecutiveOdds ", dsa.ThreeConsecutiveOdds())
-	fmt.Println("ValidPalindrome",dsa.ValidPalindrome())
+	fmt.Println("ValidPalindrome", dsa.ValidPalindrome())
+	dsa.MajorityElement()
 }
