@@ -2,6 +2,7 @@ package main
 
 import (
 	"datastructure/handler"
+	"fmt"
 )
 
 func main() {
@@ -33,9 +34,21 @@ func main() {
 	// fmt.Println("Width ",rect.Width)
 
 	// linked list
-	list:=handler.NewLinkedList()
-	list.InsertNodeAtFirst(8)
+	// list := handler.NewLinkedList()
+	// list.InsertNodeAtFirst(8)
 
+	// GoRoutine Function
+	// fmt.Println("Goroutine Concept")
+	// go handler.GoRoutineSay("*********************")
+	// handler.GoRoutineSay("#######")
+
+	// channel concepts
+	s := []int{7, 2, 8, -9, 4, 0}
+	c := make(chan int)
+	go handler.ChannelInGo1(s[:len(s)/2], c)
+	go handler.ChannelInGo2(s[len(s)/2:], c)
+	x, y := <-c, <-c // receive from c
+	fmt.Println(x, y, "Channel Concepts ", x+y)
 }
 
 // func twoSum(nums []int, target int) []int {
