@@ -49,18 +49,17 @@ func main() {
 	go handler.ChannelInGo2(s[len(s)/2:], c)
 	x, y := <-c, <-c // receive from c
 	fmt.Println(x, y, "Channel Concepts ", x+y)
-}
 
-// func twoSum(nums []int, target int) []int {
-// 	for i := 0; i < len(nums)-1; i++ {
-// 		for j := i + 1; j < len(nums); j++ {
-//             if nums[i]+nums[j]==target{
-//                 var arr []int
-//                 arr[0]=i
-//                 arr[1]=j
-//                 return arr
-//             }
-// 		}
-// 	}
-//     return []int{}
-// }
+	// Buffered Channels
+	/*
+		Channels can be buffered. A buffered channel has a capacity and does not block until the buffer is full.
+	*/
+	fmt.Println("Buffered Channels")
+	ch := make(chan int, 3)
+	ch <- 1
+	ch <- 2
+	// ch <- 3
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	// fmt.Println(<-ch)
+}

@@ -29,3 +29,4 @@ func ChannelInGo2(s []int, c chan int) {
 	}
 	c <- sum // send sum to c
 }
+
