@@ -32,18 +32,29 @@ func main() {
 
 	// Example 2: Default Case
 	// The default case in a select statement is executed if none of the channels are ready.
-	go func ()  {
-		// time.Sleep(1 * time.Second)
-		chan1<-"Default Case"
+	go func() {
+		time.Sleep(2 * time.Second)
+		chan1 <- "Default Case"
 	}()
 
-	select{
-	case msg:=<-chan1:
-		fmt.Println("Recieved",msg)
+	select {
+	case msg := <-chan1:
+		fmt.Println("Recieved ", msg)
 	default:
 		fmt.Println("No messaged recieved")
 	}
 
 	// Example 3: Timeouts
 	// The select statement can be combined with a time.After channel to implement timeouts.
+	go func() {
+		time.Sleep(1 * time.Second)
+		chan1 <- "Timeout"
+	}()
+
+	select {
+	case msg := <-chan1:
+		fmt.Print("Recieved ", msg)
+	case <-time.After(2 * time.Second):
+		fmt.Println("Timeout")
+	}
 }
