@@ -17,4 +17,5 @@ func main() {
 	fmt.Println("ThreeConsecutiveOdds ", dsa.ThreeConsecutiveOdds())
 	fmt.Println("ValidPalindrome", dsa.ValidPalindrome())
 	dsa.MajorityElement()
+	dsa.AddBinary()
 }

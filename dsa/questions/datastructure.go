@@ -200,15 +200,42 @@ func (ds *DataStructure) MajorityElement() {
 }
 
 func (ds *DataStructure) AddBinary() {
-	num1 := "101101"
-	num2 := "100011"
+	num1 := "111"
+	num2 := "111"
 	i := len(num1) - 1
 	j := len(num2) - 1
-	carry := 0
+	carry := '0'
 	result := ""
-	for i >= 0 || j >= 0 {
-		if num1[i] == num2[j] {
-
+	for i == j && i >= 0 {
+		if num1[i] == num2[j] && num1[i] == '1' {
+			if carry != '0' {
+				result += string('1')
+			} else {
+				result += string('0')
+			}
+			carry = '1'
+		} else if num1[i] == num2[j] && num1[i] == '0' {
+			if carry != '0' {
+				result += string('1')
+			} else {
+				result += string('0')
+			}
+			carry = '0'
+		} else if num1[i] != num2[j] {
+			if carry != '0' {
+				result += string('0')
+				carry = '1'
+			} else {
+				result += string('1')
+				carry = '0'
+			}
 		}
+		i--
+		j--
 	}
+	if carry == '1' {
+		result += string('1')
+	}
+	
+	fmt.Println("Binary ", result)
 }
