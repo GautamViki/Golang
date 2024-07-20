@@ -2,7 +2,9 @@ package questions
 
 import (
 	"fmt"
+	"slices"
 	"sort"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -200,42 +202,33 @@ func (ds *DataStructure) MajorityElement() {
 }
 
 func (ds *DataStructure) AddBinary() {
-	num1 := "111"
-	num2 := "111"
-	i := len(num1) - 1
-	j := len(num2) - 1
-	carry := '0'
+	a := "1010"
+	b := "1011"
+	i := len(a) - 1
+	j := len(b) - 1
+	carry := 0
 	result := ""
-	for i == j && i >= 0 {
-		if num1[i] == num2[j] && num1[i] == '1' {
-			if carry != '0' {
-				result += string('1')
-			} else {
-				result += string('0')
-			}
-			carry = '1'
-		} else if num1[i] == num2[j] && num1[i] == '0' {
-			if carry != '0' {
-				result += string('1')
-			} else {
-				result += string('0')
-			}
-			carry = '0'
-		} else if num1[i] != num2[j] {
-			if carry != '0' {
-				result += string('0')
-				carry = '1'
-			} else {
-				result += string('1')
-				carry = '0'
-			}
+	sum := 0
+	temp := 0
+	for i >= 0 || j >= 0 {
+		sum = carry
+		if i >= 0 {
+			temp, _ = strconv.Atoi(string(a[i]))
+			sum += temp
 		}
+		if j >= 0 {
+			temp, _ = strconv.Atoi(string(b[j]))
+			sum += temp
+		}
+		result += strconv.Itoa(sum % 2)
+		carry = sum / 2
 		i--
 		j--
 	}
-	if carry == '1' {
-		result += string('1')
+	if carry > 0 {
+		result += strconv.Itoa(carry)
 	}
-	
-	fmt.Println("Binary ", result)
+	runes := []rune(result)
+	slices.Reverse(runes)
+	fmt.Println("Add Bunary ", string(runes))
 }
