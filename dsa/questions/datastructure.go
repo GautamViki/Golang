@@ -232,3 +232,16 @@ func (ds *DataStructure) AddBinary() {
 	slices.Reverse(runes)
 	fmt.Println("Add Bunary ", string(runes))
 }
+
+func (ds *DataStructure) RemoveDuplicate() {
+	arr := []int{1, 1, 1, 5, 7, 9, 1, 2, 3, 3, 3, 4, 4, 5, 5, 5, 6}
+	slices := []int{}
+	hash := make(map[int]struct{})
+	for _, ele := range arr {
+		if _, ok := hash[ele]; !ok {
+			hash[ele] = struct{}{}
+			slices = append(slices, ele)
+		}
+	}
+	fmt.Println("Remove Duplicate Elements", slices)
+}

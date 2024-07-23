@@ -18,4 +18,5 @@ func main() {
 	fmt.Println("ValidPalindrome", dsa.ValidPalindrome())
 	dsa.MajorityElement()
 	dsa.AddBinary()
+	dsa.RemoveDuplicate()
 }

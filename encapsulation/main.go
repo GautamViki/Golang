@@ -1,12 +1,10 @@
 package main
 
-import (
-	"encapsulation/handler"
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	fmt.Println("main")
-	handler.Emp()
-	fmt.Println(handler.NewEMp())
+	// handler.Emp()
+	// fmt.Println(handler.NewEMp())
+
 }
