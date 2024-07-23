@@ -19,4 +19,5 @@ func main() {
 	dsa.MajorityElement()
 	dsa.AddBinary()
 	dsa.RemoveDuplicate()
+	dsa.ProductExceptSelf()
 }

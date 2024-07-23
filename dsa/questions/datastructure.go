@@ -245,3 +245,19 @@ func (ds *DataStructure) RemoveDuplicate() {
 	}
 	fmt.Println("Remove Duplicate Elements", slices)
 }
+
+func (ds *DataStructure) ProductExceptSelf() {
+	arr := [4]int{1, 2, 3, 4}
+	slicesTemp := make([]int, len(arr))
+	multiple := 1
+	for i := 0; i < len(arr); i++ {
+		slicesTemp[i] = multiple
+		multiple *= arr[i]
+	}
+	multiple = 1
+	for i := len(arr) - 1; i >= 0; i-- {
+		slicesTemp[i] *= multiple
+		multiple*=arr[i]
+	}
+	fmt.Println("Product of Array Except Self", slicesTemp)
+}
