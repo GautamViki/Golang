@@ -257,7 +257,31 @@ func (ds *DataStructure) ProductExceptSelf() {
 	multiple = 1
 	for i := len(arr) - 1; i >= 0; i-- {
 		slicesTemp[i] *= multiple
-		multiple*=arr[i]
+		multiple *= arr[i]
 	}
 	fmt.Println("Product of Array Except Self", slicesTemp)
+}
+
+func (ds *DataStructure) MergeTwoSortedArray() {
+	nums1 := []int{1, 2, 3, 0, 0, 0}
+	m := 3
+	nums2 := []int{2, 5, 6}
+	n := 3
+	i, j, k := m-1, n-1, m+n-1
+	for i >= 0 && j >= 0 {
+		if nums1[i] > nums2[j] {
+			nums1[k] = nums1[i]
+			i--
+		} else {
+			nums1[k] = nums2[j]
+			j--
+		}
+		k--
+	}
+	for j >= 0 {
+		nums1[k] = nums2[j]
+		k--
+		j--
+	}
+	fmt.Println("Merge Two Sorted Array ", nums1)
 }

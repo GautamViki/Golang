@@ -20,4 +20,5 @@ func main() {
 	dsa.AddBinary()
 	dsa.RemoveDuplicate()
 	dsa.ProductExceptSelf()
+	dsa.MergeTwoSortedArray()
 }
