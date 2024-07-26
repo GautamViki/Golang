@@ -285,3 +285,19 @@ func (ds *DataStructure) MergeTwoSortedArray() {
 	}
 	fmt.Println("Merge Two Sorted Array ", nums1)
 }
+
+func (ds *DataStructure) SingleNumber() {
+	arr := []int{4, 1, 2, 1, 2}
+	myMap := map[int]int{}
+	for _, val := range arr {
+		myMap[val] += 1
+	}
+	var uniqueEle int
+	for key, val := range myMap {
+		if val == 1 {
+			uniqueEle = key
+			break
+		}
+	}
+	fmt.Println("Single number element ", uniqueEle)
+}
