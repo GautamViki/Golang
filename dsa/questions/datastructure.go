@@ -288,16 +288,21 @@ func (ds *DataStructure) MergeTwoSortedArray() {
 
 func (ds *DataStructure) SingleNumber() {
 	arr := []int{4, 1, 2, 1, 2}
-	myMap := map[int]int{}
-	for _, val := range arr {
-		myMap[val] += 1
-	}
 	var uniqueEle int
-	for key, val := range myMap {
-		if val == 1 {
-			uniqueEle = key
-			break
-		}
+	// map method
+	// myMap := map[int]int{}
+	// for _, val := range arr {
+	// 	myMap[val] += 1
+	// }
+	// for key, val := range myMap {
+	// 	if val == 1 {
+	// 		uniqueEle = key
+	// 		break
+	// 	}
+	// }
+	for _, val := range arr {
+		uniqueEle = uniqueEle ^ val
 	}
 	fmt.Println("Single number element ", uniqueEle)
+
 }
