@@ -22,4 +22,5 @@ func main() {
 	dsa.ProductExceptSelf()
 	dsa.MergeTwoSortedArray()
 	dsa.SingleNumber()
+	dsa.ContainsDuplicate()
 }

@@ -304,5 +304,19 @@ func (ds *DataStructure) SingleNumber() {
 		uniqueEle = uniqueEle ^ val
 	}
 	fmt.Println("Single number element ", uniqueEle)
+}
 
+func (ds *DataStructure) ContainsDuplicate() {
+	// arr := []int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}
+	arr := []int{1,2,3,4}
+	myMap := map[int]int{}
+	var contain bool
+	for _, val := range arr {
+		if _, ok := myMap[val]; ok {
+			contain = ok
+			break
+		}
+		myMap[val] += 1
+	}
+	fmt.Println("Contains Duplicate", contain)
 }
