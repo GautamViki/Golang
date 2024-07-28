@@ -23,4 +23,5 @@ func main() {
 	dsa.MergeTwoSortedArray()
 	dsa.SingleNumber()
 	dsa.ContainsDuplicate()
+	dsa.RemoveDuplicateFromSortedArray()
 }

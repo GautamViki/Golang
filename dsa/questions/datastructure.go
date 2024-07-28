@@ -308,7 +308,7 @@ func (ds *DataStructure) SingleNumber() {
 
 func (ds *DataStructure) ContainsDuplicate() {
 	// arr := []int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}
-	arr := []int{1,2,3,4}
+	arr := []int{1, 2, 3, 4}
 	myMap := map[int]int{}
 	var contain bool
 	for _, val := range arr {
@@ -319,4 +319,18 @@ func (ds *DataStructure) ContainsDuplicate() {
 		myMap[val] += 1
 	}
 	fmt.Println("Contains Duplicate", contain)
+}
+
+func (ds *DataStructure) RemoveDuplicateFromSortedArray() {
+	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	i, k, count := 1, 1, 1
+	for i < len(nums) {
+		if nums[i] != nums[k-1] {
+			nums[k] = nums[i]
+			k++
+			count++
+		}
+		i++
+	}
+	fmt.Println("Remove Duplicate From Sorted Array ", count)
 }
