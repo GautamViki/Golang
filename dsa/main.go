@@ -24,4 +24,6 @@ func main() {
 	dsa.SingleNumber()
 	dsa.ContainsDuplicate()
 	dsa.RemoveDuplicateFromSortedArray()
+	dsa.ExcelSheetColumnTitle()
+	fmt.Println("Is Happy Number? : ", dsa.HappyNumber(0))
 }

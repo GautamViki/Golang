@@ -334,3 +334,37 @@ func (ds *DataStructure) RemoveDuplicateFromSortedArray() {
 	}
 	fmt.Println("Remove Duplicate From Sorted Array ", count)
 }
+
+func (ds *DataStructure) ExcelSheetColumnTitle() {
+	columnNumber := 701
+	// A:65, B:62
+	fmt.Println('B')
+	n := 0
+	num := 1
+	for num+26 <= columnNumber {
+		n++
+		num = 26 * num
+		fmt.Println(n, "333333333333333333333333333", num)
+	}
+	// fmt.Println("value of n", n)
+}
+
+func (ds *DataStructure) HappyNumber(n int) bool {
+	happyMap := make(map[int]int)
+	for {
+		if n == 1 {
+			return true
+		}
+		str := strconv.Itoa(n)
+		sum := 0
+		for _, digit := range str {
+			i, _ := strconv.Atoi(string(digit))
+			sum += i * i
+		}
+		if _, found := happyMap[sum]; found {
+			return false
+		}
+		happyMap[sum] = 1
+		n = sum
+	}
+}
