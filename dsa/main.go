@@ -26,4 +26,5 @@ func main() {
 	dsa.RemoveDuplicateFromSortedArray()
 	dsa.ExcelSheetColumnTitle()
 	fmt.Println("Is Happy Number? : ", dsa.HappyNumber(0))
+	fmt.Println("Reverse Integer ",dsa.ReverseInteger(1534236469))
 }

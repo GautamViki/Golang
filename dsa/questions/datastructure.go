@@ -2,6 +2,7 @@ package questions
 
 import (
 	"fmt"
+	"math"
 	"slices"
 	"sort"
 	"strconv"
@@ -367,4 +368,26 @@ func (ds *DataStructure) HappyNumber(n int) bool {
 		happyMap[sum] = 1
 		n = sum
 	}
+}
+
+func (ds *DataStructure) ReverseInteger(n int) int {
+	var result int
+	p := 10
+	signed := false
+	if n < 0 {
+		signed = true
+		n *= (-1)
+	}
+	for n > 0 {
+		r := n % 10
+		result = result*p + r
+		n = n / 10
+	}
+	if signed {
+		result = result * (-1)
+	}
+	if result > math.MaxInt32 || result < math.MinInt32 {
+		return 0
+	}
+	return result
 }
