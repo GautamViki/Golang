@@ -345,7 +345,6 @@ func (ds *DataStructure) ExcelSheetColumnTitle() {
 	for num+26 <= columnNumber {
 		n++
 		num = 26 * num
-		fmt.Println(n, "333333333333333333333333333", num)
 	}
 	// fmt.Println("value of n", n)
 }
@@ -424,7 +423,47 @@ func (ds *DataStructure) ThreeSum() {
 				j++
 			}
 		}
-
 	}
 	fmt.Println("3 Sum : ", result)
+}
+
+func (ds *DataStructure) ArraySetInGO() {
+	set := make(map[[3]int]struct{})
+	set[[3]int{1, 2, 3}] = struct{}{}
+	set[[3]int{2, 3, 4}] = struct{}{}
+	set[[3]int{3, 4, 5}] = struct{}{}
+	if _, found := set[[3]int{1, 2, 31}]; found {
+		fmt.Println("Found in Set : ", found)
+	} else {
+		fmt.Println("Found in Set : ", found)
+	}
+	delete(set, [3]int{1, 2, 3})
+	fmt.Println("set : ", set)
+}
+
+// func (ds *DataStructure) SliceSetInGo() {
+// 	sliceSet := make(map[string]struct{})
+	
+// }
+
+
+// func sliceToString(slice []int) string {
+// 	return strings.Trim(strings.Replace(fmt.Sprint(slice), " ", ",", -1), "[]")
+// }
+
+
+func (ds *DataStructure) LongestSubstringWithoutRepeatingCharacters(){
+	s:="dvdf"
+	var res int
+	sub := make([]string, 0)
+	for _, char := range s {
+		if !strings.Contains(strings.Join(sub, ""), string(char)) {
+			sub = append(sub, string(char))
+			res = max(res, len(sub))
+		} else {
+			cut := strings.Index(strings.Join(sub, ""), string(char))
+			sub = append(sub[cut+1:], string(char))
+		}
+	}
+	fmt.Println("Longest Substring Without Repeating Characters",res)
 }

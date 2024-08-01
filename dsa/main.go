@@ -28,4 +28,6 @@ func main() {
 	fmt.Println("Is Happy Number? : ", dsa.HappyNumber(0))
 	fmt.Println("Reverse Integer ", dsa.ReverseInteger(1534236469))
 	dsa.ThreeSum()
+	dsa.ArraySetInGO()
+	dsa.LongestSubstringWithoutRepeatingCharacters()
 }
