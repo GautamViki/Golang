@@ -30,4 +30,5 @@ func main() {
 	dsa.ThreeSum()
 	dsa.ArraySetInGO()
 	dsa.LongestSubstringWithoutRepeatingCharacters()
+	dsa.StringToInteger()
 }

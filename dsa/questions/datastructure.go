@@ -467,3 +467,37 @@ func (ds *DataStructure) LongestSubstringWithoutRepeatingCharacters(){
 	}
 	fmt.Println("Longest Substring Without Repeating Characters",res)
 }
+
+func (ds *DataStructure)StringToInteger(){
+	s:="21474836460"
+	signed:=false
+	var result string
+	count:=0
+	for idx,char:=range s{
+		if unicode.IsDigit(char) {
+			fmt.Println("digit ",string(char))
+			result+=string(char)
+		}else if count==idx{
+			if string(char)==" "{
+				count++
+			}else if string(char)=="-"{
+				signed=true
+			}else if string(char)!="+"{
+				break
+			}
+		}else{
+			break
+		}
+	}
+	if signed{
+		result="-"+result
+	}
+	num,_:=strconv.Atoi(result)
+	if num>math.MaxInt32 {
+		num=math.MaxInt32
+	}else if num<math.MinInt32{
+		num=math.MinInt32
+	}
+	
+	fmt.Println("8 .String To Integer",num)
+}
