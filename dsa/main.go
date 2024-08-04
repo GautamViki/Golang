@@ -31,4 +31,5 @@ func main() {
 	dsa.ArraySetInGO()
 	dsa.LongestSubstringWithoutRepeatingCharacters()
 	dsa.StringToInteger()
+	dsa.MedianOfTwoSortedArrays()
 }

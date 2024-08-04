@@ -501,3 +501,39 @@ func (ds *DataStructure)StringToInteger(){
 	
 	fmt.Println("8 .String To Integer",num)
 }
+
+func (ds *DataStructure) MedianOfTwoSortedArrays(){
+	nums1:=[]int{1,3}
+	nums2:=[]int{2,7}
+	n:=len(nums1)
+	m:=len(nums2)
+	var result float64
+	if n>0 && n%2==0 {
+		result=float64(nums1[n/2]+nums1[n/2-1])/2
+	}
+	if m>0 && m%2==0{
+		result+=float64(nums2[m/2]+nums2[m/2-1])/2
+	}
+	if n>0 &&  n%2==1{
+		result+=float64(nums1[n/2])
+	}
+	if m>0 && m%2==1{
+		result+=float64(nums2[m/2])
+	}
+	if n>0 && m>0 {
+		result=result/2
+	}
+
+	roundedFloat := math.Round(result*100000) / 100000
+	fmt.Println("8888888888888888888888888888888888 ",roundedFloat)
+}
+
+func (ds *DataStructure)ReverseBits(){
+	num :=uint32(1111110001111111111111100)
+	var answer uint32
+    for i:=0;i<32;i++{
+        answer=answer | (num&1)<<(31-i)
+        num=num>>1
+    }
+    fmt.Println("000000000000000000000000000",answer)
+}
