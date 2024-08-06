@@ -16,9 +16,25 @@ type LinkedList struct {
 	Head *Node
 }
 
-func (list *LinkedList) CreateLinkedList() {
-	value := 10
+func (list *LinkedList) CreateLinkedList(value int) {
 	node := Node{Val: value}
-	list.Head = &node
-	fmt.Println("first Node : ", list.Head)
+	if list.Head == nil {
+		list.Head = &node
+	} else {
+		current := list.Head
+		for current.Next != nil {
+			current = current.Next
+		}
+		current.Next = &node
+	}
+}
+
+func (list *LinkedList) DisplayLinkedList() {
+	fmt.Println("Head Node : ",list.Head)
+	fmt.Print("List Node : ")
+	current := list.Head
+	for current != nil {
+		fmt.Print(current.Val," ")
+		current = current.Next
+	}
 }
