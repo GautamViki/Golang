@@ -528,12 +528,12 @@ func (ds *DataStructure) MedianOfTwoSortedArrays(){
 	fmt.Println("8888888888888888888888888888888888 ",roundedFloat)
 }
 
-func (ds *DataStructure)ReverseBits(){
-	num :=uint32(1111110001111111111111100)
-	var answer uint32
-    for i:=0;i<32;i++{
-        answer=answer | (num&1)<<(31-i)
-        num=num>>1
-    }
-    fmt.Println("000000000000000000000000000",answer)
-}
+// func (ds *DataStructure)ReverseBits(){
+// 	num :=uint32(1111110001111111111111100)
+// 	var answer uint32
+//     for i:=0;i<32;i++{
+//         answer=answer | (num&1)<<(31-i)
+//         num=num>>1
+//     }
+//     fmt.Println("000000000000000000000000000",answer)
+// }
