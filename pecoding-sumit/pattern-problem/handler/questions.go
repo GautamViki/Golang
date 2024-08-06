@@ -9,7 +9,7 @@ func NewPatternQuestions() *pattern {
 }
 
 func (p *pattern) Print_Z() {
-	num := 10
+	num := 3
 	for i := 1; i <= num; i++ {
 		if i == 1 || i == num {
 			for i := 0; i < num; i++ {
@@ -23,4 +23,15 @@ func (p *pattern) Print_Z() {
 		}
 		fmt.Println()
 	}
+}
+
+func (p *pattern) IsNumPrime(num int) {
+	isPrime := true
+	for i := 2; i*i < num; i++ {
+		if num%i == 0 {
+			isPrime = false
+			break
+		}
+	}
+	fmt.Println("Is this prime number : ", isPrime)
 }
