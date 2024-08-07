@@ -443,17 +443,15 @@ func (ds *DataStructure) ArraySetInGO() {
 
 // func (ds *DataStructure) SliceSetInGo() {
 // 	sliceSet := make(map[string]struct{})
-	
-// }
 
+// }
 
 // func sliceToString(slice []int) string {
 // 	return strings.Trim(strings.Replace(fmt.Sprint(slice), " ", ",", -1), "[]")
 // }
 
-
-func (ds *DataStructure) LongestSubstringWithoutRepeatingCharacters(){
-	s:="dvdf"
+func (ds *DataStructure) LongestSubstringWithoutRepeatingCharacters() {
+	s := "dvdf"
 	var res int
 	sub := make([]string, 0)
 	for _, char := range s {
@@ -465,67 +463,67 @@ func (ds *DataStructure) LongestSubstringWithoutRepeatingCharacters(){
 			sub = append(sub[cut+1:], string(char))
 		}
 	}
-	fmt.Println("Longest Substring Without Repeating Characters",res)
+	fmt.Println("Longest Substring Without Repeating Characters", res)
 }
 
-func (ds *DataStructure)StringToInteger(){
-	s:="21474836460"
-	signed:=false
+func (ds *DataStructure) StringToInteger() {
+	s := "21474836460"
+	signed := false
 	var result string
-	count:=0
-	for idx,char:=range s{
+	count := 0
+	for idx, char := range s {
 		if unicode.IsDigit(char) {
-			fmt.Println("digit ",string(char))
-			result+=string(char)
-		}else if count==idx{
-			if string(char)==" "{
+			fmt.Println("digit ", string(char))
+			result += string(char)
+		} else if count == idx {
+			if string(char) == " " {
 				count++
-			}else if string(char)=="-"{
-				signed=true
-			}else if string(char)!="+"{
+			} else if string(char) == "-" {
+				signed = true
+			} else if string(char) != "+" {
 				break
 			}
-		}else{
+		} else {
 			break
 		}
 	}
-	if signed{
-		result="-"+result
+	if signed {
+		result = "-" + result
 	}
-	num,_:=strconv.Atoi(result)
-	if num>math.MaxInt32 {
-		num=math.MaxInt32
-	}else if num<math.MinInt32{
-		num=math.MinInt32
+	num, _ := strconv.Atoi(result)
+	if num > math.MaxInt32 {
+		num = math.MaxInt32
+	} else if num < math.MinInt32 {
+		num = math.MinInt32
 	}
-	
-	fmt.Println("8 .String To Integer",num)
+
+	fmt.Println("8 .String To Integer", num)
 }
 
-func (ds *DataStructure) MedianOfTwoSortedArrays(){
-	nums1:=[]int{1,3}
-	nums2:=[]int{2,7}
-	n:=len(nums1)
-	m:=len(nums2)
+func (ds *DataStructure) MedianOfTwoSortedArrays() {
+	nums1 := []int{1, 3}
+	nums2 := []int{2, 7}
+	n := len(nums1)
+	m := len(nums2)
 	var result float64
-	if n>0 && n%2==0 {
-		result=float64(nums1[n/2]+nums1[n/2-1])/2
+	if n > 0 && n%2 == 0 {
+		result = float64(nums1[n/2]+nums1[n/2-1]) / 2
 	}
-	if m>0 && m%2==0{
-		result+=float64(nums2[m/2]+nums2[m/2-1])/2
+	if m > 0 && m%2 == 0 {
+		result += float64(nums2[m/2]+nums2[m/2-1]) / 2
 	}
-	if n>0 &&  n%2==1{
-		result+=float64(nums1[n/2])
+	if n > 0 && n%2 == 1 {
+		result += float64(nums1[n/2])
 	}
-	if m>0 && m%2==1{
-		result+=float64(nums2[m/2])
+	if m > 0 && m%2 == 1 {
+		result += float64(nums2[m/2])
 	}
-	if n>0 && m>0 {
-		result=result/2
+	if n > 0 && m > 0 {
+		result = result / 2
 	}
 
 	roundedFloat := math.Round(result*100000) / 100000
-	fmt.Println("8888888888888888888888888888888888 ",roundedFloat)
+	fmt.Println("8888888888888888888888888888888888 ", roundedFloat)
 }
 
 // func (ds *DataStructure)ReverseBits(){
@@ -537,3 +535,55 @@ func (ds *DataStructure) MedianOfTwoSortedArrays(){
 //     }
 //     fmt.Println("000000000000000000000000000",answer)
 // }
+
+func (ds *DataStructure) KeyBoardRow_500() {
+	strArr := []string{"omk"}
+	row1, row2, row3 := "qwertyuiop", "asdfghjkl", "zxcvbnm"
+	result := []string{}
+	for _, word := range strArr {
+		i, j := 0, len(word)-1
+		found := true
+		for i <= j {
+			if strings.Contains(row1, strings.ToLower(string(word[i]))) &&
+				strings.Contains(row1, strings.ToLower(string(word[j]))) {
+				i++
+				j--
+			} else {
+				found = false
+				break
+			}
+		}
+		if !found {
+			found = true
+			i, j := 0, len(word)-1
+			for i <= j {
+				if strings.Contains(row2, strings.ToLower(string(word[i]))) &&
+					strings.Contains(row2, strings.ToLower(string(word[j]))) {
+					i++
+					j--
+				} else {
+					found = false
+					break
+				}
+			}
+		}
+		if !found {
+			found = true
+			i, j := 0, len(word)-1
+			for i <= j {
+				if strings.Contains(row3, strings.ToLower(string(word[i]))) &&
+					strings.Contains(row3, strings.ToLower(string(word[j]))) {
+					i++
+					j--
+				} else {
+					found = false
+					break
+				}
+			}
+		}
+		if found {
+			result = append(result, word)
+		}
+	}
+	fmt.Println("Keyboard Row : ", result)
+}

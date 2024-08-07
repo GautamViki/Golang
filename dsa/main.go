@@ -32,8 +32,5 @@ func main() {
 	dsa.LongestSubstringWithoutRepeatingCharacters()
 	dsa.StringToInteger()
 	dsa.MedianOfTwoSortedArrays()
-
-
-	bits:=bitmanipulaton.NewBitManipulationHandler()
-	bits.ConverDecimalToBinary()
+	dsa.KeyBoardRow_500()
 }
