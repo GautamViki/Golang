@@ -35,3 +35,24 @@ func (p *pattern) IsNumPrime(num int) {
 	}
 	fmt.Println("Is this prime number : ", isPrime)
 }
+
+func (p *pattern) AllFibonacci(n, first, second int) {
+	if n == 0 {
+		return
+	}
+	fmt.Print(first, " ")
+	last := first + second
+	first = second
+	second = last
+	p.AllFibonacci(n-1, first, second)
+}
+
+func (p *pattern) CountDigitOfNumber(num int) {
+	
+	count := 0
+	for num > 0 {
+		num /= 10
+		count++
+	}
+	fmt.Println("\nNumber Of Digit : ", count)
+}
