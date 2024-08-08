@@ -48,11 +48,20 @@ func (p *pattern) AllFibonacci(n, first, second int) {
 }
 
 func (p *pattern) CountDigitOfNumber(num int) {
-	
 	count := 0
 	for num > 0 {
 		num /= 10
 		count++
 	}
 	fmt.Println("\nNumber Of Digit : ", count)
+}
+
+func (p *pattern) PrintDigit(num int) {
+	if num <= 0 {
+		return
+	}
+	rem := num % 10
+	num /= 10
+	p.PrintDigit(num)
+	fmt.Print(rem, " ")
 }
