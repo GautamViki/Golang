@@ -587,3 +587,52 @@ func (ds *DataStructure) KeyBoardRow_500() {
 	}
 	fmt.Println("Keyboard Row : ", result)
 }
+
+// func (ds *DataStructure) LongestPalindromicSubstring_5() {
+// 	str := "bada"
+// 	// maxLength := 0
+// 	// var resultSubstring string
+// 	for i := 0; i < len(str)-1; i++ {
+// 		for j := i + 1; j <= len(str); j++ {
+// 			fmt.Println(str[i:j])
+// 		}
+// 	}
+// }
+
+func (ds *DataStructure) LongestPalindromicSubstring_5() {
+	s := "bada"
+	T := "^#" + strings.Join(strings.Split(s, ""), "#") + "#$"
+	n := len(T)
+	P := make([]int, n)
+	C, R := 0, 0
+
+	for i := 1; i < n-1; i++ {
+		if R > i {
+			P[i] = min(R-i, P[2*C-i])
+		}
+		for T[i+1+P[i]] == T[i-1-P[i]] {
+			P[i]++
+		}
+		if i+P[i] > R {
+			C, R = i, i+P[i]
+		}
+	}
+
+	maxLen := 0
+	centerIndex := 0
+	for i, v := range P {
+		if v > maxLen {
+			maxLen = v
+			centerIndex = i
+		}
+	}
+
+	fmt.Println("Longest Palindromic Substring : ",s[(centerIndex-maxLen)/2 : (centerIndex+maxLen)/2])
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
