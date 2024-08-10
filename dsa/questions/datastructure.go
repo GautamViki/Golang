@@ -627,7 +627,7 @@ func (ds *DataStructure) LongestPalindromicSubstring_5() {
 		}
 	}
 
-	fmt.Println("Longest Palindromic Substring : ",s[(centerIndex-maxLen)/2 : (centerIndex+maxLen)/2])
+	fmt.Println("Longest Palindromic Substring : ", s[(centerIndex-maxLen)/2:(centerIndex+maxLen)/2])
 }
 
 func min(a, b int) int {
@@ -635,4 +635,27 @@ func min(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func (ds *DataStructure) ZigzagConversion_6(s string, numRows int) {
+	if numRows == 1 {
+		return
+	}
+	ls := make([]string, numRows)
+	lamp := true
+	index := 0
+	for i := 0; i < len(s); i++ {
+		ls[index] += string(s[i])
+		if lamp {
+			index++
+		} else {
+			index--
+		}
+		if index == 0 {
+			lamp = true
+		} else if index == numRows-1 {
+			lamp = false
+		}
+	}
+	fmt.Println(strings.Join(ls, ""))
 }
