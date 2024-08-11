@@ -659,3 +659,57 @@ func (ds *DataStructure) ZigzagConversion_6(s string, numRows int) {
 	}
 	fmt.Println(strings.Join(ls, ""))
 }
+
+// func (ds *DataStructure) ZigzagConversion_6V1(s string, numRows int) {
+// 	if numRows == 1 {
+// 		fmt.Println("Zigzag conversion ", s)
+// 	}
+// 	resultArr := make([]string, numRows)
+// 	for i := 0; i < numRows; i++ {
+// 		if i == 0 {
+
+// 		}
+// 	}
+// }
+
+func (ds *DataStructure) ContainerWithMostWater_11() {
+	height := []int{1, 2, 4, 3}
+	if len(height) == 2 {
+		if height[0] < height[1] {
+			fmt.Println(height[0])
+			return
+		}
+		fmt.Println(height[1])
+		return
+	}
+	sortedHeight := make([]int, len(height))
+	copy(sortedHeight, height)
+	slices.Sort(sortedHeight)
+	fmt.Println(height)
+	fmt.Println(sortedHeight)
+	maxWater := 0
+	water := 0
+	for k := len(sortedHeight) - 1; k > 0; k-- {
+		i, j := 0, len(height)-1
+		for i < j {
+			if height[i] != sortedHeight[k] {
+				i++
+			}
+			if height[j] != sortedHeight[k-1] {
+				j--
+			}
+			if height[i] == sortedHeight[k] && height[j] == sortedHeight[k-1] {
+				if height[i] < height[j] {
+					water = (j - i) * height[i]
+				} else {
+					water = (j - i) * height[j]
+				}
+				break
+			}
+		}
+		if water > maxWater {
+			maxWater = water
+		}
+	}
+	fmt.Println(maxWater)
+}
