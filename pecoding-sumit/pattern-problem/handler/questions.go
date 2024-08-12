@@ -65,3 +65,8 @@ func (p *pattern) PrintDigit(num int) {
 	p.PrintDigit(num)
 	fmt.Print(rem, " ")
 }
+
+// 2413===3142
+func (p *pattern) PrintInverse(num int) {
+
+}
