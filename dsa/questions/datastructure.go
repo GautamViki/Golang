@@ -674,45 +674,6 @@ func (ds *DataStructure) ZigzagConversion_6(s string, numRows int) {
 
 func (ds *DataStructure) ContainerWithMostWater_11() {
 	height := []int{1, 2, 4, 3}
-	// if len(height) == 2 {
-	// 	if height[0] < height[1] {
-	// 		fmt.Println(height[0])
-	// 		return
-	// 	}
-	// 	fmt.Println(height[1])
-	// 	return
-	// }
-	// sortedHeight := make([]int, len(height))
-	// copy(sortedHeight, height)
-	// slices.Sort(sortedHeight)
-	// fmt.Println(height)
-	// fmt.Println(sortedHeight)
-	// maxWater := 0
-	// water := 0
-	// for k := len(sortedHeight) - 1; k > 0; k-- {
-	// 	i, j := 0, len(height)-1
-	// 	for i < j {
-	// 		if height[i] != sortedHeight[k] {
-	// 			i++
-	// 		}
-	// 		if height[j] != sortedHeight[k-1] {
-	// 			j--
-	// 		}
-	// 		if height[i] == sortedHeight[k] && height[j] == sortedHeight[k-1] {
-	// 			if height[i] < height[j] {
-	// 				water = (j - i) * height[i]
-	// 			} else {
-	// 				water = (j - i) * height[j]
-	// 			}
-	// 			break
-	// 		}
-	// 	}
-	// 	if water > maxWater {
-	// 		maxWater = water
-	// 	}
-	// }
-	// fmt.Println(maxWater)
-
 	left := 0
 	right := len(height) - 1
 	mArea := 0
@@ -733,4 +694,34 @@ func (ds *DataStructure) ContainerWithMostWater_11() {
 		}
 	}
 	fmt.Println(mArea)
+}
+
+func (ds *DataStructure) ThreeSumClosest_16() int {
+	nums := []int{1, 1, 1, 0}
+	target := -100
+	sort.Ints(nums)
+	var ans int
+	diff := math.MaxInt
+
+	for i := 0; i < len(nums)-2; i++ {
+		low := i + 1
+		high := len(nums) - 1
+
+		for low < high {
+			if nums[i]+nums[low]+nums[high] == target {
+				ans = target
+				return ans
+			} else if int(math.Abs(float64(nums[i]+nums[low]+nums[high]-target))) < diff {
+				diff = int(math.Abs(float64(nums[i] + nums[low] + nums[high] - target)))
+				ans = nums[i] + nums[low] + nums[high]
+			}
+
+			if nums[i]+nums[low]+nums[high] > target {
+				high--
+			} else {
+				low++
+			}
+		}
+	}
+	return ans
 }
