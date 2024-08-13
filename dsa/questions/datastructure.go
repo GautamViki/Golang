@@ -725,3 +725,38 @@ func (ds *DataStructure) ThreeSumClosest_16() int {
 	}
 	return ans
 }
+
+func (ds *DataStructure) BestTimetoBuySellStock() {
+	prices := []int{7, 2, 5, 3, 1, 3}
+	// sum := math.MinInt32
+	// min, max := math.MaxInt32, math.MinInt32
+	// second := 1
+	// for i := 0; i < len(prices)-1; i++ {
+	// 	if min >= prices[i] {
+	// 		min = prices[i]
+	// 	}
+	// 	if max < prices[i+1] || second < i+1 {
+	// 		max = prices[i+1]
+	// 		second = i + 1
+	// 	}
+	// 	if sum < max-min {
+	// 		sum = max - min
+	// 	}
+	// 	fmt.Println(min, max, sum)
+	// }
+	// if sum < 0 {
+	// 	sum = 0
+	// }
+	max := 0
+	for idx, _ := range prices {
+		if prices[0] > prices[idx] {
+			prices[0] = prices[idx]
+		} else {
+			if max < prices[idx]-prices[0] {
+				max = prices[idx] - prices[0]
+			}
+		}
+	}
+	// return max
+	fmt.Println("121. Best Time to Buy and Sell Stock", max)
+}
