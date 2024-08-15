@@ -760,3 +760,70 @@ func (ds *DataStructure) BestTimetoBuySellStock() {
 	// return max
 	fmt.Println("121. Best Time to Buy and Sell Stock", max)
 }
+
+func (ds *DataStructure) IsValidSudoku_36() bool {
+	board := [][]byte{
+		{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
+	}
+	for row := 0; row < 9; row++ {
+		hash := make(map[byte]struct{})
+		for col := 0; col < 9; col++ {
+			if board[row][col] == byte('.') {
+				continue
+			}
+			if _, found := hash[board[row][col]]; found {
+				return false
+			} else {
+				hash[board[row][col]] = struct{}{}
+			}
+		}
+	}
+	for col := 0; col < 9; col++ {
+		hash := make(map[byte]struct{})
+		for row := 0; row < 9; row++ {
+			if board[row][col] == byte('.') {
+				continue
+			}
+			if _, found := hash[board[row][col]]; found {
+				return false
+			} else {
+				hash[board[row][col]] = struct{}{}
+			}
+		}
+	}
+
+	for row := 0; row < 9; row += 3 {
+		er := row + 3
+		for col := 0; col < 9; col += 3 {
+			ec := col + 3
+			if !(Treverse(row, er, col, ec, board)) {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+func Treverse(sr, er, sc, ec int, board [][]byte) bool {
+	hash := make(map[byte]struct{})
+	for row := sr; row < er; row++ {
+		for col := sc; col < ec; col++ {
+			if board[row][col] == byte('.') {
+				continue
+			}
+			if _, found := hash[board[row][col]]; found {
+				return false
+			}
+			hash[board[row][col]] = struct{}{}
+		}
+	}
+	return true
+}
