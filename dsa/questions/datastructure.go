@@ -827,3 +827,17 @@ func Treverse(sr, er, sc, ec int, board [][]byte) bool {
 	}
 	return true
 }
+
+func (ds *DataStructure) MaximumSubarray_53() {
+	nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
+	minSum := 0
+	maxSum := math.MinInt
+	for idx, _ := range nums {
+		if minSum < 0 {
+			minSum = 0
+		}
+		minSum += nums[idx]
+		maxSum = max(maxSum, minSum)
+	}
+	fmt.Println("53. Maximum Subarray ", maxSum)
+}

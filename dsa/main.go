@@ -38,5 +38,6 @@ func main() {
 	dsa.ContainerWithMostWater_11()
 	fmt.Println("ThreeSumClosest_16 : ", dsa.ThreeSumClosest_16())
 	dsa.BestTimetoBuySellStock()
-	fmt.Print("36. Valid Sudoku : ", dsa.IsValidSudoku_36())
+	fmt.Println("36. Valid Sudoku : ", dsa.IsValidSudoku_36())
+	dsa.MaximumSubarray_53()
 }
