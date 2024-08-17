@@ -153,7 +153,7 @@ func (ds *DataStructure) ThreeConsecutiveOdds() bool {
 	return false
 }
 
-func (ds *DataStructure) ValidPalindrome() bool {
+func (ds *DataStructure) ValidPalindrome_125() bool {
 	s := "A man, a plan, a canal: Panama"
 	f := func(r rune) rune {
 		if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
