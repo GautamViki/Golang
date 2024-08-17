@@ -40,4 +40,5 @@ func main() {
 	dsa.BestTimetoBuySellStock()
 	fmt.Println("36. Valid Sudoku : ", dsa.IsValidSudoku_36())
 	dsa.MaximumSubarray_53()
+	dsa.FindDuplicate_287()
 }

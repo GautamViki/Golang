@@ -856,3 +856,15 @@ func (ds *DataStructure) MaximumSubarray_53() {
 	}
 	fmt.Println("53. Maximum Subarray ", maxSum)
 }
+
+func (ds *DataStructure)FindDuplicate_287() {
+	nums:=[]int{1,3,4,2,2}
+    hash:=make(map[int]int)
+    for _,num:=range nums{
+        if _,found:=hash[num];found{
+			fmt.Println("FindDuplicate_287 : ",num)
+            return
+        }
+        hash[num]+=1
+    }
+}
