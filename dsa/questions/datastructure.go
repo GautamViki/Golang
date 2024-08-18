@@ -868,3 +868,20 @@ func (ds *DataStructure) FindDuplicate_287() {
 		hash[num] += 1
 	}
 }
+
+func (ds *DataStructure) BinarySearch_704() int {
+	nums := []int{-1, 0, 3, 5, 9, 12}
+	target := 9
+	i, j := 0, len(nums)-1
+	for i <= j {
+		mid := (i + j) / 2
+		if nums[mid] < target {
+			i = mid + 1
+		} else if nums[mid] > target {
+			j = mid - 1
+		} else {
+			return mid
+		}
+	}
+	return -1
+}
