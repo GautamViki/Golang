@@ -903,5 +903,17 @@ func (ds *DataStructure) MissingNumber_268() {
 	for _, num := range nums {
 		allXor ^= num
 	}
-	fmt.Println("Missing Number : ",allXor)
+	fmt.Println("Missing Number : ", allXor)
+}
+
+func (ds *DataStructure) ReverseString_344() {
+	str := "hello"
+	s := []byte(str)
+	i, j := 0, len(s)-1
+	for i < j {
+		s[i], s[j] = s[j], s[i]
+		i++
+		j--
+	}
+	fmt.Println("Reverse String ", string(s))
 }
