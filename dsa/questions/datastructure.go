@@ -888,11 +888,20 @@ func (ds *DataStructure) BinarySearch_704() int {
 func (ds *DataStructure) MissingNumber_268() {
 	nums := []int{9, 6, 4, 2, 3, 5, 7, 0, 1}
 	// Method 1
-	n := len(nums)
-	totalSum := n * (n + 1) / 2
-	sum := 0
-	for _, val := range nums {
-		sum += val
+	// n := len(nums)
+	// totalSum := n * (n + 1) / 2
+	// sum := 0
+	// for _, val := range nums {
+	// 	sum += val
+	// }
+	// fmt.Println("Missing Number : ", totalSum-sum)
+	// Method 2
+	allXor := 0
+	for i := 0; i <= len(nums); i++ {
+		allXor ^= i
 	}
-	fmt.Println("Missing Number : ", totalSum-sum)
+	for _, num := range nums {
+		allXor ^= num
+	}
+	fmt.Println("Missing Number : ",allXor)
 }
