@@ -14,7 +14,7 @@ func NewGoroutinesHandler() *routine {
 
 // creating deadlock conditions
 // 1.remove defer wg.Done()
-// 2.accept WaitGroup as a referece not value EX. wg sync.WaitGroup
+// 2.accept WaitGroup as a value not referece EX. wg sync.WaitGroup
 func (r *routine) Helper_Deadlock(str string, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for i := 0; i < 5; i++ {
