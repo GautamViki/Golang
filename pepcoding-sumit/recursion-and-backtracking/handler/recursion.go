@@ -27,3 +27,13 @@ func (re *recursion) FindLastOccurrence(nums []int, idx, target, ans int) int {
 	}
 	return re.FindLastOccurrence(nums, idx+1, target, ans)
 }
+
+func (re *recursion) FindAllOccurrence(nums, ans []int, idx, target int) []int {
+	if nums[idx] == target {
+		ans = append(ans, idx)
+	}
+	if idx == len(nums)-1 {
+		return ans
+	}
+	return re.FindAllOccurrence(nums, ans, idx+1, target)
+}

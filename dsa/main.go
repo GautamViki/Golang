@@ -41,7 +41,10 @@ func main() {
 	fmt.Println("36. Valid Sudoku : ", dsa.IsValidSudoku_36())
 	dsa.MaximumSubarray_53()
 	dsa.FindDuplicate_287()
-	fmt.Println("BinarySearch_704 ",dsa.BinarySearch_704())
+	fmt.Println("BinarySearch_704 ", dsa.BinarySearch_704())
 	dsa.MissingNumber_268()
 	dsa.ReverseString_344()
+	fmt.Println("House robber_198: ", dsa.HouseRobber_198())
+	dsa.MergeIntervals_56()
+	dsa.FindResultantArrayRemovingAnagrams_2273()
 }

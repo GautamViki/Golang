@@ -12,4 +12,6 @@ func main() {
 	fmt.Println("First Occurrence of a number : ", firstOccurrence)
 	lastOccurrence := recursion.FindLastOccurrence(nums, 0, 61, -1)
 	fmt.Println("Last Occurrence of a number : ", lastOccurrence)
+	allOccurrence := recursion.FindAllOccurrence(nums, []int{}, 0, 2)
+	fmt.Println("ALl Occurrence of a number : ", allOccurrence)
 }

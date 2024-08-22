@@ -931,3 +931,77 @@ func (ds *DataStructure) HouseRobber_198() int {
 	}
 	return dp[len(nums)-1]
 }
+
+func (ds *DataStructure) MergeIntervals_56() {
+	intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
+	if len(intervals) == 0 {
+		fmt.Println([][]int{})
+		return
+	}
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	merged := make([][]int, 0)
+	current := intervals[0]
+
+	for i := 1; i < len(intervals); i++ {
+		interval := intervals[i]
+		if current[1] >= interval[0] {
+			current[1] = max(current[1], interval[1])
+		} else {
+			merged = append(merged, current)
+			current = interval
+		}
+	}
+	merged = append(merged, current)
+	fmt.Println("Merge Intervals 56 : ", merged)
+}
+
+func (ds *DataStructure) FindResultantArrayRemovingAnagrams_2273() {
+	words := []string{"a", "b", "c", "d", "e"}
+	// baseWord := words[0]
+	// i := 1
+	// for i < len(words) {
+	// 	isAnagram := ds.IsAnagram(baseWord, words[i])
+	// 	if isAnagram {
+	// 		words = append(words[:i], words[i+1:]...)
+	// 	} else {
+	// 		baseWord = words[i]
+	// 		i++
+	// 	}
+	// }
+	result := []string{words[0]}
+	for i := 1; i < len(words); i++ {
+		word1 := []byte(words[i-1])
+		slices.Sort(word1)
+		word2 := []byte(words[i])
+		slices.Sort(word2)
+		if string(word1) != string(word2) {
+			result = append(result, words[i])
+		}
+	}
+	fmt.Println("2273. Find Resultant Array After Removing Anagrams : ", result)
+}
+
+func (ds *DataStructure) IsAnagram(word1, word2 string) bool {
+	if len(word1) != len(word2) {
+		return false
+	}
+	map1 := make(map[byte]int)
+	for i := 0; i < len(word1); i++ {
+		map1[word1[i]] += 1
+	}
+	map2 := make(map[byte]int)
+	for i := 0; i < len(word2); i++ {
+		map2[word2[i]] += 1
+	}
+	if len(map1) != len(map2) {
+		return false
+	}
+	for key, val := range map1 {
+		if val != map2[key] {
+			return false
+		}
+	}
+	return true
+}
