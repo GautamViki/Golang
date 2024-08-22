@@ -959,28 +959,31 @@ func (ds *DataStructure) MergeIntervals_56() {
 
 func (ds *DataStructure) FindResultantArrayRemovingAnagrams_2273() {
 	words := []string{"a", "b", "c", "d", "e"}
-	// baseWord := words[0]
-	// i := 1
-	// for i < len(words) {
-	// 	isAnagram := ds.IsAnagram(baseWord, words[i])
-	// 	if isAnagram {
-	// 		words = append(words[:i], words[i+1:]...)
-	// 	} else {
-	// 		baseWord = words[i]
-	// 		i++
-	// 	}
-	// }
-	result := []string{words[0]}
-	for i := 1; i < len(words); i++ {
-		word1 := []byte(words[i-1])
-		slices.Sort(word1)
-		word2 := []byte(words[i])
-		slices.Sort(word2)
-		if string(word1) != string(word2) {
-			result = append(result, words[i])
+	// Method 1
+	baseWord := words[0]
+	i := 1
+	for i < len(words) {
+		isAnagram := ds.IsAnagram(baseWord, words[i])
+		if isAnagram {
+			words = append(words[:i], words[i+1:]...)
+		} else {
+			baseWord = words[i]
+			i++
 		}
 	}
-	fmt.Println("2273. Find Resultant Array After Removing Anagrams : ", result)
+
+	// Method 2
+	// result := []string{words[0]}
+	// for i := 1; i < len(words); i++ {
+	// 	word1 := []byte(words[i-1])
+	// 	slices.Sort(word1)
+	// 	word2 := []byte(words[i])
+	// 	slices.Sort(word2)
+	// 	if string(word1) != string(word2) {
+	// 		result = append(result, words[i])
+	// 	}
+	// }
+	fmt.Println("2273. Find Resultant Array After Removing Anagrams : ", words)
 }
 
 func (ds *DataStructure) IsAnagram(word1, word2 string) bool {
