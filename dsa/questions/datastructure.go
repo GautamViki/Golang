@@ -933,29 +933,65 @@ func (ds *DataStructure) HouseRobber_198() int {
 }
 
 func (ds *DataStructure) MergeIntervals_56() {
-	intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
-	if len(intervals) == 0 {
-		fmt.Println([][]int{})
-		return
-	}
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
-	merged := make([][]int, 0)
-	current := intervals[0]
+	// intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
+	// if len(intervals) == 0 {
+	// 	fmt.Println([][]int{})
+	// 	return
+	// }
+	// sort.Slice(intervals, func(i, j int) bool {
+	// 	return intervals[i][0] < intervals[j][0]
+	// })
+	// merged := make([][]int, 0)
+	// current := intervals[0]
 
-	for i := 1; i < len(intervals); i++ {
-		interval := intervals[i]
-		if current[1] >= interval[0] {
-			current[1] = max(current[1], interval[1])
-		} else {
-			merged = append(merged, current)
-			current = interval
+	// for i := 1; i < len(intervals); i++ {
+	// 	interval := intervals[i]
+	// 	if current[1] >= interval[0] {
+	// 		current[1] = max(current[1], interval[1])
+	// 	} else {
+	// 		merged = append(merged, current)
+	// 		current = interval
+	// 	}
+	// }
+	// merged = append(merged, current)
+	// fmt.Println("Merge Intervals 56 : ", merged)
+	intervals := [][]int{{1, 3}, {2, 6}, {5, 7}, {8, 10}, {9, 18}}
+	result := make([][]int, 0)
+	elenment := intervals[0]
+
+	for i := 0; i < len(intervals)-1; i++ {
+		for j := i + 1; j < len(intervals); j++ {
+			interval := intervals[j]
+			if elenment[1] >= interval[0] {
+				elenment[1] = interval[1]
+			} else {
+				result = append(result, elenment)
+				elenment = interval
+				i = j
+			}
 		}
 	}
-	merged = append(merged, current)
-	fmt.Println("Merge Intervals 56 : ", merged)
+	result = append(result, elenment)
+	fmt.Println("answer ", result)
 }
+
+// func main() {
+// 	intervals := [][]int{{1, 3}, {2, 6}, {5, 7}, {8, 10}, {9, 18}}
+// 	result := make([][]int, 0)
+// 	for i := 0; i < len(intervals)-1; i++ {
+// 		elenment := intervals[i]
+// 		for j := i + 1; j < len(intervals); j++ {
+// 			interval := intervals[j]
+// 			if elenment[1] >= interval[0] {
+// 				elenment[1] = interval[1]
+// 			} else {
+// 				result = append(result, interval)
+// 				elenment = interval
+// 			}
+// 		}
+// 	}
+// 	fmt.Println(result)
+// }
 
 func (ds *DataStructure) FindResultantArrayRemovingAnagrams_2273() {
 	words := []string{"a", "b", "c", "d", "e"}
@@ -1007,4 +1043,21 @@ func (ds *DataStructure) IsAnagram(word1, word2 string) bool {
 		}
 	}
 	return true
+}
+
+func (ds *DataStructure) GroupAnagrams_49() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	hash := make(map[string][]string)
+	result := make([][]string, 0)
+	for i := 0; i < len(strs); i++ {
+		newStr := []byte(strs[i])
+		sort.Slice(newStr, func(i, j int) bool {
+			return newStr[i] < newStr[j]
+		})
+		hash[string(newStr)] = append(hash[string(newStr)], strs[i])
+	}
+	for key := range hash {
+		result = append(result, hash[key])
+	}
+	fmt.Println("GroupAnagrams_49 : ", result)
 }

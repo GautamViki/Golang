@@ -47,4 +47,5 @@ func main() {
 	fmt.Println("House robber_198: ", dsa.HouseRobber_198())
 	dsa.MergeIntervals_56()
 	dsa.FindResultantArrayRemovingAnagrams_2273()
+	dsa.GroupAnagrams_49()
 }
