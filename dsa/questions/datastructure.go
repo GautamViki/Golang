@@ -1051,9 +1051,7 @@ func (ds *DataStructure) GroupAnagrams_49() {
 	result := make([][]string, 0)
 	for i := 0; i < len(strs); i++ {
 		newStr := []byte(strs[i])
-		sort.Slice(newStr, func(i, j int) bool {
-			return newStr[i] < newStr[j]
-		})
+		slices.Sort(newStr)
 		hash[string(newStr)] = append(hash[string(newStr)], strs[i])
 	}
 	for key := range hash {
