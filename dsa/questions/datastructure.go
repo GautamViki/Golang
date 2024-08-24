@@ -1059,3 +1059,10 @@ func (ds *DataStructure) GroupAnagrams_49() {
 	}
 	fmt.Println("GroupAnagrams_49 : ", result)
 }
+
+func (ds *DataStructure) KthLargestElementInAnArray_215() {
+	nums := []int{3, 2, 3, 5, 2, 4, 1, 5, 6}
+	k := 4
+	slices.Sort(nums)
+	fmt.Println("215. Kth Largest Element in an Array : ", nums[len(nums)-k])
+}
