@@ -1111,21 +1111,23 @@ func max(a, b int) int {
 
 func (ds *DataStructure) FindPeakElement_162() {
 	nums := []int{1, 3, 2, 1}
-	// idx := 0
-	// if len(nums) == 2 {
-	// 	if nums[0] > nums[1] {
-	// 		idx = 0
-	// 	} else {
-	// 		idx = 1
-	// 	}
-	// }
-	// for i := 1; i < len(nums)-1; i++ {
-	// 	if nums[i-1] < nums[i] && nums[i+1] < nums[i] {
-	// 		idx = i
-	// 	} else if nums[i] > nums[i-1] && nums[i] < nums[i+1] {
-	// 		idx = i + 1
-	// 	}
-	// }
+	// Method 1
+	idx := 0
+	if len(nums) == 2 {
+		if nums[0] > nums[1] {
+			idx = 0
+		} else {
+			idx = 1
+		}
+	}
+	for i := 1; i < len(nums)-1; i++ {
+		if nums[i-1] < nums[i] && nums[i+1] < nums[i] {
+			idx = i
+		} else if nums[i] > nums[i-1] && nums[i] < nums[i+1] {
+			idx = i + 1
+		}
+	}
+	fmt.Println("162. Find Peak Element : ", idx)
 	// Method 2
 	v, res := math.MinInt, 0
 	for i, num := range nums {
