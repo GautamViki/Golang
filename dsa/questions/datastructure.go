@@ -1066,3 +1066,45 @@ func (ds *DataStructure) KthLargestElementInAnArray_215() {
 	slices.Sort(nums)
 	fmt.Println("215. Kth Largest Element in an Array : ", nums[len(nums)-k])
 }
+
+func (ds *DataStructure) MaximalSquare_221() {
+	matrix := [][]string{
+		{"1", "0", "1", "0", "0"},
+		{"1", "0", "1", "1", "1"},
+		{"1", "1", "1", "1", "1"},
+		{"1", "0", "0", "1", "0"},
+	}
+	n := len(matrix) + 1
+	m := len(matrix[0]) + 1
+	dp := make([][]int, n)
+
+	for i := range dp {
+		dp[i] = make([]int, m)
+	}
+
+	maxDimension := 0
+
+	for i := 1; i < n; i++ {
+		for j := 1; j < m; j++ {
+			if matrix[i-1][j-1] == "1" {
+				dp[i][j] = min(min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]) + 1
+				maxDimension = max(maxDimension, dp[i][j])
+			}
+		}
+	}
+	fmt.Println("221. Maximal Square : ", maxDimension*maxDimension)
+}
+
+// func min(a, b int) int {
+// 	if a < b {
+// 		return a
+// 	}
+// 	return b
+// }
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
