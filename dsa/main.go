@@ -50,4 +50,5 @@ func main() {
 	dsa.GroupAnagrams_49()
 	dsa.KthLargestElementInAnArray_215()
 	dsa.MaximalSquare_221()
+	dsa.FindPeakElement_162()
 }
