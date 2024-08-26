@@ -56,4 +56,5 @@ func main() {
 	max := dsa.FindMaxInArray(nums, 0, nums[0])
 	fmt.Println("Find Max In Array", max)
 	dsa.MaximumProductSubarray_152()
+	dsa.Kadane_Algo()
 }

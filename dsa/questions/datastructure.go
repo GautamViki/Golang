@@ -1170,3 +1170,37 @@ func (ds *DataStructure) MaximumProductSubarray_152() {
 	}
 	fmt.Println("152. Maximum Product Subarray", maxProduct)
 }
+
+func (ds *DataStructure) Kadane_Algo() {
+	// max sum of subarray
+	nums := []int{2, -3, 4}
+	sum := 0
+	maxSum := nums[0]
+	for _, num := range nums {
+		sum += num
+		maxSum = max(maxSum, sum)
+		if sum < 0 {
+			sum = 0
+		}
+	}
+	fmt.Println("\nKadane_Algo max sum of subarray", maxSum)
+
+	leftProduct := 1
+	rightProduct := 1
+	i, j := 0, len(nums)-1
+	maxProduct := nums[i]
+	for i < len(nums) && j >= 0 {
+		leftProduct *= nums[i]
+		rightProduct *= nums[j]
+		maxProduct = max(maxProduct, max(leftProduct, rightProduct))
+		if nums[i] == 0 {
+			leftProduct = 1
+		}
+		if nums[j] == 0 {
+			rightProduct = 1
+		}
+		i++
+		j--
+	}
+		fmt.Println("\nKadane_Algo max product of subarray", maxProduct)
+}
