@@ -51,4 +51,9 @@ func main() {
 	dsa.KthLargestElementInAnArray_215()
 	dsa.MaximalSquare_221()
 	dsa.FindPeakElement_162()
+	// Array
+	nums := []int{3}
+	max := dsa.FindMaxInArray(nums, 0, nums[0])
+	fmt.Println("Find Max In Array", max)
+	dsa.MaximumProductSubarray_152()
 }

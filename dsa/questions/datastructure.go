@@ -1137,3 +1137,36 @@ func (ds *DataStructure) FindPeakElement_162() {
 	}
 	fmt.Println("162. Find Peak Element : ", res)
 }
+
+func (ds *DataStructure) FindMaxInArray(nums []int, idx, max int) int {
+	// nums := []int{1, 3, 2, 1}
+	if idx == len(nums)-1 {
+		return max
+	}
+	if max < nums[idx+1] {
+		max = nums[idx+1]
+	}
+	return ds.FindMaxInArray(nums, idx+1, max)
+}
+
+func (ds *DataStructure) MaximumProductSubarray_152() {
+	nums := []int{2, 3, -2, 4}
+	leftProduct := 1
+	rightProduct := 1
+	maxProduct := nums[0]
+	i, j := 0, len(nums)-1
+	for i < len(nums) && j >= 0 {
+		if leftProduct == 0 {
+			leftProduct = 1
+		}
+		if rightProduct == 0 {
+			rightProduct = 1
+		}
+		leftProduct *= nums[i]
+		rightProduct *= nums[j]
+		maxProduct = max(maxProduct, max(leftProduct, rightProduct))
+		i++
+		j--
+	}
+	fmt.Println("152. Maximum Product Subarray", maxProduct)
+}
