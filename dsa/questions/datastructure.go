@@ -1294,3 +1294,37 @@ func (ds *DataStructure) SortColor_75() {
 	}
 	fmt.Println("SortColor_75 ", nums)
 }
+func (ds *DataStructure) SubarraySumEqualsTarget() {
+	nums := []int{1, 4, 0, 0, 3, 10, 5}
+	target := -7
+	// result := []int{}
+	// Using Nested loop – O(N^2) time and O(1) auxiliary space
+	// for i := 0; i < len(nums)-1; i++ {
+	// 	sum := nums[i]
+	// 	for j := i + 1; j < len(nums); j++ {
+	// 		if sum == target {
+	// 			result = []int{i, j - 1}
+	// 		}
+	// 		sum += nums[j]
+	// 	}
+	// }
+	i, j := 0, 1
+	sum := nums[i]
+	for i < len(nums) && j < len(nums) && i < j {
+		if sum < target {
+			sum += nums[j]
+			j++
+		} else if sum > target {
+			sum -= nums[i]
+			i++
+		} else {
+			break
+		}
+	}
+
+	if sum != target {
+		i, j = -1, 0
+	}
+	result := []int{i, j - 1}
+	fmt.Println("Subarray with Given Sum ", result)
+}

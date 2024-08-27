@@ -64,4 +64,5 @@ func main() {
 	dsa.FindFirstandLastPositionofElementinSortedArray_36()
 	dsa.FindOccurrencesofanElementinanArray_3159()
 	dsa.SortColor_75()
+	dsa.SubarraySumEqualsTarget()
 }
