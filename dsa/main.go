@@ -62,4 +62,5 @@ func main() {
 	nums = []int{1, 1, 2, 2, 2, 2, 3}
 	fmt.Println("Find All occurrences in an array : ", dsa.FindAllOccurrenc(nums, 0, 0, 2))
 	dsa.FindFirstandLastPositionofElementinSortedArray_36()
+	dsa.FindOccurrencesofanElementinanArray_3159()
 }

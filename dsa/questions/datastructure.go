@@ -1251,3 +1251,26 @@ func (ds *DataStructure) FindFirstandLastPositionofElementinSortedArray_36() {
 	}
 	fmt.Println("34. Find First and Last Position of Element in Sorted Array", first, last)
 }
+
+func (ds *DataStructure) FindOccurrencesofanElementinanArray_3159() {
+	nums := []int{1, 3, 2, 2, 3, 3, 1, 3, 1}
+	queries := []int{5, 6, 1, 5, 6, 4, 1, 5}
+	result := make([]int, 0)
+	x := 3
+	count := 0
+	hashMap := make(map[int]int)
+	for idx, num := range nums {
+		if num == x {
+			count++
+			hashMap[count] = idx
+		}
+	}
+	for _, query := range queries {
+		temp := -1
+		if _, found := hashMap[query]; found {
+			temp = hashMap[query]
+		}
+		result = append(result, temp)
+	}
+	fmt.Println("3159. Find Occurrences of an Element in an Array", result)
+}
