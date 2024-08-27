@@ -1276,3 +1276,21 @@ func (ds *DataStructure) FindOccurrencesofanElementinanArray_3159() {
 	}
 	fmt.Println("3159. Find Occurrences of an Element in an Array", result)
 }
+
+func (ds *DataStructure) SortColor_75() {
+	nums := []int{2, 0, 1}
+	left, mid, right := 0, 0, len(nums)-1
+	for mid <= right {
+		if nums[mid] == 0 {
+			nums[left], nums[mid] = nums[mid], nums[left]
+			left++
+			mid++
+		} else if nums[mid] == 2 {
+			nums[mid], nums[right] = nums[right], nums[mid]
+			right--
+		} else if nums[mid] == 1 {
+			mid++
+		}
+	}
+	fmt.Println("SortColor_75 ", nums)
+}

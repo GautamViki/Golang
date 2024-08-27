@@ -63,4 +63,5 @@ func main() {
 	dsa.FindAllOccurrenc()
 	dsa.FindFirstandLastPositionofElementinSortedArray_36()
 	dsa.FindOccurrencesofanElementinanArray_3159()
+	dsa.SortColor_75()
 }
