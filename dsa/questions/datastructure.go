@@ -1202,5 +1202,52 @@ func (ds *DataStructure) Kadane_Algo() {
 		i++
 		j--
 	}
-		fmt.Println("\nKadane_Algo max product of subarray", maxProduct)
+	fmt.Println("\nKadane_Algo max product of subarray", maxProduct)
+}
+
+func (ds *DataStructure) GroupAnagrams_49_v1() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	result := make([][]string, 0)
+	hashMap := make(map[string][]string)
+	for _, str := range strs {
+		charArr := []byte(str)
+		slices.Sort(charArr)
+		hashMap[string(charArr)] = append(hashMap[string(charArr)], str)
+	}
+	for _, val := range hashMap {
+		result = append(result, val)
+	}
+	fmt.Println("\nGroupAnagrams_49_v1 ", result)
+}
+
+func (ds *DataStructure) FindAllOccurrenc(nums []int, idx, count, target int) int {
+	if idx == len(nums)-1 {
+		return count
+	}
+	if nums[idx] == target {
+		count++
+	}
+	return ds.FindAllOccurrenc(nums, idx+1, count, target)
+}
+
+func (ds *DataStructure) FindFirstandLastPositionofElementinSortedArray_36() {
+	nums := []int{5, 7, 7, 8, 8, 10}
+	target := 8
+	first := -1
+	last := -1
+	i, j := 0, len(nums)-1
+	for i < len(nums) && j >= 0 {
+		if nums[i] == target && first < 0 {
+			first = i
+		}
+		if nums[j] == target && last < 0 {
+			last = j
+		}
+		if first > 0 && last > 0 {
+			break
+		}
+		i++
+		j--
+	}
+	fmt.Println("34. Find First and Last Position of Element in Sorted Array", first, last)
 }
