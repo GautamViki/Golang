@@ -1220,14 +1220,16 @@ func (ds *DataStructure) GroupAnagrams_49_v1() {
 	fmt.Println("\nGroupAnagrams_49_v1 ", result)
 }
 
-func (ds *DataStructure) FindAllOccurrenc(nums []int, idx, count, target int) int {
-	if idx == len(nums)-1 {
-		return count
+func (ds *DataStructure) FindAllOccurrenc() {
+	nums := []int{1, 1, 2, 2, 2, 2, 3}
+	target := 2
+	count := 0
+	for _, num := range nums {
+		if num == target {
+			count++
+		}
 	}
-	if nums[idx] == target {
-		count++
-	}
-	return ds.FindAllOccurrenc(nums, idx+1, count, target)
+	fmt.Println("Find All occurrences in an array : ", count)
 }
 
 func (ds *DataStructure) FindFirstandLastPositionofElementinSortedArray_36() {

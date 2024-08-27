@@ -59,8 +59,8 @@ func main() {
 	dsa.Kadane_Algo()
 	dsa.GroupAnagrams_49_v1()
 	//
-	nums = []int{1, 1, 2, 2, 2, 2, 3}
-	fmt.Println("Find All occurrences in an array : ", dsa.FindAllOccurrenc(nums, 0, 0, 2))
+	// nums = []int{1, 1, 2, 2, 2, 2, 3}
+	dsa.FindAllOccurrenc()
 	dsa.FindFirstandLastPositionofElementinSortedArray_36()
 	dsa.FindOccurrencesofanElementinanArray_3159()
 }
