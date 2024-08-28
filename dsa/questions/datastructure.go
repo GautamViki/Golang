@@ -1321,7 +1321,6 @@ func (ds *DataStructure) SubarraySumEqualsTarget() {
 			break
 		}
 	}
-
 	if sum != target {
 		i, j = -1, 0
 	}

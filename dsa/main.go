@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"main.go/questions"
+	v1 "main.go/v1"
 )
 
 func main() {
@@ -65,4 +66,10 @@ func main() {
 	dsa.FindOccurrencesofanElementinanArray_3159()
 	dsa.SortColor_75()
 	dsa.SubarraySumEqualsTarget()
+
+	//
+	//
+	fmt.Println("\n\n\n\n")
+	v1.MaximumProductSubarray()
+	v1.MaxSumOfSubArray()
 }
