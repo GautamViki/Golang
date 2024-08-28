@@ -72,4 +72,6 @@ func main() {
 	fmt.Println("\n\n\n\n")
 	v1.MaximumProductSubarray()
 	v1.MaxSumOfSubArray()
+	v1.LongestSubarrayConsistingOfUniqueElements()
+	v1.LongestUniqueSubstring()
 }

@@ -1,6 +1,8 @@
 package v1
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func MaximumProductSubarray() {
 	nums := []int{2, 2, 0, 3}
@@ -58,4 +60,41 @@ func MaxSumOfSubArray() {
 		}
 	}
 	fmt.Println("Maximum Subarray", maxSum)
+}
+
+func LongestSubarrayConsistingOfUniqueElements() {
+	// nums := []int{1, 2, 4, 4, 5, 6, 7, 8, 3, 4, 5, 3, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4}
+	nums := []int{1, 2, 2, 1}
+	result := []int{}
+	tempMap := make(map[int]int)
+	start := 0
+	for end, num := range nums {
+		if idx, found := tempMap[num]; found && idx >= start {
+			start = idx + 1
+		}
+		tempMap[num] = end
+		currentLength := end - start + 1
+		if currentLength > len(result) {
+			result = nums[start : end+1]
+		}
+	}
+	fmt.Println("Longest Subarray consisting of unique elements from an Array", result)
+}
+
+func LongestUniqueSubstring() {
+	s := "abba"
+	maxSub := make(map[string]int)
+	start := 0
+	var result string
+	for end, char := range s {
+		if idx, found := maxSub[string(char)]; found && idx >= start {
+			start = idx + 1
+		}
+		maxSub[string(char)] = end
+		currentLength := end - start + 1
+		if currentLength > len(result) {
+			result = s[start : end+1]
+		}
+	}
+	fmt.Println(result, "3. Longest Substring Without Repeating Characters", len(result))
 }
