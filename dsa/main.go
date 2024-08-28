@@ -74,4 +74,5 @@ func main() {
 	v1.MaxSumOfSubArray()
 	v1.LongestSubarrayConsistingOfUniqueElements()
 	v1.LongestUniqueSubstring()
+	v1.MergeIntervals()
 }

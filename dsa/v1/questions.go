@@ -2,6 +2,7 @@ package v1
 
 import (
 	"fmt"
+	"sort"
 )
 
 func MaximumProductSubarray() {
@@ -97,4 +98,23 @@ func LongestUniqueSubstring() {
 		}
 	}
 	fmt.Println(result, "3. Longest Substring Without Repeating Characters", len(result))
+}
+
+func MergeIntervals() {
+	intervals := [][]int{{1, 4}, {4, 5}}
+	sort.Slice(intervals, func(a, b int) bool {
+		return intervals[a][0] < intervals[b][0]
+	})
+	result := [][]int{intervals[0]}
+	for i := 1; i < len(intervals); i++ {
+		lenth := len(result) - 1
+		if result[lenth][1] >= intervals[i][0] {
+			if result[lenth][1] < intervals[i][1] {
+				result[lenth][1] = intervals[i][1]
+			}
+		} else {
+			result = append(result, intervals[i])
+		}
+	}
+	fmt.Println("Merge Intervals", result)
 }
