@@ -2,6 +2,7 @@ package v1
 
 import (
 	"fmt"
+	"math"
 	"sort"
 )
 
@@ -88,7 +89,7 @@ func LongestUniqueSubstring() {
 	start := 0
 	var result string
 	for end, char := range s {
-		if idx, found := maxSub[string(char)]; found {
+		if idx, found := maxSub[string(char)]; found && idx >= start {
 			start = idx + 1
 		}
 		maxSub[string(char)] = end
@@ -97,6 +98,23 @@ func LongestUniqueSubstring() {
 			result = s[start : end+1]
 		}
 	}
+	// var maxSubStr string
+	// var length int
+	// for i := 0; i < len(s); i++ {
+	// 	var subStr string
+	// 	for j := i; j < len(s); j++ {
+	// 		if !strings.Contains(subStr, s[j:j+1]) {
+	// 			subStr = s[i : j+1]
+	// 		} else {
+	// 			break
+	// 		}
+	// 		if len(subStr) > len(maxSubStr) {
+	// 			maxSubStr = subStr
+	// 			length = len(subStr)
+	// 		}
+	// 	}
+	// }
+	// fmt.Println(length,"ffffffffffffffffffffffff", maxSubStr)
 	fmt.Println(result, "3. Longest Substring Without Repeating Characters\n", len(result))
 }
 
@@ -138,23 +156,31 @@ func DutchNationalFlag() {
 }
 
 func SubarrayWithGivenSum() {
-	nums, target := []int{15, 2, 4, 8, 9, 5, 10, 23}, 25
+	nums, target := []int{1, 2, 3, 4}, 5
 	start, i, sum := 0, 0, 0
 	result := []int{-1, -1}
+	diff := int(math.Abs(float64(target - math.MinInt32)))
 	for i < len(nums) {
-		if sum < target {
-			sum += nums[i]
-			i++
-		}
+		sum = sum + nums[i]
+		absDifference := int(math.Abs(float64(target - sum)))
 		if sum > target {
-			sum -= nums[start]
-			start++
-		}
-		if sum == target {
-			result = []int{start + 1, i}
+			fmt.Println(absDifference, "wwwwwwwwwwwwwwwwwwwwww", diff)
+			if diff > absDifference {
+				diff = absDifference
+			} else {
+				fmt.Println("ddddddddddddddddddddddddd")
+				sum -= nums[start]
+				start++
+			}
+		} else if sum == target {
+			result = []int{start, i}
 			break
 		}
+		if diff > absDifference {
+			diff = absDifference
+		}
+		// fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaa",diff)
+		i++
 	}
-
 	fmt.Println("Subarray with Given Sum", result)
 }

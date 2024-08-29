@@ -1327,3 +1327,30 @@ func (ds *DataStructure) SubarraySumEqualsTarget() {
 	result := []int{i, j - 1}
 	fmt.Println("Subarray with Given Sum ", result)
 }
+
+func (ds *DataStructure) SubarraySumEquals_K_560() {
+	nums, k, count := []int{1, 2, 3}, 3, 0
+	// Brut force
+	// for i := 0; i < len(nums); i++ {
+	// 	sum := 0
+	// 	for j := i; j < len(nums); j++ {
+	// 		sum += nums[j]
+	// 		if sum == k {
+	// 			count++
+	// 		}
+	// 	}
+	// }
+	// Map approach
+	hash, sum := make(map[int]int), 0
+	hash[0] = 1
+	for i := 0; i < len(nums); i++ {
+		sum += nums[i]
+		currentDiff := sum - k
+		if _, ok := hash[currentDiff]; ok {
+			count += hash[currentDiff]
+		}
+		hash[sum] += 1
+	}
+	fmt.Println("eeeeeeeeeeeeeeeeeeeeeeeee", hash)
+	fmt.Println("560. Subarray Sum Equals K ", count)
+}
