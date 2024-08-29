@@ -136,3 +136,25 @@ func DutchNationalFlag() {
 	}
 	fmt.Println("Dutch National Flag", nums)
 }
+
+func SubarrayWithGivenSum() {
+	nums, target := []int{15, 2, 4, 8, 9, 5, 10, 23}, 25
+	start, i, sum := 0, 0, 0
+	result := []int{-1, -1}
+	for i < len(nums) {
+		if sum < target {
+			sum += nums[i]
+			i++
+		}
+		if sum > target {
+			sum -= nums[start]
+			start++
+		}
+		if sum == target {
+			result = []int{start + 1, i}
+			break
+		}
+	}
+
+	fmt.Println("Subarray with Given Sum", result)
+}

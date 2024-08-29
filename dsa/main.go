@@ -76,4 +76,5 @@ func main() {
 	v1.LongestUniqueSubstring()
 	v1.MergeIntervals()
 	v1.DutchNationalFlag()
+	v1.SubarrayWithGivenSum()
 }
