@@ -88,7 +88,7 @@ func LongestUniqueSubstring() {
 	start := 0
 	var result string
 	for end, char := range s {
-		if idx, found := maxSub[string(char)]; found && idx >= start {
+		if idx, found := maxSub[string(char)]; found {
 			start = idx + 1
 		}
 		maxSub[string(char)] = end
@@ -97,11 +97,11 @@ func LongestUniqueSubstring() {
 			result = s[start : end+1]
 		}
 	}
-	fmt.Println(result, "3. Longest Substring Without Repeating Characters", len(result))
+	fmt.Println(result, "3. Longest Substring Without Repeating Characters\n", len(result))
 }
 
 func MergeIntervals() {
-	intervals := [][]int{{1, 4}, {4, 5}}
+	intervals := [][]int{{1, 5}, {4, 5}}
 	sort.Slice(intervals, func(a, b int) bool {
 		return intervals[a][0] < intervals[b][0]
 	})
@@ -117,4 +117,22 @@ func MergeIntervals() {
 		}
 	}
 	fmt.Println("Merge Intervals", result)
+}
+
+func DutchNationalFlag() {
+	nums := []int{0, 1, 2, 0, 1, 2}
+	i, mid, j := 0, 0, len(nums)-1
+	for mid <= j {
+		if nums[mid] == 0 {
+			nums[i], nums[mid] = nums[mid], nums[i]
+			i++
+			mid++
+		} else if nums[mid] == 1 {
+			mid++
+		} else if nums[mid] == 2 {
+			nums[mid], nums[j] = nums[j], nums[mid]
+			j--
+		}
+	}
+	fmt.Println("Dutch National Flag", nums)
 }
