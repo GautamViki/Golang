@@ -1351,6 +1351,33 @@ func (ds *DataStructure) SubarraySumEquals_K_560() {
 		}
 		hash[sum] += 1
 	}
-	fmt.Println("eeeeeeeeeeeeeeeeeeeeeeeee", hash)
 	fmt.Println("560. Subarray Sum Equals K ", count)
+}
+
+func (ds *DataStructure) IsomorphicString_205() {
+	s, t := "badc", "baba"
+	if len(s) != len(t) {
+		fmt.Println("205 Isomorphic String", false)
+		return
+	}
+	flag := true
+	hashS := make(map[rune]byte)
+	hashT := make(map[rune]byte)
+	for idx, str := range s {
+		if val, ok := hashS[str]; ok {
+			if val != t[idx] {
+				fmt.Println("205 Isomorphic String", false)
+				return
+			}
+		}
+		if val, ok := hashT[rune(t[idx])]; ok {
+			if val != byte(str) {
+				fmt.Println("205 Isomorphic String", false)
+				return
+			}
+		}
+		hashS[str] = t[idx]
+		hashT[rune(t[idx])] = byte(str)
+	}
+	fmt.Println("205 Isomorphic String", flag)
 }
