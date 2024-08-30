@@ -1364,17 +1364,13 @@ func (ds *DataStructure) IsomorphicString_205() {
 	hashS := make(map[rune]byte)
 	hashT := make(map[rune]byte)
 	for idx, str := range s {
-		if val, ok := hashS[str]; ok {
-			if val != t[idx] {
-				fmt.Println("205 Isomorphic String", false)
-				return
-			}
+		if val, ok := hashS[str]; ok && val != t[idx] {
+			fmt.Println("205 Isomorphic String", false)
+			return
 		}
-		if val, ok := hashT[rune(t[idx])]; ok {
-			if val != byte(str) {
-				fmt.Println("205 Isomorphic String", false)
-				return
-			}
+		if val, ok := hashT[rune(t[idx])]; ok && val != byte(str) {
+			fmt.Println("205 Isomorphic String", false)
+			return
 		}
 		hashS[str] = t[idx]
 		hashT[rune(t[idx])] = byte(str)
