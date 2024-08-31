@@ -1377,3 +1377,30 @@ func (ds *DataStructure) IsomorphicString_205() {
 	}
 	fmt.Println("205 Isomorphic String", flag)
 }
+
+func (ds *DataStructure) WordPattern_290() {
+	pattern := "abba"
+	s := "dog cat cat dog"
+	lenP := len(pattern)
+	str := strings.Split(s, " ")
+	lenS := len(str)
+	if lenP != lenS {
+		fmt.Println("290. Word Pattern ", false)
+		return
+	}
+	hashP := make(map[string]string)
+	hashS := make(map[string]string)
+	for idx, p := range pattern {
+		if val, ok := hashP[string(p)]; ok && val != str[idx] {
+			fmt.Println("290. Word Pattern ", false)
+			return
+		}
+		hashP[string(p)] = str[idx]
+		if val, ok := hashS[str[idx]]; ok && val != string(p) {
+			fmt.Println("290. Word Pattern ", false)
+			return
+		}
+		hashS[str[idx]] = string(p)
+	}
+	fmt.Println("290. Word Pattern ", true)
+}
