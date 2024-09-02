@@ -1445,5 +1445,27 @@ func (ds *DataStructure) Sum4_18() {
 			}
 		}
 	}
-	fmt.Println("ssssssssssssssssssssssssssssss", res)
+	fmt.Println("18 4sum", res)
+}
+
+func (ds *DataStructure) TrappingRainWater_42() {
+	height := []int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
+	leftMax := make([]int, len(height))
+	rightMax := make([]int, len(height))
+	tempMax := height[0]
+	for i := 0; i < len(height); i++ {
+		tempMax = max(height[i], tempMax)
+		leftMax[i] = tempMax
+	}
+	tempMax = height[len(height)-1]
+	for i := len(height) - 1; i >= 0; i-- {
+		tempMax = max(height[i], tempMax)
+		rightMax[i] = tempMax
+	}
+	sum := 0
+	for i := 0; i < len(height); i++ {
+		tempMin := min(leftMax[i], rightMax[i])
+		sum += tempMin - height[i]
+	}
+	fmt.Println("42. Trapping Rain Water ", sum)
 }

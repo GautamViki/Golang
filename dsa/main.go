@@ -69,6 +69,7 @@ func main() {
 	dsa.SubarraySumEquals_K_560()
 	dsa.IsomorphicString_205()
 	dsa.WordPattern_290()
+	dsa.TrappingRainWater_42()
 
 	//
 	//
