@@ -3,6 +3,7 @@ package v1
 import (
 	"fmt"
 	"math"
+	"slices"
 	"sort"
 )
 
@@ -164,11 +165,9 @@ func SubarrayWithGivenSum() {
 		sum = sum + nums[i]
 		absDifference := int(math.Abs(float64(target - sum)))
 		if sum > target {
-			fmt.Println(absDifference, "wwwwwwwwwwwwwwwwwwwwww", diff)
 			if diff > absDifference {
 				diff = absDifference
 			} else {
-				fmt.Println("ddddddddddddddddddddddddd")
 				sum -= nums[start]
 				start++
 			}
@@ -179,8 +178,37 @@ func SubarrayWithGivenSum() {
 		if diff > absDifference {
 			diff = absDifference
 		}
-		// fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaa",diff)
 		i++
 	}
 	fmt.Println("Subarray with Given Sum", result)
+}
+func Three_Sum() {
+	nums := []int{-1, 0, 1, 2, -1, -4}
+	slices.Sort(nums)
+	result := [][]int{}
+	for i := 0; i < len(nums)-2; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		l, h := i+1, len(nums)-1
+		for l < h {
+			sum := nums[i] + nums[l] + nums[h]
+			if sum < 0 {
+				l++
+			} else if sum > 0 {
+				h--
+			} else {
+				for l < h && nums[l] == nums[l+1] {
+					l++
+				}
+				for l < h && nums[h] == nums[h-1] {
+					h--
+				}
+				result = append(result, []int{nums[i], nums[l], nums[h]})
+				l++
+				h--
+			}
+		}
+	}
+	fmt.Println("15. 3Sum", result)
 }
