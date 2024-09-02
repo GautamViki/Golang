@@ -213,3 +213,34 @@ func Three_Sum() {
 	fmt.Println("15. 3Sum", result)
 }
 
+func ThreeSumClosest() {
+	nums := []int{-4, 2, 2, 3, 3, 3}
+	slices.Sort(nums)
+	target := 0
+	diff := math.MaxInt32
+	ans := 0
+	for i := 0; i < len(nums)-2; i++ {
+		l, h := i+1, len(nums)-1
+		sum := 0
+		for l < h {
+			sum = nums[i] + nums[l] + nums[h]
+			temp := math.Abs(float64(sum - target))
+			if diff > int(temp) {
+				ans = sum
+				diff = int(temp)
+			}
+			if sum > target {
+				h--
+			} else if sum < target {
+				l++
+			} else {
+				break
+			}
+		}
+		if sum == target {
+			ans = sum
+			break
+		}
+	}
+	fmt.Println("16. 3Sum Closest ", ans)
+}
