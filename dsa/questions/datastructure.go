@@ -1469,3 +1469,21 @@ func (ds *DataStructure) TrappingRainWater_42() {
 	}
 	fmt.Println("42. Trapping Rain Water ", sum)
 }
+
+func (ds *DataStructure) RotateImage_48() {
+	matrix := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+	for i := 0; i < len(matrix); i++ {
+		for j := i; j < len(matrix); j++ {
+			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+		}
+	}
+	for i := 0; i < len(matrix); i++ {
+		j, k := 0, len(matrix)-1
+		for j < k {
+			matrix[i][j], matrix[i][k] = matrix[i][k], matrix[i][j]
+			j++
+			k--
+		}
+	}
+	fmt.Println("48. Rotate Image", matrix)
+}
