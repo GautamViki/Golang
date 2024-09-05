@@ -71,6 +71,7 @@ func main() {
 	dsa.WordPattern_290()
 	dsa.TrappingRainWater_42()
 	dsa.RotateImage_48()
+	dsa.ReverseVowelsofString()
 
 	//
 	//

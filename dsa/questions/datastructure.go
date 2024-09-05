@@ -1460,7 +1460,7 @@ func (ds *DataStructure) TrappingRainWater_42() {
 	tempMax = height[len(height)-1]
 	for i := len(height) - 1; i >= 0; i-- {
 		tempMax = max(height[i], tempMax)
-		rightMax[i] = tempMax
+		rightMax[i] = max(height[i], tempMax)
 	}
 	sum := 0
 	for i := 0; i < len(height); i++ {
@@ -1486,4 +1486,24 @@ func (ds *DataStructure) RotateImage_48() {
 		}
 	}
 	fmt.Println("48. Rotate Image", matrix)
+}
+
+func (ds *DataStructure) ReverseVowelsofString() {
+	s := "leetcodE"
+	vowels := "aeiou"
+	str := []byte(s)
+	i, j := 0, len(str)-1
+	for i < j {
+		isSwap := strings.Contains(vowels, strings.ToLower(string(str[i]))) && strings.Contains(vowels, strings.ToLower(string(str[j])))
+		if isSwap {
+			str[i], str[j] = str[j], str[i]
+			i++
+			j--
+		} else if !strings.Contains(vowels, strings.ToLower(string(str[i]))) {
+			i++
+		} else if !strings.Contains(vowels, strings.ToLower(string(str[j]))) {
+			j--
+		}
+	}
+	fmt.Println("345. Reverse Vowels of a String", string(str))
 }
