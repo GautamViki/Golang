@@ -1494,16 +1494,30 @@ func (ds *DataStructure) ReverseVowelsofString() {
 	str := []byte(s)
 	i, j := 0, len(str)-1
 	for i < j {
-		isSwap := strings.Contains(vowels, strings.ToLower(string(str[i]))) && strings.Contains(vowels, strings.ToLower(string(str[j])))
-		if isSwap {
-			str[i], str[j] = str[j], str[i]
-			i++
+		if !strings.Contains(vowels, strings.ToLower(string(str[j]))) {
 			j--
 		} else if !strings.Contains(vowels, strings.ToLower(string(str[i]))) {
 			i++
-		} else if !strings.Contains(vowels, strings.ToLower(string(str[j]))) {
+		} else {
+			str[i], str[j] = str[j], str[i]
+			i++
 			j--
 		}
 	}
 	fmt.Println("345. Reverse Vowels of a String", string(str))
+}
+
+func (ds *DataStructure) RemoveDuplicatesfromSortedArray() {
+	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	i, j := 0, 0
+	count := 1
+	for i < len(nums) {
+		if nums[i] != nums[j] {
+			count++
+			nums[j+1] = nums[i]
+			j++
+		}
+		i++
+	}
+	fmt.Println("26. Remove Duplicates from Sorted Array", nums)
 }

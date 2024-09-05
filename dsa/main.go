@@ -72,6 +72,7 @@ func main() {
 	dsa.TrappingRainWater_42()
 	dsa.RotateImage_48()
 	dsa.ReverseVowelsofString()
+	dsa.RemoveDuplicatesfromSortedArray()
 
 	//
 	//
