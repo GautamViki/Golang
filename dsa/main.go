@@ -73,6 +73,7 @@ func main() {
 	dsa.RotateImage_48()
 	dsa.ReverseVowelsofString()
 	dsa.RemoveDuplicatesfromSortedArray()
+	dsa.ReverseWordsInString()
 
 	//
 	//

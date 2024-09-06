@@ -1521,3 +1521,21 @@ func (ds *DataStructure) RemoveDuplicatesfromSortedArray() {
 	}
 	fmt.Println("26. Remove Duplicates from Sorted Array", nums)
 }
+
+func (ds *DataStructure) ReverseWordsInString() {
+	s := "the sky   is blue"
+	str := strings.Split(s, " ")
+	var res []string
+	for i := 0; i < len(str); i++ {
+		if len(str[i]) > 0 {
+			res = append(res, str[i])
+		}
+	}
+	i, j := 0, len(res)-1
+	for i < j {
+		res[i], res[j] = res[j], res[i]
+		i++
+		j--
+	}
+	fmt.Println("151. Reverse Words in a String :", strings.Join(res, " "))
+}
