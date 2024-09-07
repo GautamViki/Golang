@@ -74,6 +74,7 @@ func main() {
 	dsa.ReverseVowelsofString()
 	dsa.RemoveDuplicatesfromSortedArray()
 	dsa.ReverseWordsInString()
+	dsa.FindSubsequences()
 
 	//
 	//

@@ -1539,3 +1539,20 @@ func (ds *DataStructure) ReverseWordsInString() {
 	}
 	fmt.Println("151. Reverse Words in a String :", strings.Join(res, " "))
 }
+
+func (ds *DataStructure) FindSubsequences() {
+	arr := []int{1, 2, 3}
+	result := [][]int{{}} // Start with the empty subsequence
+	queue := [][]int{{}}  // Initialize queue with the empty subsequence
+	for _, num := range arr {
+		// Iterate over all current subsequences in the queue
+		for _, subseq := range queue {
+			// Create a new subsequence by adding the current number
+			newSubseq := append([]int(nil), subseq...) // Make a copy
+			newSubseq = append(newSubseq, num)
+			result = append(result, newSubseq) // Add the new subsequence to the result
+			queue = append(queue, newSubseq)   // Add the new subsequence to the queue
+		}
+	}
+	fmt.Println("Find all subsequences ", result)
+}
