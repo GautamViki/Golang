@@ -1557,7 +1557,31 @@ func (ds *DataStructure) FindSubsequences() {
 	fmt.Println("Find all subsequences ", result)
 }
 
-func numSubseq(nums []int, target int) int {
+var resultStr []string
+
+func (ds *DataStructure) FindSubsequencesOfString_1(str, currentStr string) []string {
+	if len(str) == 0 {
+		resultStr = append(resultStr, currentStr)
+		return resultStr
+	}
+	resultStr = ds.FindSubsequencesOfString_1(str[1:], currentStr)
+	resultStr = ds.FindSubsequencesOfString_1(str[1:], currentStr+string(str[0]))
+	return resultStr
+}
+
+var resultArr [][]int
+
+func (ds *DataStructure) FindSubsequencesOfArray_1(arr []int, currentArr []int) [][]int {
+	if len(arr) == 0 {
+		resultArr = append(resultArr, currentArr)
+		return resultArr
+	}
+	resultArr = ds.FindSubsequencesOfArray_1(arr[1:], currentArr)
+	resultArr = ds.FindSubsequencesOfArray_1(arr[1:], append(currentArr, arr[0]))
+	return resultArr
+}
+
+func NumSubseq_0(nums []int, target int) int {
 	n, mod := len(nums), math.Pow(10, 9)+7
 	sort.Ints(nums)
 
@@ -1567,6 +1591,7 @@ func numSubseq(nums []int, target int) int {
 	power[0] = 1
 	for i := 1; i < n; i++ {
 		power[i] = math.Mod((power[i-1] * 2), mod)
+		power = append(power, math.Mod(power[i-1]*2, mod))
 	}
 	for left <= right {
 		if nums[left]+nums[right] <= target {
@@ -1578,5 +1603,39 @@ func numSubseq(nums []int, target int) int {
 		}
 	}
 	return int(ans)
+}
 
+func (ds *DataStructure) NumSubseq_1(nums []int, target int) int {
+	slices.Sort(nums)
+	return subSequence(nums, []int{}, target)
+}
+
+var res [][]int
+var count int
+
+func subSequence(arr, curArr []int, target int) int {
+	if len(arr) == 0 {
+		n := len(curArr)
+		if n > 0 && curArr[0]+curArr[n-1] <= target {
+			count++
+		}
+		res = append(res, curArr)
+		return count
+	}
+	count = subSequence(arr[1:], curArr, target)
+	count = subSequence(arr[1:], append(curArr, arr[0]), target)
+	return count
+}
+
+func (ds *DataStructure) MinimizeMaximumPairSumInArray() {
+	nums := []int{3, 5, 4, 2, 4, 6}
+	slices.Sort(nums)
+	i, j := 0, len(nums)-1
+	minx := math.MinInt32
+	for i < j {
+		minx = max(minx, nums[i]+nums[j])
+		j--
+		i++
+	}
+	fmt.Println("1877. Minimize Maximum Pair Sum in Array", minx)
 }

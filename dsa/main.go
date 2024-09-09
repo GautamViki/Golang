@@ -75,7 +75,14 @@ func main() {
 	dsa.RemoveDuplicatesfromSortedArray()
 	dsa.ReverseWordsInString()
 	dsa.FindSubsequences()
+	subSequenceStr := dsa.FindSubsequencesOfString_1("ab", "")
+	fmt.Println("FindSubsequencesOfString_1 ", subSequenceStr)
+	subSequenceArr := dsa.FindSubsequencesOfArray_1([]int{1, 2}, []int{})
+	fmt.Println("FindSubsequencesOfArray_1 ", subSequenceArr)
 
+	sub := dsa.NumSubseq_1([]int{2, 3, 3, 4, 6, 7}, 12)
+	fmt.Println("NumSubseq_1", sub)
+	dsa.MinimizeMaximumPairSumInArray()
 	//
 	//
 	fmt.Println("\n\n\n\n")
