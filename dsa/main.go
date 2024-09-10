@@ -84,6 +84,7 @@ func main() {
 	fmt.Println("NumSubseq_1", sub)
 	dsa.MinimizeMaximumPairSumInArray()
 	dsa.CountTheNumberOfGoodPartitions()
+	dsa.MinimumLengthOfStringAfterDeletingSimilarEnds()
 	//
 	//
 	fmt.Println("\n\n\n\n")

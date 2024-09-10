@@ -1693,3 +1693,22 @@ func (ds *DataStructure) CountTheNumberOfGoodPartitions() {
 	}
 	fmt.Println("2963. Count the Number of Good Partitions", res)
 }
+
+func (ds *DataStructure) MinimumLengthOfStringAfterDeletingSimilarEnds() {
+	s := "cabaabac"
+	i, j := 0, len(s)-1
+	for i < j && s[i] == s[j] {
+		ch := s[i]
+		for j > i && s[i] == ch {
+			i++
+		}
+		for j >= i && s[j] == ch {
+			j--
+		}
+	}
+	res := 0
+	if j >= i {
+		res = len(s[i : j+1])
+	}
+	fmt.Println("1750. Minimum Length of String After Deleting Similar Ends", res)
+}
