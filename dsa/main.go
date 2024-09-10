@@ -85,6 +85,7 @@ func main() {
 	dsa.MinimizeMaximumPairSumInArray()
 	dsa.CountTheNumberOfGoodPartitions()
 	dsa.MinimumLengthOfStringAfterDeletingSimilarEnds()
+	dsa.StringCompression()
 	//
 	//
 	fmt.Println("\n\n\n\n")

@@ -1712,3 +1712,26 @@ func (ds *DataStructure) MinimumLengthOfStringAfterDeletingSimilarEnds() {
 	}
 	fmt.Println("1750. Minimum Length of String After Deleting Similar Ends", res)
 }
+
+func (ds *DataStructure) StringCompression() {
+	chars := []string{"a", "b", "c"}
+	idx, i := 0, 0
+	for i < len(chars) {
+		curStr := chars[i]
+		count := 0
+		for i < len(chars) && curStr == chars[i] {
+			count++
+			i++
+		}
+		chars[idx] = curStr
+		idx++
+		if count > 1 {
+			countStr := strconv.Itoa(count)
+			for _, c := range countStr {
+				chars[idx] = string(c)
+				idx++
+			}
+		}
+	}
+	fmt.Println("443. String Compression", idx)
+}
