@@ -1733,5 +1733,5 @@ func (ds *DataStructure) StringCompression() {
 			}
 		}
 	}
-	fmt.Println("443. String Compression", idx)
+	fmt.Println("443. String Compression:", idx)
 }
