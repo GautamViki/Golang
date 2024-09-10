@@ -1639,3 +1639,57 @@ func (ds *DataStructure) MinimizeMaximumPairSumInArray() {
 	}
 	fmt.Println("1877. Minimize Maximum Pair Sum in Array", minx)
 }
+
+func maxSumUniqueSubarray(nums []int, k int) int {
+	if len(nums) < k {
+		return 0 // Not enough elements for a subarray of length k
+	}
+
+	// Map to keep track of the frequency of elements in the current window
+	freq := make(map[int]int)
+
+	// Variables to keep track of the current sum and max sum
+	left, maxSum, currentSum := 0, 0, 0
+
+	for right := 0; right < len(nums); right++ {
+		currentSum += nums[right]
+		freq[nums[right]]++
+
+		// If we have duplicates, shrink the window from the left
+		for freq[nums[right]] > 1 {
+			freq[nums[left]]--
+			currentSum -= nums[left]
+			left++
+		}
+
+		// Check if the current window size is exactly k and all elements are unique
+		if right-left+1 == k {
+			if currentSum > maxSum {
+				maxSum = currentSum
+			}
+			// Slide the window by moving left, as we need to maintain the window size k
+			freq[nums[left]]--
+			currentSum -= nums[left]
+			left++
+		}
+	}
+
+	return maxSum
+}
+
+func (ds *DataStructure) CountTheNumberOfGoodPartitions() {
+	nums := []int{1, 2, 1, 3}
+	hashMap, mod := make(map[int]int), math.Pow(10, 9)+7
+	for idx, num := range nums {
+		hashMap[num] = idx
+	}
+	i, j, res := 0, math.Max(0, float64(hashMap[nums[0]])), 1
+	for i < len(nums) {
+		if i > int(j) {
+			res = (res * 2) % int(mod)
+		}
+		j = math.Max(j, float64(hashMap[nums[i]]))
+		i++
+	}
+	fmt.Println("2963. Count the Number of Good Partitions", res)
+}

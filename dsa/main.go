@@ -83,6 +83,7 @@ func main() {
 	sub := dsa.NumSubseq_1([]int{2, 3, 3, 4, 6, 7}, 12)
 	fmt.Println("NumSubseq_1", sub)
 	dsa.MinimizeMaximumPairSumInArray()
+	dsa.CountTheNumberOfGoodPartitions()
 	//
 	//
 	fmt.Println("\n\n\n\n")
