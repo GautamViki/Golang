@@ -1735,3 +1735,20 @@ func (ds *DataStructure) StringCompression() {
 	}
 	fmt.Println("443. String Compression:", idx)
 }
+
+func (ds *DataStructure) CheckIfTheSentenceIsPangram() {
+	sentence := "thequickbrownfoxjumpsoverthelazydog"
+	alphabet := make(map[rune]struct{})
+	if len(sentence) < 26 {
+		fmt.Println("1832. Check if the Sentence Is Pangram", false)
+		return
+	}
+	for _, ch := range sentence {
+		alphabet[ch] = struct{}{}
+	}
+	if len(alphabet) < 26 {
+		fmt.Println("1832. Check if the Sentence Is Pangram", false)
+		return
+	}
+	fmt.Println("1832. Check if the Sentence Is Pangram", true)
+}

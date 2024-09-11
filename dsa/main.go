@@ -86,6 +86,7 @@ func main() {
 	dsa.CountTheNumberOfGoodPartitions()
 	dsa.MinimumLengthOfStringAfterDeletingSimilarEnds()
 	dsa.StringCompression()
+	dsa.CheckIfTheSentenceIsPangram()
 	//
 	//
 	fmt.Println("\n\n\n\n")
