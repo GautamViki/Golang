@@ -3,6 +3,7 @@ package v1
 import (
 	"fmt"
 	"math"
+	"unicode"
 )
 
 func TwoSum_1() {
@@ -87,3 +88,31 @@ func BestTimeToBuyAndSellStock() {
 	}
 	fmt.Println("121. Best Time to Buy and Sell Stock", max)
 }
+
+func ValidPalindrome() {
+	s := "2%2"
+	// actualStr := func(r rune) rune {
+	// 	if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
+	// 		return -1
+	// 	}
+	// 	return unicode.ToLower(r)
+	// }
+	// s = strings.Map(actualStr, s)
+	i, j := 0, len(s)-1
+	for i < j {
+		if !unicode.IsLetter(rune(s[i])) && !unicode.IsNumber(rune(s[i])) {
+			i++
+		} else if !unicode.IsLetter(rune(s[j])) && !unicode.IsNumber(rune(s[j])) {
+			j--
+		} else {
+			if unicode.ToLower(rune(s[i])) != unicode.ToLower(rune(s[j])) {
+				fmt.Println("125. Valid Palindrome", false)
+				return
+			}
+			i++
+			j--
+		}
+	}
+	fmt.Println("125. Valid Palindrome", true)
+}
+
