@@ -90,13 +90,5 @@ func main() {
 	//
 	//
 	fmt.Println("\n\n\n\n")
-	v1.MaximumProductSubarray()
-	v1.MaxSumOfSubArray()
-	v1.LongestSubarrayConsistingOfUniqueElements()
-	v1.LongestUniqueSubstring()
-	v1.MergeIntervals()
-	v1.DutchNationalFlag()
-	v1.SubarrayWithGivenSum()
-	v1.Three_Sum()
-	v1.ThreeSumClosest()
+	v1.TwoSum_1()
 }
