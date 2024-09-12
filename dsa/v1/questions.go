@@ -91,13 +91,6 @@ func BestTimeToBuyAndSellStock() {
 
 func ValidPalindrome() {
 	s := "2%2"
-	// actualStr := func(r rune) rune {
-	// 	if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
-	// 		return -1
-	// 	}
-	// 	return unicode.ToLower(r)
-	// }
-	// s = strings.Map(actualStr, s)
 	i, j := 0, len(s)-1
 	for i < j {
 		if !unicode.IsLetter(rune(s[i])) && !unicode.IsNumber(rune(s[i])) {
@@ -114,5 +107,30 @@ func ValidPalindrome() {
 		}
 	}
 	fmt.Println("125. Valid Palindrome", true)
+}
+
+func ValidAnagram() {
+	s, t := "anaqram", "nagaram"
+	if len(s) != len(t) {
+		fmt.Println("242. Valid Anagram", false)
+		return
+	}
+	sSet := make(map[rune]int)
+	tSet := make(map[rune]int)
+	for idx, char := range s {
+		sSet[char] += 1
+		tSet[rune(t[idx])] += 1
+	}
+	if len(sSet) != len(tSet) {
+		fmt.Println("242. Valid Anagram", false)
+		return
+	}
+	for key, val := range sSet {
+		if val != tSet[key] {
+			fmt.Println("242. Valid Anagram", false)
+			return
+		}
+	}
+	fmt.Println("242. Valid Anagram", true)
 }
 

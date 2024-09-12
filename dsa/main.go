@@ -94,4 +94,5 @@ func main() {
 	v1.ValidParentheses_20()
 	v1.BestTimeToBuyAndSellStock()
 	v1.ValidPalindrome()
+	v1.ValidAnagram()
 }
