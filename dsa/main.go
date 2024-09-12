@@ -97,4 +97,7 @@ func main() {
 	v1.ValidAnagram()
 	v1.BinarySearch()
 	v1.SingleNumber()
+	v1.MajorityElement()
+	v1.MissingNumber()
+	v1.ReverseString()
 }

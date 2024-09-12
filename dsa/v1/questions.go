@@ -159,3 +159,48 @@ func SingleNumber() {
 	}
 	fmt.Println("136. Single Number", uniqueEle)
 }
+
+func MajorityElement() {
+	nums := []int{3, 2, 3}
+	res, count := 0, 0
+	for _, num := range nums {
+		if count == 0 {
+			res = num
+		}
+		if res == num {
+			count++
+		} else {
+			count--
+		}
+	}
+	fmt.Println("169. Majority Element ", res)
+}
+
+func MissingNumber() {
+	nums := []int{3, 0, 1}
+	// n, sum := len(nums), 0
+	// totalSum := (n + 1) * n / 2
+	// for _, num := range nums {
+	// 	sum += num
+	// }
+	// fmt.Println("268. Missing Number", totalSum-sum)
+	xor := 0
+	for i := 0; i <= len(nums); i++ {
+		xor ^= i
+	}
+	for _, num := range nums {
+		xor ^= num
+	}
+	fmt.Println("268. Missing Number", xor)
+}
+
+func ReverseString() {
+	s := []string{"h", "e", "l", "l", "o"}
+	i, j := 0, len(s)-1
+	for i < j {
+		s[i], s[j] = s[j], s[i]
+		i++
+		j--
+	}
+	fmt.Println("344. Reverse String", s)
+}
