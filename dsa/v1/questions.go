@@ -15,3 +15,28 @@ func TwoSum_1() {
 	}
 	fmt.Println("1. Two Sum ", []int{})
 }
+
+func ValidParentheses_20() {
+	s := "()"
+	stack := []rune{}
+	if len(s)%2 == 1 {
+		fmt.Println("20. Valid Parentheses ", false)
+		return
+	}
+	for _, str := range s {
+		n := len(stack)
+		if str == '(' || str == '[' || str == '{' {
+			stack = append(stack, str)
+		} else if n > 0 && str == ')' && stack[n-1] == '(' {
+			stack = stack[:n-1]
+		} else if n > 0 && str == '}' && stack[n-1] == '{' {
+			stack = stack[:n-1]
+		} else if n > 0 && str == ']' && stack[n-1] == '[' {
+			stack = stack[:n-1]
+		} else {
+			fmt.Println("20. Valid Parentheses ", false)
+			return
+		}
+	}
+	fmt.Println("20. Valid Parentheses ", len(stack) == 0)
+}
