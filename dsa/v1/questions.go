@@ -1,6 +1,9 @@
 package v1
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func TwoSum_1() {
 	nums, target := []int{3, 2, 4}, 6
@@ -39,4 +42,48 @@ func ValidParentheses_20() {
 		}
 	}
 	fmt.Println("20. Valid Parentheses ", len(stack) == 0)
+}
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+func MergeTwoSortedLists_21(list1 *ListNode, list2 *ListNode) *ListNode {
+	head := &ListNode{}
+	current := head
+	for list1 != nil && list2 != nil {
+		if list1.Val < list2.Val {
+			current.Next = list1
+			list1 = list1.Next
+		} else if list2.Val <= list1.Val {
+			current.Next = list2
+			list2 = list2.Next
+		}
+		current = current.Next
+	}
+	if list1 == nil {
+		current.Next = list2
+	} else {
+		current.Next = list1
+	}
+	return head.Next
+}
+
+func BestTimeToBuyAndSellStock() {
+	prices := []int{7, 6, 4, 3, 1}
+	min := prices[0]
+	max := math.MinInt32
+	i := 0
+	for i < len(prices) {
+		currentMax := prices[i] - min
+		if max < currentMax {
+			max = currentMax
+		}
+		if min > prices[i] {
+			min = prices[i]
+		}
+		i++
+	}
+	fmt.Println("121. Best Time to Buy and Sell Stock", max)
 }
