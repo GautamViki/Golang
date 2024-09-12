@@ -95,4 +95,6 @@ func main() {
 	v1.BestTimeToBuyAndSellStock()
 	v1.ValidPalindrome()
 	v1.ValidAnagram()
+	v1.BinarySearch()
+	v1.SingleNumber()
 }

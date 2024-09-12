@@ -134,3 +134,28 @@ func ValidAnagram() {
 	fmt.Println("242. Valid Anagram", true)
 }
 
+func BinarySearch() {
+	nums, target := []int{5}, 5
+	low, high := 0, len(nums)-1
+	for low <= high {
+		mid := (high + low) / 2
+		if nums[mid] == target {
+			fmt.Println("704. Binary Search", mid)
+			return
+		} else if nums[mid] > target {
+			high = mid - 1
+		} else if nums[mid] < target {
+			low = mid + 1
+		}
+	}
+	fmt.Println("704. Binary Search", -1)
+}
+
+func SingleNumber() {
+	arr := []int{2, 2, 3, 1, 1}
+	var uniqueEle int
+	for _, val := range arr {
+		uniqueEle ^= val
+	}
+	fmt.Println("136. Single Number", uniqueEle)
+}
