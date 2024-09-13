@@ -204,3 +204,13 @@ func ReverseString() {
 	}
 	fmt.Println("344. Reverse String", s)
 }
+
+func MaximumSubarray() {
+	nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
+	sum, maxSum := nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		sum = max(nums[i], nums[i]+sum)
+		maxSum = max(maxSum, sum)
+	}
+	fmt.Println("53. Maximum Subarray", maxSum)
+}

@@ -1,10 +1,9 @@
 package main
 
 import (
+	"dsa/questions"
+	v1 "dsa/v1"
 	"fmt"
-
-	"main.go/questions"
-	v1 "main.go/v1"
 )
 
 func main() {
@@ -100,4 +99,5 @@ func main() {
 	v1.MajorityElement()
 	v1.MissingNumber()
 	v1.ReverseString()
+	v1.MaximumSubarray()
 }
