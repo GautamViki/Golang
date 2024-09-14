@@ -104,4 +104,5 @@ func main() {
 	v1.HouseRobber()
 	v1.NumberOf_1_Bits()
 	v1.MergeIntervals()
+	v1.SetMatrixZeroes()
 }

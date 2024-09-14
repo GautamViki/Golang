@@ -281,3 +281,25 @@ func MergeIntervals() {
 	}
 	fmt.Println("56. Merge Intervals", result)
 }
+
+func SetMatrixZeroes() {
+	matrix := [][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}
+	zeroIdx := [][]int{}
+	for i := 0; i < len(matrix); i++ {
+		for j := 0; j < len(matrix[i]); j++ {
+			if matrix[i][j] == 0 {
+				zeroIdx = append(zeroIdx, []int{i, j})
+			}
+		}
+	}
+	for z := 0; z < len(zeroIdx); z++ {
+		i, j := zeroIdx[z][0], zeroIdx[z][1]
+		for idx := 0; idx < len(matrix); idx++ {
+			matrix[idx][j] = 0
+		}
+		for idx := 0; idx < len(matrix[i]); idx++ {
+			matrix[i][idx] = 0
+		}
+	}
+	fmt.Println("73. Set Matrix Zeroes", matrix)
+}
