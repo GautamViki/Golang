@@ -3,6 +3,7 @@ package v1
 import (
 	"fmt"
 	"math"
+	"sort"
 	"unicode"
 )
 
@@ -259,4 +260,24 @@ func NumberOf_1_Bits() {
 		n >>= 1
 	}
 	fmt.Println("191. Number of 1 Bits", count)
+}
+
+func MergeIntervals() {
+	intervals := [][]int{{1, 80}, {4, 6}, {8, 10}, {15, 181}}
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	result := [][]int{intervals[0]}
+	for i := 1; i < len(intervals); i++ {
+		x := result[len(result)-1][1]
+		y := intervals[i][0]
+		if x >= y {
+			if x < intervals[i][1] {
+				result[len(result)-1][1] = intervals[i][1]
+			}
+		} else {
+			result = append(result, intervals[i])
+		}
+	}
+	fmt.Println("56. Merge Intervals", result)
 }

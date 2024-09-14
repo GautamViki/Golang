@@ -103,4 +103,5 @@ func main() {
 	v1.BestTimeToBuyAndStock_II()
 	v1.HouseRobber()
 	v1.NumberOf_1_Bits()
+	v1.MergeIntervals()
 }
