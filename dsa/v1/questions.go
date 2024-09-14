@@ -214,3 +214,49 @@ func MaximumSubarray() {
 	}
 	fmt.Println("53. Maximum Subarray", maxSum)
 }
+
+func BestTimeToBuyAndStock_II() {
+	prices := []int{7, 6, 4, 3, 1}
+	maxS := 0
+	for i := 1; i < len(prices); i++ {
+		curMax := prices[i] - prices[i-1]
+		if curMax > 0 {
+			maxS += curMax
+		}
+	}
+	fmt.Println("Best Time To Buy And Stock_II", maxS)
+}
+
+func HouseRobber() {
+	nums := []int{2, 7}
+	memo := make([]int, len(nums))
+	for i := range memo {
+		memo[i] = -1 // Initialize with -1 to indicate uncomputed results
+	}
+	sum := MaxRobber(nums, 0, memo)
+
+	fmt.Println("198. House Robber", sum)
+}
+
+func MaxRobber(nums []int, idx int, memo []int) int {
+	if idx >= len(nums) {
+		return 0
+	}
+	if memo[idx] != -1 {
+		return memo[idx]
+	}
+	steal := nums[idx] + MaxRobber(nums, idx+2, memo)
+	skip := MaxRobber(nums, idx+1, memo)
+	memo[idx] = max(steal, skip)
+	return memo[idx]
+}
+
+func NumberOf_1_Bits() {
+	n := 11
+	count := 0
+	for n != 0 {
+		count += int(n & 1)
+		n >>= 1
+	}
+	fmt.Println("191. Number of 1 Bits", count)
+}

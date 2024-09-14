@@ -100,4 +100,7 @@ func main() {
 	v1.MissingNumber()
 	v1.ReverseString()
 	v1.MaximumSubarray()
+	v1.BestTimeToBuyAndStock_II()
+	v1.HouseRobber()
+	v1.NumberOf_1_Bits()
 }
