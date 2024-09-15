@@ -303,3 +303,43 @@ func SetMatrixZeroes() {
 	}
 	fmt.Println("73. Set Matrix Zeroes", matrix)
 }
+
+func SpiralMatrix() {
+	matrix := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}}
+	n, row, col := len(matrix)*len(matrix[0]), len(matrix), len(matrix[0])
+	i, j, res := 0, 0, []int{}
+	count, t := 0, 0
+
+	for count < n {
+		for j < col-t && count < n {
+			res = append(res, matrix[i][j])
+			count++
+			j++
+		}
+		j--
+		i++
+		for i < row-t && count < n {
+			res = append(res, matrix[i][j])
+			i++
+			count++
+		}
+		j--
+		i--
+		for j >= t && count < n {
+			res = append(res, matrix[i][j])
+			j--
+			count++
+		}
+		i--
+		j++
+		t++
+		for i >= t && count < n {
+			res = append(res, matrix[i][j])
+			i--
+			count++
+		}
+		j++
+		i++
+	}
+	fmt.Println("54. Spiral Matrix", res)
+}

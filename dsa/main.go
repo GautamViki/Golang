@@ -105,4 +105,5 @@ func main() {
 	v1.NumberOf_1_Bits()
 	v1.MergeIntervals()
 	v1.SetMatrixZeroes()
+	v1.SpiralMatrix()
 }
