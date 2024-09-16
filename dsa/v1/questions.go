@@ -376,7 +376,6 @@ func Sum_3() {
 				j++
 			}
 		}
-
 	}
 	fmt.Println("15. 3Sum", result)
 }
