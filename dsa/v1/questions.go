@@ -343,3 +343,40 @@ func SpiralMatrix() {
 	}
 	fmt.Println("54. Spiral Matrix", res)
 }
+
+func Sum_3() {
+	nums := []int{-1, 0, 1, 2, -1, -4}
+	sort.Ints(nums)
+	var result [][]int
+	if len(nums) < 3 {
+		fmt.Println("15. 3Sum", result)
+		return
+	}
+	for i := 0; i < len(nums)-2; i++ {
+		x := nums[i]
+		j, k := i+1, len(nums)-1
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		for j < k {
+			tempResult := x + nums[j] + nums[k]
+			if tempResult == 0 {
+				result = append(result, []int{x, nums[j], nums[k]})
+				for j < len(nums)-1 && nums[j] == nums[j+1] {
+					j++
+				}
+				for k > 0 && nums[k] == nums[k-1] {
+					k--
+				}
+				j++
+				k--
+			} else if tempResult > 0 {
+				k--
+			} else if tempResult < 0 {
+				j++
+			}
+		}
+
+	}
+	fmt.Println("15. 3Sum", result)
+}

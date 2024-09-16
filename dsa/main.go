@@ -106,4 +106,5 @@ func main() {
 	v1.MergeIntervals()
 	v1.SetMatrixZeroes()
 	v1.SpiralMatrix()
+	v1.Sum_3()
 }
