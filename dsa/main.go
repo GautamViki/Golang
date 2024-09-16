@@ -107,4 +107,7 @@ func main() {
 	v1.SetMatrixZeroes()
 	v1.SpiralMatrix()
 	v1.Sum_3()
+	v1.ContainerWithMostWater()
+	v1.GroupAnagrams()
+	v1.GroupAnagrams_1()
 }

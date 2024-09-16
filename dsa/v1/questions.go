@@ -3,7 +3,9 @@ package v1
 import (
 	"fmt"
 	"math"
+	"slices"
 	"sort"
+	"strings"
 	"unicode"
 )
 
@@ -378,4 +380,67 @@ func Sum_3() {
 		}
 	}
 	fmt.Println("15. 3Sum", result)
+}
+
+func ContainerWithMostWater() {
+	height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+	left, right, mMax := 0, len(height)-1, 0
+	for left < right {
+		var minHeight int
+		if height[left] < height[right] {
+			minHeight = height[left]
+		} else {
+			minHeight = height[right]
+		}
+		if mMax < minHeight*(right-left) {
+			mMax = minHeight * (right - left)
+		}
+		if height[left] < height[right] {
+			left++
+		} else {
+			right--
+		}
+	}
+	fmt.Println("11. Container With Most Water", mMax)
+}
+
+func GroupAnagrams() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	sortStr := [][]string{}
+	hash := map[string][]string{}
+	for _, str := range strs {
+		newStr := []rune(str)
+		slices.Sort(newStr)
+		hash[string(newStr)] = append(hash[string(newStr)], str)
+	}
+	for _, val := range hash {
+		sortStr = append(sortStr, val)
+	}
+	fmt.Println("49. Group Anagrams", sortStr)
+}
+
+func GroupAnagrams_1() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	sortStr := [][]string{}
+	hash := map[string][]string{}
+	for _, str := range strs {
+		word := generateWord(str)
+		hash[word] = append(hash[word], str)
+	}
+	for _, val := range hash {
+		sortStr = append(sortStr, val)
+	}
+	fmt.Println("49. Group Anagrams_1", sortStr)
+
+}
+func generateWord(str string) string {
+	arr := [26]int{}
+	for _, ch := range str {
+		arr[ch-'a'] += 1
+	}
+	newStr := ""
+	for idx, num := range arr {
+		newStr += strings.Repeat(string(idx+'a'), num)
+	}
+	return newStr
 }
