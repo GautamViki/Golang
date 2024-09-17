@@ -237,7 +237,6 @@ func HouseRobber() {
 		memo[i] = -1 // Initialize with -1 to indicate uncomputed results
 	}
 	sum := MaxRobber(nums, 0, memo)
-
 	fmt.Println("198. House Robber", sum)
 }
 
@@ -445,7 +444,32 @@ func generateWord(str string) string {
 	return newStr
 }
 
-func KthLargestElementInAnArray() {
-	// nums := []int{3, 2, 1, 5, 6, 4}
-	
+func LongestPalindromicSubstring() {
+	str := "babadaba"
+	maxPal, maxStr := 0, ""
+	var memo [1001][1001]bool
+	for i := 0; i < len(str); i++ {
+		for j := i; j < len(str); j++ {
+			if checkPalindrome(str, i, j, &memo) && j-i+1 > maxPal {
+				maxPal = j - i + 1
+				maxStr = str[i : j+1]
+			}
+		}
+	}
+	fmt.Println("5. Longest Palindromic Substring", maxStr, maxPal)
+}
+func checkPalindrome(str string, i, j int, memo *[1001][1001]bool) bool {
+	if memo[i][j] {
+		return memo[i][j]
+	}
+	if i >= j {
+		memo[i][j] = true
+		return memo[i][j]
+	}
+
+	if str[i] == str[j] {
+		memo[i][j] = checkPalindrome(str, i+1, j-1, memo)
+		return memo[i][j]
+	}
+	return false
 }
