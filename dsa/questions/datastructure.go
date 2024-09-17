@@ -255,6 +255,7 @@ func (ds *DataStructure) ProductExceptSelf() {
 		slicesTemp[i] = multiple
 		multiple *= arr[i]
 	}
+	fmt.Println("\n\n", slicesTemp)
 	multiple = 1
 	for i := len(arr) - 1; i >= 0; i-- {
 		slicesTemp[i] *= multiple
@@ -394,7 +395,6 @@ func (ds *DataStructure) ReverseInteger(n int) int {
 func (ds *DataStructure) ThreeSum() {
 	nums := []int{0, 0, 0}
 	sort.Ints(nums)
-	fmt.Println(nums)
 	var result [][]int
 	if len(nums) < 3 {
 		return
@@ -451,7 +451,7 @@ func (ds *DataStructure) ArraySetInGO() {
 // }
 
 func (ds *DataStructure) LongestSubstringWithoutRepeatingCharacters() {
-	s := "dvdf"
+	s := "dvdfsjv"
 	var res int
 	sub := make([]string, 0)
 	for _, char := range s {
@@ -473,7 +473,6 @@ func (ds *DataStructure) StringToInteger() {
 	count := 0
 	for idx, char := range s {
 		if unicode.IsDigit(char) {
-			fmt.Println("digit ", string(char))
 			result += string(char)
 		} else if count == idx {
 			if string(char) == " " {
@@ -602,6 +601,7 @@ func (ds *DataStructure) KeyBoardRow_500() {
 func (ds *DataStructure) LongestPalindromicSubstring_5() {
 	s := "bada"
 	T := "^#" + strings.Join(strings.Split(s, ""), "#") + "#$"
+	fmt.Println("2222222222222222222222222", T)
 	n := len(T)
 	P := make([]int, n)
 	C, R := 0, 0
@@ -657,7 +657,7 @@ func (ds *DataStructure) ZigzagConversion_6(s string, numRows int) {
 			lamp = false
 		}
 	}
-	fmt.Println(strings.Join(ls, ""))
+	fmt.Println("ZigzagConversion_6", strings.Join(ls, ""))
 }
 
 // func (ds *DataStructure) ZigzagConversion_6V1(s string, numRows int) {
@@ -693,7 +693,7 @@ func (ds *DataStructure) ContainerWithMostWater_11() {
 			right--
 		}
 	}
-	fmt.Println(mArea)
+	fmt.Println("ContainerWithMostWater_11", mArea)
 }
 
 func (ds *DataStructure) ThreeSumClosest_16() int {
@@ -1173,7 +1173,7 @@ func (ds *DataStructure) MaximumProductSubarray_152() {
 
 func (ds *DataStructure) Kadane_Algo() {
 	// max sum of subarray
-	nums := []int{2, -3, 4}
+	nums := []int{2, -3,-1, 4}
 	sum := 0
 	maxSum := nums[0]
 	for _, num := range nums {
