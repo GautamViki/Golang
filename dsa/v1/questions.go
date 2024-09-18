@@ -509,3 +509,23 @@ func MinimumWindowSubstring() {
 		fmt.Println("76. Minimum Window Substring", s[start:start+minLen])
 	}
 }
+
+func ContainsDuplicate_II() {
+	nums, k := []int{1, 0, 1, 1}, 1
+	i, j := 0, 0
+	set := make(map[int]struct{})
+	for j < len(nums) {
+		if k < j-i {
+			delete(set, nums[i])
+			i++
+		}
+		if _, ok := set[nums[j]]; ok && j-i <= k {
+			fmt.Println("219. Contains Duplicate II", true)
+			return
+		}
+		set[nums[j]] = struct{}{}
+		j++
+
+	}
+	fmt.Println("219. Contains Duplicate II", false)
+}
