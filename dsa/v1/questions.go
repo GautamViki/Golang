@@ -473,3 +473,34 @@ func checkPalindrome(str string, i, j int, memo *[1001][1001]bool) bool {
 	}
 	return false
 }
+
+func MinimumWindowSubstring() {
+	s, t := "ADOBECODEBANC", "ABC"
+	mapOfT := make(map[rune]int)
+	minLen := len(s)
+	for _, str := range t {
+		mapOfT[str]++
+	}
+	i, j, count, start := 0, 0, len(t), 0
+	for j < len(s) {
+		if mapOfT[rune(s[j])] > 0 && count > 0 {
+			mapOfT[rune(s[j])]--
+			count--
+		} else {
+			mapOfT[rune(s[j])]--
+		}
+		for count == 0 {
+			if minLen > j-i+1 {
+				minLen = j - i + 1
+				start = i
+			}
+			mapOfT[rune(s[i])]++
+			if mapOfT[rune(s[i])] > 0 {
+				count++
+			}
+			i++
+		}
+		j++
+	}
+	fmt.Println("76. Minimum Window Substring", s[start:start+minLen])
+}
