@@ -529,3 +529,23 @@ func ContainsDuplicate_II() {
 	}
 	fmt.Println("219. Contains Duplicate II", false)
 }
+
+func RemoveDuplicatesfromSortedArray_II() {
+	nums := []int{0, 0, 1, 1, 1, 1, 2, 3, 3}
+	i, j, count, max := 1, 0, 1, 1
+	for i < len(nums) {
+		if nums[i] == nums[j] && count < 2 {
+			nums[j+1] = nums[i]
+			max++
+			j++
+			count++
+		} else if nums[i] != nums[j] {
+			nums[j+1] = nums[i]
+			max++
+			j++
+			count = 1
+		}
+		i++
+	}
+	fmt.Println("80. Remove Duplicates from Sorted Array II", max, nums)
+}
