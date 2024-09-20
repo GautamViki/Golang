@@ -549,3 +549,21 @@ func RemoveDuplicatesfromSortedArray_II() {
 	}
 	fmt.Println("80. Remove Duplicates from Sorted Array II", max, nums)
 }
+
+func RotateArray() {
+	nums, k := []int{1, 2, 3, 4, 5, 6, 7}, 4
+	k = k % len(nums)
+	n := len(nums) - k
+	reverse(nums, 0, n-1)
+	reverse(nums, n, len(nums)-1)
+	reverse(nums, 0, len(nums)-1)
+	fmt.Println("189. Rotate Array", nums)
+}
+
+func reverse(nums []int, i, j int) {
+	for i < j {
+		nums[i], nums[j] = nums[j], nums[i]
+		i++
+		j--
+	}
+}
