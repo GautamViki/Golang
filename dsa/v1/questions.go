@@ -567,3 +567,16 @@ func reverse(nums []int, i, j int) {
 		j--
 	}
 }
+
+func JumpGame() {
+	nums := []int{2, 0, 0}
+	prev := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if prev == 0 {
+			fmt.Println("55. Jump Game", false)
+			return
+		}
+		prev = max(prev-1, nums[i])
+	}
+	fmt.Println("55. Jump Game", true)
+}

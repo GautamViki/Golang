@@ -115,4 +115,5 @@ func main() {
 	v1.ContainsDuplicate_II()
 	v1.RemoveDuplicatesfromSortedArray_II()
 	v1.RotateArray()
+	v1.JumpGame()
 }
