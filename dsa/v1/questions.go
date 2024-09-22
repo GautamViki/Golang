@@ -580,3 +580,20 @@ func JumpGame() {
 	}
 	fmt.Println("55. Jump Game", true)
 }
+
+func JumpGame_II() {
+	nums := []int{2, 3, 1, 1, 4}
+	totalJump, coverage, lastJumpIdx := 0, 0, 0
+	if len(nums) == 1 {
+		fmt.Println("45. Jump Game II", 0)
+		return
+	}
+	for i := 0; i < len(nums)-1; i++ {
+		coverage = max(coverage, i+nums[i])
+		if i == lastJumpIdx {
+			lastJumpIdx = coverage
+			totalJump++
+		}
+	}
+	fmt.Println("45. Jump Game II", totalJump)
+}
