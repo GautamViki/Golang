@@ -597,3 +597,25 @@ func JumpGame_II() {
 	}
 	fmt.Println("45. Jump Game II", totalJump)
 }
+
+func FindIn2DSortedMatrix() {
+	matrix := [][]int{
+		{10, 20, 30, 40},
+		{12, 25, 33, 44},
+		{15, 29, 37, 47},
+		{27, 33, 42, 49},
+	}
+	target := 43
+	row, col := 0, len(matrix[0])-1
+	for col >= 0 && row < len(matrix) {
+		if matrix[row][col] == target {
+			fmt.Println("Find In 2D Sorted Matrix on index", row, col)
+			return
+		} else if matrix[row][col] > target {
+			col--
+		} else {
+			row++
+		}
+	}
+	fmt.Println("Target element not found")
+}
