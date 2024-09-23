@@ -605,7 +605,7 @@ func FindIn2DSortedMatrix() {
 		{15, 29, 37, 47},
 		{27, 33, 42, 49},
 	}
-	target := 43
+	target := 42
 	row, col := 0, len(matrix[0])-1
 	for col >= 0 && row < len(matrix) {
 		if matrix[row][col] == target {
@@ -618,4 +618,22 @@ func FindIn2DSortedMatrix() {
 		}
 	}
 	fmt.Println("Target element not found")
+}
+
+func H_Index() {
+	citations := []int{4, 4, 0, 0}
+	sort.Slice(citations, func(i, j int) bool { return citations[i] > citations[j] })
+	fmt.Println(citations)
+	nonZeroes := 0
+	for i := 0; i < len(citations); i++ {
+		if citations[i] == 0 {
+			continue
+		}
+		if citations[i] < nonZeroes+1 {
+			fmt.Println("274. H-Index", nonZeroes)
+			return
+		}
+		nonZeroes++
+	}
+	fmt.Println("274. H-Index", nonZeroes)
 }
