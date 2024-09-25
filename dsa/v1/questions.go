@@ -680,3 +680,21 @@ func BagofTokens() {
 	}
 	fmt.Println("948. Bag of Tokens", maxScore)
 }
+
+func BoatstoSavePeople() {
+	people := []int{3, 5, 3, 4}
+	limit := 5
+	slices.Sort(people)
+	minBoat, i, j := 0, 0, len(people)-1
+	for i <= j {
+		if people[i]+people[j] <= limit {
+			minBoat += 1
+			i++
+			j--
+		} else {
+			minBoat += 1
+			j--
+		}
+	}
+	fmt.Println("881. Boats to Save People", minBoat)
+}

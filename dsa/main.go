@@ -121,4 +121,5 @@ func main() {
 	v1.H_Index()
 	v1.CanCompleteCircuit()
 	v1.BagofTokens()
+	v1.BoatstoSavePeople()
 }
