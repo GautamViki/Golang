@@ -638,20 +638,21 @@ func H_Index() {
 	fmt.Println("274. H-Index", nonZeroes)
 }
 
-func canCompleteCircuit(gas []int, cost []int) int {
-    n := len(gas)
-    fuelLeft, globalFuelLeft, start := 0, 0, 0
-    for i := 0; i < n; i++ {
-        globalFuelLeft += gas[i] - cost[i]
-        fuelLeft += gas[i] - cost[i]
-        if fuelLeft < 0 {
-            start = i + 1
-            fuelLeft = 0
-        }
-    }
-
-    if globalFuelLeft < 0 {
-        return -1
-    }
-    return start
+func CanCompleteCircuit() {
+	gas := []int{1, 2, 3, 4, 5}
+	cost := []int{3, 4, 5, 1, 2}
+	currentTotalFuel, currentFuel, start := 0, 0, 0
+	for i := 0; i < len(gas); i++ {
+		currentTotalFuel += gas[i] - cost[i]
+		currentFuel += gas[i] - cost[i]
+		if currentFuel < 0 {
+			start = i + 1
+			currentFuel = 0
+		}
+	}
+	if currentTotalFuel < 0 {
+		fmt.Println("134. Gas Station index", -1)
+		return
+	}
+	fmt.Println("134. Gas Station index", start)
 }
