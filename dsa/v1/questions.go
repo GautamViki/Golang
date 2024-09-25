@@ -698,3 +698,20 @@ func BoatstoSavePeople() {
 	}
 	fmt.Println("881. Boats to Save People", minBoat)
 }
+
+func BreakAPalindrome() {
+	palindrome := "abccba"
+	if len(palindrome)==1{
+		fmt.Println("1328. Break a Palindrome", "")
+		return
+	}
+	for i := 0; i < len(palindrome)/2; i++ {
+		if palindrome[i] != 'a' {
+			palindrome = palindrome[:i] + "a" + palindrome[i+1:]
+			fmt.Println("1328. Break a Palindrome", palindrome)
+			return
+		}
+	}
+	palindrome = palindrome[:len(palindrome)-1] + "b"
+	fmt.Println("1328. Break a Palindrome", palindrome)
+}

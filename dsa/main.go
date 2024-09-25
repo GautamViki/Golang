@@ -122,4 +122,5 @@ func main() {
 	v1.CanCompleteCircuit()
 	v1.BagofTokens()
 	v1.BoatstoSavePeople()
+	v1.BreakAPalindrome()
 }
