@@ -656,3 +656,27 @@ func CanCompleteCircuit() {
 	}
 	fmt.Println("134. Gas Station index", start)
 }
+
+func BagofTokens() {
+	tokens := []int{100, 200, 300, 400}
+	power := 200
+	slices.Sort(tokens)
+	score, i, j := 0, 0, len(tokens)-1
+	maxScore := 0
+	for i <= j {
+		if power >= tokens[i] {
+			power -= tokens[i]
+			score++
+			i++
+			maxScore = max(maxScore, score)
+		} else if score > 0 {
+			score--
+			power += tokens[j]
+			j--
+		} else {
+			fmt.Println("948. Bag of Tokens", maxScore)
+			return
+		}
+	}
+	fmt.Println("948. Bag of Tokens", maxScore)
+}
