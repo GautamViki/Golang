@@ -701,7 +701,7 @@ func BoatstoSavePeople() {
 
 func BreakAPalindrome() {
 	palindrome := "abccba"
-	if len(palindrome)==1{
+	if len(palindrome) == 1 {
 		fmt.Println("1328. Break a Palindrome", "")
 		return
 	}
@@ -714,4 +714,21 @@ func BreakAPalindrome() {
 	}
 	palindrome = palindrome[:len(palindrome)-1] + "b"
 	fmt.Println("1328. Break a Palindrome", palindrome)
+}
+
+func IntegertoRoman() {
+	num := 3749
+	roman := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+	symbol := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+	result := ""
+	for i := 0; i < len(roman); i++ {
+		if num == 0 {
+			break
+		}
+		q := num / roman[i]
+		num = num % roman[i]
+
+		result += strings.Repeat(symbol[i], q)
+	}
+	fmt.Println("12. Integer to Roman", result)
 }
