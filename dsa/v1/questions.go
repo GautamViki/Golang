@@ -745,3 +745,23 @@ func IsSubsequence() {
 	}
 	fmt.Println("392. Is Subsequence", i == len(s))
 }
+
+func MinimumSizeSubarraySum() {
+	target, nums := 7, []int{2, 3, 1, 2, 4, 3}
+	minLen := math.MaxInt32
+	i, j := 0, 0
+	sum := 0
+	for j < len(nums) {
+		sum += nums[j]
+		for sum >= target {
+			minLen = min(minLen, j-i+1)
+			sum -= nums[i]
+			i++
+		}
+		j++
+	}
+	if minLen == math.MaxInt32 {
+		minLen = 0
+	}
+	fmt.Println("209. Minimum Size Subarray Sum", minLen)
+}

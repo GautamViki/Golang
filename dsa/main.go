@@ -125,4 +125,5 @@ func main() {
 	v1.BreakAPalindrome()
 	v1.IntegertoRoman()
 	v1.IsSubsequence()
+	v1.MinimumSizeSubarraySum()
 }
