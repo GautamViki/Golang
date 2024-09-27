@@ -124,4 +124,5 @@ func main() {
 	v1.BoatstoSavePeople()
 	v1.BreakAPalindrome()
 	v1.IntegertoRoman()
+	v1.IsSubsequence()
 }

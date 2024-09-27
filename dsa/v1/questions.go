@@ -732,3 +732,16 @@ func IntegertoRoman() {
 	}
 	fmt.Println("12. Integer to Roman", result)
 }
+
+func IsSubsequence() {
+	s := "b"
+	t := "ahbgdc"
+	i, j := 0, 0
+	for j < len(t) && i < len(s) {
+		if s[i] == t[j] {
+			i++
+		}
+		j++
+	}
+	fmt.Println("392. Is Subsequence", i == len(s))
+}
