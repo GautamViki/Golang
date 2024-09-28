@@ -765,3 +765,66 @@ func MinimumSizeSubarraySum() {
 	}
 	fmt.Println("209. Minimum Size Subarray Sum", minLen)
 }
+
+func GameofLife() {
+	board := [][]int{
+		{0, 1, 0},
+		{0, 0, 1},
+		{1, 1, 1},
+		{0, 0, 0},
+	}
+	numRows := len(board)
+	if numRows == 0 {
+		return
+	}
+	numCols := len(board[0])
+	toBeToggled := make([][]int, 0)
+
+	for i := 0; i < numRows; i++ {
+		for j := 0; j < numCols; j++ {
+			liveCount := getLiveNeighborCount(board, numRows, numCols, i, j)
+			if board[i][j] == 1 {
+				if liveCount < 2 || liveCount > 3 {
+					// Cell dies due to underpopulation or overpopulation
+					toBeToggled = append(toBeToggled, []int{i, j})
+				}
+			} else {
+				if liveCount == 3 {
+					// Cell comes to life due to reproduction
+					toBeToggled = append(toBeToggled, []int{i, j})
+				}
+			}
+		}
+	}
+
+	// Toggle cells based on the stored coordinates
+	for _, cor := range toBeToggled {
+		if board[cor[0]][cor[1]] == 1 {
+			board[cor[0]][cor[1]] = 0
+		} else {
+			board[cor[0]][cor[1]] = 1
+		}
+	}
+	fmt.Println("289. Game of Life", board)
+}
+
+func isValidCell(numRows, numCols, i, j int) bool {
+	// Check if the cell coordinates are within the bounds of the board
+	return i >= 0 && j >= 0 && i < numRows && j < numCols
+}
+
+func getLiveNeighborCount(board [][]int, numRows, numCols, i, j int) int {
+	// Define the offsets for adjacent cells
+	dx := []int{-1, 1, 0, 0, -1, -1, 1, 1}
+	dy := []int{0, 0, -1, 1, -1, 1, -1, 1}
+
+	liveCount := 0
+	for k := 0; k < 8; k++ {
+		ni, nj := i+dx[k], j+dy[k]
+		if isValidCell(numRows, numCols, ni, nj) && board[ni][nj] == 1 {
+			liveCount++
+		}
+	}
+	return liveCount
+
+}
