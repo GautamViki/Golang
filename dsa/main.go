@@ -127,4 +127,5 @@ func main() {
 	v1.IsSubsequence()
 	v1.MinimumSizeSubarraySum()
 	v1.GameofLife()
+	v1.RansomNote()
 }

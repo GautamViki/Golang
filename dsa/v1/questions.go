@@ -826,5 +826,23 @@ func getLiveNeighborCount(board [][]int, numRows, numCols, i, j int) int {
 		}
 	}
 	return liveCount
+}
 
+func RansomNote() {
+	ransomNote, magazine := "bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj"
+	ransomNoteMap := map[rune]int{}
+	magazineMap := map[rune]int{}
+	for _, s := range ransomNote {
+		ransomNoteMap[s]++
+	}
+	for _, s := range magazine {
+		magazineMap[s]++
+	}
+	for key, val := range ransomNoteMap {
+		if val > magazineMap[key] {
+			fmt.Println("383. Ransom Note", false)
+			return
+		}
+	}
+	fmt.Println("383. Ransom Note", true)
 }
