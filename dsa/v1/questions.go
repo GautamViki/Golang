@@ -5,7 +5,6 @@ import (
 	"math"
 	"slices"
 	"sort"
-	"strconv"
 	"strings"
 	"unicode"
 )
@@ -879,25 +878,26 @@ func SummaryRanges() {
 		fmt.Println("228. Summary Ranges", result)
 		return
 	}
-	init := nums[0]
-	next := nums[0]
+	init, next, val := nums[0], nums[0], ""
 	for i := 1; i < len(nums); i++ {
 		if nums[i] == next+1 {
 			next = nums[i]
 		} else {
 			if init != next {
-				result = append(result, fmt.Sprintf("%v->%v", init, next))
+				val = fmt.Sprintf("%v->%v", init, next)
 			} else {
-				result = append(result, strconv.Itoa(init))
+				val = fmt.Sprintf("%v", init)
 			}
+			result = append(result, val)
 			init = nums[i]
 			next = nums[i]
 		}
 	}
 	if init != next {
-		result = append(result, fmt.Sprintf("%v->%v", init, next))
+		val = fmt.Sprintf("%v->%v", init, next)
 	} else {
-		result = append(result, strconv.Itoa(init))
+		val = fmt.Sprintf("%v", init)
 	}
+	result = append(result, val)
 	fmt.Println("228. Summary Ranges", result)
 }
