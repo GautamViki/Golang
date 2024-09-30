@@ -5,6 +5,7 @@ import (
 	"math"
 	"slices"
 	"sort"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -869,4 +870,34 @@ func LongestConsecutiveSequence() {
 		}
 	}
 	fmt.Println("128. Longest Consecutive Sequence", longest)
+}
+
+func SummaryRanges() {
+	nums := []int{0, 1, 2, 4, 5, 7, 8, 9, 11, 14}
+	result := []string{}
+	if len(nums) == 0 {
+		fmt.Println("228. Summary Ranges", result)
+		return
+	}
+	init := nums[0]
+	next := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if nums[i] == next+1 {
+			next = nums[i]
+		} else {
+			if init != next {
+				result = append(result, fmt.Sprintf("%v->%v", init, next))
+			} else {
+				result = append(result, strconv.Itoa(init))
+			}
+			init = nums[i]
+			next = nums[i]
+		}
+	}
+	if init != next {
+		result = append(result, fmt.Sprintf("%v->%v", init, next))
+	} else {
+		result = append(result, strconv.Itoa(init))
+	}
+	fmt.Println("228. Summary Ranges", result)
 }

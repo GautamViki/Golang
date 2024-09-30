@@ -129,4 +129,5 @@ func main() {
 	v1.GameofLife()
 	v1.RansomNote()
 	v1.LongestConsecutiveSequence()
+	v1.SummaryRanges()
 }
