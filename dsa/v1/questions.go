@@ -846,3 +846,27 @@ func RansomNote() {
 	}
 	fmt.Println("383. Ransom Note", true)
 }
+
+func LongestConsecutiveSequence() {
+	nums := []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
+	numMap := map[int]struct{}{}
+	for _, num := range nums {
+		numMap[num] = struct{}{}
+	}
+	longest := 0
+	for _, num := range nums {
+		currentNum := num
+		if _, ok := numMap[currentNum-1]; !ok {
+			count := 1
+			for {
+				if _, ok := numMap[currentNum+count]; ok {
+					count++
+					continue
+				}
+				longest = max(longest, count)
+				break
+			}
+		}
+	}
+	fmt.Println("128. Longest Consecutive Sequence", longest)
+}
