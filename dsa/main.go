@@ -131,4 +131,6 @@ func main() {
 	v1.LongestConsecutiveSequence()
 	v1.SummaryRanges()
 	v1.InsertInterval()
+	v1.InsertInterval_1()
+	v1.MinimumNumberofArrowstoBurstBalloons()
 }

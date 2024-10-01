@@ -270,11 +270,10 @@ func MergeIntervals() {
 	})
 	result := [][]int{intervals[0]}
 	for i := 1; i < len(intervals); i++ {
-		x := result[len(result)-1][1]
-		y := intervals[i][0]
-		if x >= y {
-			if x < intervals[i][1] {
-				result[len(result)-1][1] = intervals[i][1]
+		n := len(result) - 1
+		if result[n][1] >= intervals[i][0] {
+			if result[n][1] < intervals[i][1] {
+				result[n][1] = intervals[i][1]
 			}
 		} else {
 			result = append(result, intervals[i])
@@ -920,4 +919,46 @@ func InsertInterval() {
 	}
 	intervals = append(intervals, newInterval)
 	fmt.Println("57. Insert Interval", intervals)
+}
+
+func InsertInterval_1() {
+	intervals, newInterval := [][]int{{1, 3}, {6, 9}}, []int{2, 5}
+	i, result := 0, [][]int{}
+	for i < len(intervals) {
+		if intervals[i][1] < newInterval[0] {
+			result = append(result, intervals[i])
+		} else if intervals[i][0] > newInterval[1] {
+			break
+		} else {
+			newInterval[0] = min(newInterval[0], intervals[i][0])
+			newInterval[1] = max(newInterval[1], intervals[i][1])
+		}
+		i++
+	}
+	result = append(result, newInterval)
+	for i < len(intervals) {
+		result = append(result, intervals[i])
+		i++
+	}
+	fmt.Println("57. Insert Interval _1", result)
+}
+
+func MinimumNumberofArrowstoBurstBalloons() {
+	points := [][]int{{10, 16}, {2, 8}, {1, 6}, {7, 12}}
+	sort.Slice(points, func(i, j int) bool {
+		return points[i][0] < points[j][0]
+	})
+	arrow := points[0][1]
+	count := 1
+	for i := 1; i < len(points); i++ {
+		if arrow >= points[i][0] {
+			if arrow > points[i][1] {
+				arrow = points[i][1]
+			}
+		} else {
+			count++
+			arrow = points[i][1]
+		}
+	}
+	fmt.Println("452. Minimum Number of Arrows to Burst Balloons",count)
 }
