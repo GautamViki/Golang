@@ -133,4 +133,5 @@ func main() {
 	v1.InsertInterval()
 	v1.InsertInterval_1()
 	v1.MinimumNumberofArrowstoBurstBalloons()
+	v1.Candy()
 }
