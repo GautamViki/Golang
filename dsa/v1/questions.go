@@ -901,3 +901,23 @@ func SummaryRanges() {
 	result = append(result, val)
 	fmt.Println("228. Summary Ranges", result)
 }
+
+func InsertInterval() {
+	intervals, newInterval := [][]int{{1, 3}, {6, 9}}, []int{2, 5}
+	i := 0
+	for i < len(intervals) {
+		if intervals[i][1] < newInterval[0] {
+			i++
+		} else if intervals[i][0] > newInterval[1] {
+			intervals = append(intervals[:i], append([][]int{newInterval}, intervals[i:]...)...)
+			fmt.Println("57. Insert Interval", intervals)
+			return
+		} else {
+			newInterval[0] = min(newInterval[0], intervals[i][0])
+			newInterval[1] = max(newInterval[1], intervals[i][1])
+			intervals = append(intervals[:i], intervals[i+1:]...)
+		}
+	}
+	intervals = append(intervals, newInterval)
+	fmt.Println("57. Insert Interval", intervals)
+}

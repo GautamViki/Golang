@@ -130,4 +130,5 @@ func main() {
 	v1.RansomNote()
 	v1.LongestConsecutiveSequence()
 	v1.SummaryRanges()
+	v1.InsertInterval()
 }
