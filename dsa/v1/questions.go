@@ -1015,4 +1015,25 @@ func MaximumSumCircularSubarray() {
 	}
 	fmt.Println("918. Maximum Sum Circular Subarray", maxSum)
 }
+func KadaneAlgoMin(nums []int) int {
+	sum, minSum := nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		sum = min(sum+nums[i], nums[i])
+		minSum = min(minSum, sum)
+	}
+	return minSum
+}
 
+func MaximumSumCircularSubarray_1() {
+	nums := []int{5, -3, 5}
+	sum := 0
+	for i := range nums {
+		sum += nums[i]
+	}
+	circulerSum := sum - KadaneAlgoMin(nums)
+	if KadaneAlgoMax(nums) > 0 {
+		fmt.Println("918. Maximum Sum Circular Subarray _1:", max(KadaneAlgoMax(nums), circulerSum))
+		return
+	}
+	fmt.Println("918. Maximum Sum Circular Subarray", KadaneAlgoMax(nums))
+}
