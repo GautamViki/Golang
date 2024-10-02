@@ -994,3 +994,25 @@ func Candy() {
 	}
 	fmt.Println("135. Candy", sum)
 }
+
+func KadaneAlgoMax(nums []int) int {
+	sum := nums[0]
+	maxSum := nums[0]
+	for i := 1; i < len(nums); i++ {
+		sum = max(nums[i], sum+nums[i])
+		maxSum = max(maxSum, sum)
+	}
+	return maxSum
+}
+
+func MaximumSumCircularSubarray() {
+	nums := []int{5, -3, 5}
+	maxSum := nums[0]
+	for i := 0; i < len(nums); i++ {
+		st := nums[0]
+		nums = append(nums[1:], st)
+		maxSum = max(maxSum, KadaneAlgoMax(nums))
+	}
+	fmt.Println("918. Maximum Sum Circular Subarray", maxSum)
+}
+
