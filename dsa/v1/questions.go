@@ -5,6 +5,7 @@ import (
 	"math"
 	"slices"
 	"sort"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -1054,4 +1055,30 @@ func SimplifyPath() {
 	}
 	result := "/" + strings.Join(stack, "/")
 	fmt.Println("71. Simplify Path", result)
+}
+
+func EvaluateReversePolishNotation() {
+	tokens := []string{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}
+	stack := []int{}
+	for _, tn := range tokens {
+		if tn == "*" || tn == "/" || tn == "+" || tn == "-" {
+			n := len(stack) - 1
+			value := 0
+			switch tn {
+			case "+":
+				value = stack[n-1] + stack[n]
+			case "-":
+				value = stack[n-1] - stack[n]
+			case "*":
+				value = stack[n-1] * stack[n]
+			case "/":
+				value = stack[n-1] / stack[n]
+			}
+			stack = append(stack[:n-1], value)
+		} else {
+			num, _ := strconv.Atoi(tn)
+			stack = append(stack, num)
+		}
+	}
+	fmt.Println("150. Evaluate Reverse Polish Notation", stack[0])
 }
