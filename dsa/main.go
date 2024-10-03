@@ -136,4 +136,5 @@ func main() {
 	v1.Candy()
 	v1.MaximumSumCircularSubarray()
 	v1.MaximumSumCircularSubarray_1()
+	v1.SimplifyPath()
 }

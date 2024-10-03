@@ -1037,3 +1037,21 @@ func MaximumSumCircularSubarray_1() {
 	}
 	fmt.Println("918. Maximum Sum Circular Subarray", KadaneAlgoMax(nums))
 }
+
+func SimplifyPath() {
+	path := "/a/./b/../../c/"
+	pathToken := strings.Split(path, "/")
+	// [ a . b .. .. c ]
+	stack := []string{}
+	for _, str := range pathToken {
+		if str == ".." {
+			if len(stack) > 0 {
+				stack = stack[:len(stack)-1]
+			}
+		} else if str != "." && str != "" {
+			stack = append(stack, str)
+		}
+	}
+	result := "/" + strings.Join(stack, "/")
+	fmt.Println("71. Simplify Path", result)
+}
