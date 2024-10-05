@@ -1107,6 +1107,19 @@ func search(nums []int, target int) int {
 			}
 		}
 	}
-
 	return -1
+}
+
+func FindMinimumInRotatedSortedArray() {
+	nums := []int{11, 13, 15, 17}
+	l, r := 0, len(nums)-1
+	for l < r {
+		mid := (l + r) / 2
+		if nums[mid] < nums[r] {
+			r = mid
+		} else {
+			l = mid + 1
+		}
+	}
+	fmt.Println("153. Find Minimum in Rotated Sorted Array", nums[r])
 }
