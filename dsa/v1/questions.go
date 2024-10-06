@@ -1123,3 +1123,14 @@ func FindMinimumInRotatedSortedArray() {
 	}
 	fmt.Println("153. Find Minimum in Rotated Sorted Array", nums[r])
 }
+
+func FactorialTrailingZeroes() {
+	n := 5
+	x := 5
+	ans := 0
+	for n/5 > 0 && x < 10001 {
+		ans += n / x
+		x *= 5
+	}
+	fmt.Println("172. Factorial Trailing Zeroes", ans)
+}
