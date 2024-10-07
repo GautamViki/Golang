@@ -1134,3 +1134,20 @@ func FactorialTrailingZeroes() {
 	}
 	fmt.Println("172. Factorial Trailing Zeroes", ans)
 }
+
+func SingleNumber_II() {
+	nums := []int{-2, -2, 1, 1, 4, 1, 4, 4, -4, -2}
+	res := 0
+	for bit := 1; bit != 0; bit <<= 1 {
+		c := 0
+		for _, n := range nums {
+			if n&bit != 0 {
+				c++
+			}
+		}
+		if c%3 == 1 {
+			res |= bit
+		}
+	}
+	fmt.Println("137. Single Number II", res)
+}

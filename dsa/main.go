@@ -4,6 +4,7 @@ import (
 	"dsa/questions"
 	v1 "dsa/v1"
 	"fmt"
+	"sync"
 )
 
 func main() {
@@ -140,4 +141,28 @@ func main() {
 	v1.EvaluateReversePolishNotation()
 	v1.FindMinimumInRotatedSortedArray()
 	v1.FactorialTrailingZeroes()
+	v1.SingleNumber_II()
+
+	nums = []int{10, 20, 30, 40, 50}
+	numCh := make(chan int)
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func(ch chan int, arr []int, wg *sync.WaitGroup) {
+		defer wg.Done()
+		for _, num := range arr {
+			ch <- num
+		}
+		close(ch)
+	}(numCh, nums, &wg)
+
+	sum := 0
+	go func(ch chan int, wg *sync.WaitGroup) {
+		defer wg.Done()
+		for num := range ch {
+			sum += num
+		}
+	}(numCh, &wg)
+	wg.Wait()
+	fmt.Println("111111111111111111111111111111", sum)
 }
