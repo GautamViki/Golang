@@ -1,39 +1,70 @@
 package handler
 
-func NewRecursion() *recursion {
-	return &recursion{}
+import "fmt"
+
+func PrintDecreasing(n int) {
+	if n < 1 {
+		return
+	}
+	fmt.Print(" ", n)
+	PrintDecreasing(n - 1)
 }
 
-type recursion struct{}
-
-func (re *recursion) FindFirstOccurrence(nums []int, idx, target int) int {
-	// nums := []int{2, 4, 3, 8, 5, 2, 3, 5, 9, 6}
-	if idx == len(nums)-1 {
-		return -1
+func PrintIncreasing(n int) {
+	if n == 0 {
+		return
 	}
-	if nums[idx] == target {
-		return idx
-	}
-	return re.FindFirstOccurrence(nums, idx+1, target)
+	PrintIncreasing(n - 1)
+	fmt.Print(" ", n)
 }
 
-func (re *recursion) FindLastOccurrence(nums []int, idx, target, ans int) int {
-	// nums := []int{2, 4, 3, 8, 5, 2, 3, 5, 9, 6}
-	if nums[idx] == target {
-		ans = idx
+func PrintIncreasingDecreasing(n int) {
+	if n == 0 {
+		return
 	}
-	if idx == len(nums)-1 {
-		return ans
-	}
-	return re.FindLastOccurrence(nums, idx+1, target, ans)
+	fmt.Print(" ", n)
+	PrintIncreasingDecreasing(n - 1)
+	fmt.Print(" ", n)
 }
 
-func (re *recursion) FindAllOccurrence(nums, ans []int, idx, target int) []int {
-	if nums[idx] == target {
-		ans = append(ans, idx)
+func FactorialOf_N(n int) int {
+	if n <= 1 {
+		return 1
 	}
-	if idx == len(nums)-1 {
-		return ans
+	return n * FactorialOf_N(n-1)
+}
+
+func PowerOf_X(x, n int) int {
+	if n == 0 {
+		return 1
 	}
-	return re.FindAllOccurrence(nums, ans, idx+1, target)
+	return x * PowerOf_X(x, n-1)
+}
+
+func PowerOf_X_in_Log(x, n int) int {
+	if n == 0 {
+		return 1
+	}
+	powerN2 := PowerOf_X_in_Log(x, n/2)
+	if n%2 == 1 {
+		return x * powerN2 * powerN2
+	}
+	return powerN2 * powerN2
+}
+
+func TowerOfHanoi(n int, S, D, H string) {
+	if n == 0 {
+		return
+	}
+	TowerOfHanoi(n-1, S, H, D)
+	fmt.Printf("disc %d Source %s ==> destination %s\n", n, S, D)
+	TowerOfHanoi(n-1, H, D, S)
+}
+
+func DisplayArray(nums []int, idx int) {
+	if idx == len(nums) {
+		return
+	}
+	fmt.Print(nums[idx], " ")
+	DisplayArray(nums, idx+1)
 }
