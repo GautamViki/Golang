@@ -142,6 +142,7 @@ func main() {
 	v1.FindMinimumInRotatedSortedArray()
 	v1.FactorialTrailingZeroes()
 	v1.SingleNumber_II()
+	v1.WordBreak()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

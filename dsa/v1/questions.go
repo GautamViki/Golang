@@ -1151,3 +1151,47 @@ func SingleNumber_II() {
 	}
 	fmt.Println("137. Single Number II", res)
 }
+
+func WordBreak() bool {
+	s := "leetcode"
+	wordDict := []string{"leet", "code"}
+	length := len(s)
+
+	table := make(map[string]bool)
+	table[""] = true // base case
+
+	// Base case, because all input strings same as words themselves can be broken
+	for _, word := range wordDict {
+		table[word] = true
+	}
+
+	// In the recursion, we reduced the suffix at each level
+	// So, in bottom up, we start from least suffix and build up to the original string
+	endIndex := length - 1
+	for startIndex := length - 1; startIndex >= 0; startIndex-- {
+
+		subString := s[startIndex : endIndex+1]
+		subStrLength := endIndex - startIndex + 1
+
+		for _, word := range wordDict {
+			wordLength := len(word)
+
+			// Can the word be used as prefix in the substring
+			if subStrLength >= wordLength {
+				prefix := subString[:wordLength]
+				suffix := subString[wordLength:]
+
+				// With table[prefix], we check if the prefix is a valid word
+				// We could have also done prefix == word, but string comparision is not O(1) in Go
+				if table[prefix] && table[suffix] {
+					table[subString] = true
+
+					// We have found a substring, that can successfuly be broken into words
+					break
+				}
+			}
+		}
+	}
+
+	return table[s]
+}
