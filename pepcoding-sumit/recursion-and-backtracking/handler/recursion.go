@@ -68,3 +68,49 @@ func DisplayArray(nums []int, idx int) {
 	fmt.Print(nums[idx], " ")
 	DisplayArray(nums, idx+1)
 }
+
+func DisplayArrayReverse(nums []int, idx int) {
+	if idx == len(nums) {
+		return
+	}
+	DisplayArrayReverse(nums, idx+1)
+	fmt.Print(nums[idx], " ")
+}
+
+func Max_In_Array(nums []int, idx int, maxNum int) int {
+	if idx == len(nums) {
+		return maxNum
+	}
+	maxNum = max(maxNum, nums[idx])
+	return Max_In_Array(nums, idx+1, maxNum)
+}
+
+func FirstOccurenceInArray(nums []int, idx, target int) int {
+	if idx == len(nums) {
+		return -1
+	}
+	if target == nums[idx] {
+		return idx
+	}
+	return FirstOccurenceInArray(nums, idx+1, target)
+}
+
+func LastOccurrenceInArray(nums []int, idx, target, res int) int {
+	if idx == len(nums) {
+		return res
+	}
+	if target == nums[idx] {
+		res = idx
+	}
+	return LastOccurrenceInArray(nums, idx+1, target, res)
+}
+
+func OccurenceOfAllIndeces(nums []int, res []int, idx, target int) []int {
+	if idx == len(nums) {
+		return res
+	}
+	if nums[idx] == target {
+		res = append(res, idx)
+	}
+	return OccurenceOfAllIndeces(nums, res, idx+1, target)
+}
