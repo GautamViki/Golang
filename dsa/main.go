@@ -144,6 +144,8 @@ func main() {
 	v1.SingleNumber_II()
 	v1.WordBreak()
 	v1.CoinChange()
+	mergedArr := v1.MergeSort([]int{60, 90, 70, 20, 30, 80, 40, 50, 10})
+	fmt.Println("Merged Sort :", mergedArr)
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

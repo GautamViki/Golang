@@ -1249,3 +1249,30 @@ func CoinChange_Tabular(coins []int, amount int) int {
 	}
 	return table[amount]
 }
+
+func MergeSort(nums []int) []int {
+	if len(nums) <= 1 {
+		return nums
+	}
+	mid := len(nums) / 2
+	leftNum := MergeSort(nums[:mid])
+	rightNum := MergeSort(nums[mid:])
+	return merge(leftNum, rightNum)
+}
+
+func merge(leftNum, rightNum []int) []int {
+	mergerArr := make([]int, 0, len(leftNum)+len(rightNum))
+	i, j := 0, 0
+	for i < len(leftNum) && j < len(rightNum) {
+		if leftNum[i] < rightNum[j] {
+			mergerArr = append(mergerArr, leftNum[i])
+			i++
+		} else {
+			mergerArr = append(mergerArr, rightNum[j])
+			j++
+		}
+	}
+	mergerArr = append(mergerArr, leftNum[i:]...)
+	mergerArr = append(mergerArr, rightNum[j:]...)
+	return mergerArr
+}
