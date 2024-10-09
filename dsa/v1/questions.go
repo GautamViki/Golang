@@ -1195,3 +1195,57 @@ func WordBreak() bool {
 
 	return table[s]
 }
+
+func CoinChange() {
+	coins := []int{1, 2, 5}
+	ammount := 11
+
+	dp := make([]int, ammount+1)
+	for i := range dp {
+		dp[i] = -1
+	}
+	count := coinChangeRecursion_DP(coins, ammount, dp)
+	fmt.Println("322. Coin Change by dp", count)
+	minCoin := CoinChange_Tabular(coins, ammount)
+	if minCoin == math.MaxInt32 {
+		minCoin = -1
+	}
+	fmt.Println("322. Coin Change by tabular ", minCoin)
+}
+
+func coinChangeRecursion_DP(coins []int, ammount int, dp []int) int {
+	if ammount == 0 {
+		return 0
+	}
+	if ammount < 0 {
+		return math.MaxInt32
+	}
+	if dp[ammount] != -1 {
+		return dp[ammount]
+	}
+	minCoin := math.MaxInt32
+	for _, coin := range coins {
+		ans := coinChangeRecursion_DP(coins, ammount-coin, dp)
+		if ans != math.MaxInt32 {
+			minCoin = min(minCoin, ans+1)
+		}
+	}
+	dp[ammount] = minCoin
+	return minCoin
+}
+
+func CoinChange_Tabular(coins []int, amount int) int {
+	table := make([]int, amount+1)
+	for i := range table {
+		table[i] = math.MaxInt32
+	}
+	table[0] = 0
+	for i := 0; i <= amount; i++ {
+		for j := 0; j < len(coins); j++ {
+			if i-coins[j] >= 0 && table[i-coins[j]] != math.MaxInt32 {
+				table[i] = min(table[i], 1+table[i-coins[j]])
+			}
+		}
+	}
+	return table[amount]
+}
