@@ -1276,3 +1276,50 @@ func merge(leftNum, rightNum []int) []int {
 	mergerArr = append(mergerArr, rightNum[j:]...)
 	return mergerArr
 }
+
+var resultStr []string
+
+func FindSubsequences(str string, currentStr string) []string {
+	if len(str) == 0 {
+		resultStr = append(resultStr, currentStr)
+		return resultStr
+	}
+	resultStr = FindSubsequences(str[1:], currentStr+string(str[0]))
+	resultStr = FindSubsequences(str[1:], currentStr)
+	return resultStr
+}
+
+var dp = make([][]int, 0)
+
+func LongestIncreasingSubsequence() {
+	nums := []int{10, 9, 2, 5, 3, 7, 101, 18}
+	dp = make([][]int, len(nums)+1)
+	for i := range dp {
+		dp[i] = make([]int, len(nums)+1)
+	}
+	for i := 0; i < len(nums); i++ {
+		for j := 0; j < len(nums); j++ {
+			dp[i][j] = -1
+		}
+	}
+	maxLen := LongestIncreasingSubsequenceRecursion(nums, 0, -1)
+	fmt.Println("300. Longest Increasing Subsequence", maxLen)
+}
+
+func LongestIncreasingSubsequenceRecursion(nums []int, idx, pre int) int {
+	if idx == len(nums) {
+		return 0
+	}
+	if pre != -1 && dp[idx][pre] != -1 {
+		return dp[idx][pre]
+	}
+	take := 0
+	if pre == -1 || nums[idx] > nums[pre] {
+		take = 1 + LongestIncreasingSubsequenceRecursion(nums, idx+1, idx)
+	}
+	skip := LongestIncreasingSubsequenceRecursion(nums, idx+1, pre)
+	if pre != -1 {
+		dp[idx][pre] = max(take, skip)
+	}
+	return max(take, skip)
+}

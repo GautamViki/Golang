@@ -146,6 +146,8 @@ func main() {
 	v1.CoinChange()
 	mergedArr := v1.MergeSort([]int{60, 90, 70, 20, 30, 80, 40, 50, 10})
 	fmt.Println("Merged Sort :", mergedArr)
+	fmt.Println("Subsequence of string", v1.FindSubsequences("abc", ""))
+	v1.LongestIncreasingSubsequence()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
