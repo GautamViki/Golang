@@ -1323,3 +1323,10 @@ func LongestIncreasingSubsequenceRecursion(nums []int, idx, pre int) int {
 	}
 	return max(take, skip)
 }
+
+
+
+
+
+
+
