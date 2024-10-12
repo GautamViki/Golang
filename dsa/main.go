@@ -148,6 +148,7 @@ func main() {
 	fmt.Println("Merged Sort :", mergedArr)
 	fmt.Println("Subsequence of string", v1.FindSubsequences("abc", ""))
 	v1.LongestIncreasingSubsequence()
+	v1.Triangle()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

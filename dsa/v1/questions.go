@@ -1324,9 +1324,17 @@ func LongestIncreasingSubsequenceRecursion(nums []int, idx, pre int) int {
 	return max(take, skip)
 }
 
-
-
-
-
-
-
+func Triangle() {
+	triangle := [][]int{
+		{2},
+		{3, 4},
+		{6, 5, 7},
+		{4, 1, 8, 3},
+	}
+	for i := len(triangle) - 2; i >= 0; i-- {
+		for j := range triangle[i] {
+			triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])
+		}
+	}
+	fmt.Println("120. Triangle", triangle[0][0])
+}
