@@ -149,6 +149,7 @@ func main() {
 	fmt.Println("Subsequence of string", v1.FindSubsequences("abc", ""))
 	v1.LongestIncreasingSubsequence()
 	v1.Triangle()
+	v1.BitwiseANDOfNumbersRange()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

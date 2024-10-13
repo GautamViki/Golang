@@ -1338,3 +1338,11 @@ func Triangle() {
 	}
 	fmt.Println("120. Triangle", triangle[0][0])
 }
+
+func BitwiseANDOfNumbersRange() {
+	left, right := 5, 7
+	for right > left {
+		right = (right & (right - 1))
+	}
+	fmt.Println("201. Bitwise AND of Numbers Range", right)
+}
