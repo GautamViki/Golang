@@ -1346,3 +1346,29 @@ func BitwiseANDOfNumbersRange() {
 	}
 	fmt.Println("201. Bitwise AND of Numbers Range", right)
 }
+
+// nums := []int{10, 9, 2, 5, 3, 7, 101, 18}
+func QuickSort(nums []int, l, h int) []int {
+	if l < h {
+		idx := partition(nums, l, h)
+		QuickSort(nums, l, idx-1)
+		QuickSort(nums, idx+1, h)
+	}
+	return nums
+}
+
+// Partition function to divide the array into two parts
+func partition(arr []int, low, high int) int {
+	pivot := arr[high] // Choosing the last element as the pivot
+	i := low - 1       // Index of smaller element
+
+	for j := low; j < high; j++ {
+		if arr[j] < pivot {
+			i++                             // Increment the smaller element index
+			arr[i], arr[j] = arr[j], arr[i] // Swap
+		}
+	}
+	// Place the pivot element in the correct position
+	arr[i+1], arr[high] = arr[high], arr[i+1]
+	return i + 1 // Return the partitioning index
+}
