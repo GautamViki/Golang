@@ -1372,3 +1372,46 @@ func partition(arr []int, low, high int) int {
 	arr[i+1], arr[high] = arr[high], arr[i+1]
 	return i + 1 // Return the partitioning index
 }
+
+func LongestHappyString() {
+	a, b, c := 1, 1, 7
+	hashMap := make(map[rune]int)
+	maxKey := 'a'
+	hashMap['a'], hashMap['b'], hashMap['c'] = a, b, c
+	if b > a && b > c {
+		maxKey = 'b'
+	} else if c > a && c > b {
+		maxKey = 'c'
+	}
+	res := DecrementMaxKey(hashMap, maxKey, "", 'z')
+	for hashMap['a'] != 0 || hashMap['b'] != 0 || hashMap[maxKey] != 0 {
+		if maxKey != 'a' {
+			res = DecrementMaxKey(hashMap, maxKey, res, 'a')
+		}
+		if maxKey != 'b' {
+			res = DecrementMaxKey(hashMap, maxKey, res, 'b')
+		}
+		if maxKey != 'c' {
+			res = DecrementMaxKey(hashMap, maxKey, res, 'c')
+		}
+	}
+	fmt.Println("ccccccccccccccccccccccccccccccc", res)
+}
+
+func DecrementMaxKey(hashMap map[rune]int, maxKey rune, res string, char rune) string {
+	if hashMap[char] >= 2 {
+		res += strings.Repeat(string(char), 2)
+		hashMap[char] -= 2
+	} else if hashMap[char] > 0 {
+		res += strings.Repeat(string(char), 1)
+		hashMap[char] -= 1
+	}
+	if hashMap[maxKey] >= 2 {
+		res += strings.Repeat(string(maxKey), 2)
+		hashMap[maxKey] -= 2
+	} else if hashMap[maxKey] > 0 {
+		res += strings.Repeat(string(maxKey), 1)
+		hashMap[maxKey] -= 1
+	}
+	return res
+}

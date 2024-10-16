@@ -152,6 +152,7 @@ func main() {
 	v1.BitwiseANDOfNumbersRange()
 	sortedArr := v1.QuickSort([]int{10, 9, 2, 5, 3, 7, 101, 18}, 0, 7)
 	fmt.Println("Sorted Array Quick Sort :", sortedArr)
+	v1.LongestHappyString()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
