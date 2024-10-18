@@ -1,40 +1,42 @@
 package handler
 
-import "fmt"
-
-// type listHandler struct{}
-
-// func NewListHandler() *LinkedList {
-// 	return &LinkedList{}
-// }
-
 type Node struct {
-	Val  int
-	Next *Node
-}
-type LinkedList struct {
-	Head *Node
+	Val    int
+	Next   *Node
+	Random *Node
 }
 
-func (list *LinkedList) CreateLinkedList(value int) {
-	node := Node{Val: value}
-	if list.Head == nil {
-		list.Head = &node
-	} else {
-		current := list.Head
-		for current.Next != nil {
-			current = current.Next
+func CopyListWithRandomPointer_138(head *Node) *Node {
+	if head == nil {
+		return nil
+	}
+	hashMap := make(map[*Node]*Node)
+	currentNode := head
+	var newHead *Node
+	var preNode *Node
+	for currentNode != nil {
+		temp := Node{
+			Val: currentNode.Val,
 		}
-		current.Next = &node
+		if newHead == nil {
+			newHead = &temp
+			preNode = newHead
+		} else {
+			preNode.Next = &temp
+		}
+		hashMap[currentNode] = preNode
+		currentNode = currentNode.Next
 	}
-}
-
-func (list *LinkedList) DisplayLinkedList() {
-	fmt.Println("Head Node : ",list.Head)
-	fmt.Print("List Node : ")
-	current := list.Head
-	for current != nil {
-		fmt.Print(current.Val," ")
-		current = current.Next
+	currentNode = head
+	newCuurent := newHead
+	for currentNode != nil {
+		if currentNode.Random == nil {
+			newCuurent.Random = nil
+		} else {
+			newCuurent.Random = hashMap[currentNode]
+		}
+		newCuurent=newCuurent.Next
+		currentNode=currentNode.Next
 	}
+	return newHead
 }

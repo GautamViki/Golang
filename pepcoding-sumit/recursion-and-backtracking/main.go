@@ -22,4 +22,5 @@ func main() {
 	fmt.Println("First occurence in array index at: ", recursion.FirstOccurenceInArray([]int{1, 8, 3, 4, 5, 6, 7, 8}, 0, 80))
 	fmt.Println("Last occurence in array index at: ", recursion.LastOccurrenceInArray([]int{1, 8, 3, 4, 5, 6, 7, 8}, 0, 4, -1))
 	fmt.Println("All occurence of array index: ", recursion.OccurenceOfAllIndeces([]int{1, 8, 3, 4, 8, 6, 7, 8}, []int{}, 0, 8))
+	recursion.FindSubSequence("abc", 0, "")
 }

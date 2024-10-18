@@ -114,3 +114,14 @@ func OccurenceOfAllIndeces(nums []int, res []int, idx, target int) []int {
 	}
 	return OccurenceOfAllIndeces(nums, res, idx+1, target)
 }
+
+func FindSubSequence(str string, idx int, current string) {
+	if idx == len(str) {
+		if current != "" {
+			fmt.Print( current," ")
+		}
+		return
+	}
+	FindSubSequence(str, idx+1, current+string(str[idx]))
+	FindSubSequence(str, idx+1, current)
+}
