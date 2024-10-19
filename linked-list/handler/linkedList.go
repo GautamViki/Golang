@@ -35,8 +35,34 @@ func CopyListWithRandomPointer_138(head *Node) *Node {
 		} else {
 			newCuurent.Random = hashMap[currentNode]
 		}
-		newCuurent=newCuurent.Next
-		currentNode=currentNode.Next
+		newCuurent = newCuurent.Next
+		currentNode = currentNode.Next
 	}
 	return newHead
+}
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+func ReverseLinkedList_II(head *ListNode, left, right int) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	dummy := ListNode{}
+	dummy.Next = head
+	pre := &dummy
+
+	for i := 1; i < left; i++ {
+		pre = pre.Next
+	}
+	curr := pre.Next
+	for i := 1; i <= right-left; i++ {
+		temp := pre.Next
+		pre.Next = curr.Next
+		curr.Next = curr.Next.Next
+		pre.Next.Next = temp
+	}
+	return dummy.Next
 }
