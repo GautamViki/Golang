@@ -1425,7 +1425,6 @@ func findSubstring(s string, words []string) []int {
 	for _, str := range words {
 		mem[str] += 1
 	}
-
 	temp := make(map[string]int, totalWords)
 	var found bool
 	result := make([]int, 0)
@@ -1462,7 +1461,26 @@ func findSubstring(s string, words []string) []int {
 			i++
 		}
 	}
-
 	return result
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
