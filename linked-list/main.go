@@ -1,16 +1,18 @@
 package main
 
-import (
-	"linkedlist/handler"
-)
+import "linkedlist/handler"
 
 func main() {
-	list := handler.LinkedList{}
-	list.CreateLinkedList(10)
-	list.CreateLinkedList(20)
-	list.CreateLinkedList(30)
-	list.CreateLinkedList(40)
-	list.CreateLinkedList(50)
-
-	list.DisplayLinkedList()
+	head := handler.CreateLinkedList()
+	handler.PrintAllNode(head)
+	head = handler.InsertAtFirst(90, head)
+	head = handler.InsertAtLast(100, head)
+	head = handler.InsertAtGivenIdx(5, 3, head)
+	head = handler.DeleteFromFirst(head)
+	handler.DeleteFromLast(head)
+	handler.DeleteFromGivenPosition(head, 3)
+	handler.DeleteGivenKey(5, head)
+	handler.AddNodeAsSorted(handler.Node{Value: 30}, head)
+	handler.AddNodeAsSorted(handler.Node{Value: 30}, head)
+	handler.RemoveDuplicateFromSorted(head)
 }

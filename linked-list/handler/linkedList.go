@@ -1,68 +1,160 @@
 package handler
 
+import "fmt"
+
 type Node struct {
-	Val    int
-	Next   *Node
-	Random *Node
+	Value int
+	Next  *Node
 }
 
-func CopyListWithRandomPointer_138(head *Node) *Node {
-	if head == nil {
-		return nil
+func CreateLinkedList() *Node {
+	head := Node{Value: 10}
+	node2 := Node{Value: 20}
+	node3 := Node{Value: 30}
+	node4 := Node{Value: 40}
+	node5 := Node{Value: 50}
+
+	// link all node
+	head.Next = &node2
+	node2.Next = &node3
+	node3.Next = &node4
+	node4.Next = &node5
+
+	return &head
+}
+
+func PrintAllNode(head *Node) {
+	current := head
+	count := 0
+	for current != nil {
+		count++
+		fmt.Print(current.Value, " ")
+		current = current.Next
 	}
-	hashMap := make(map[*Node]*Node)
-	currentNode := head
-	var newHead *Node
-	var preNode *Node
-	for currentNode != nil {
-		temp := Node{
-			Val: currentNode.Val,
+	fmt.Println("\nTotal number of node in list", count)
+}
+
+func InsertAtFirst(val int, head *Node) *Node {
+	fmt.Println("\nInserted at first node", val)
+	current := head
+	head = &Node{Value: val, Next: current}
+	PrintAllNode(head)
+	return head
+}
+
+func InsertAtLast(val int, head *Node) *Node {
+	fmt.Println("\nInserted at last node", val)
+	last := Node{Value: val}
+	current := head
+	for current.Next != nil {
+		current = current.Next
+	}
+	current.Next = &last
+	PrintAllNode(head)
+	return head
+}
+
+func InsertAtGivenIdx(val, idx int, head *Node) *Node {
+	fmt.Println("\nInserted at given position", idx, "node", val)
+	newNode := Node{Value: val}
+	count := 1
+	current := head
+	for count < idx-1 {
+		count++
+		current = current.Next
+	}
+	if idx == 1 {
+		newNode.Next = head
+		head = &newNode
+	} else {
+		newNode.Next = current.Next
+		current.Next = &newNode
+	}
+	PrintAllNode(head)
+	return head
+}
+
+func DeleteFromFirst(head *Node) *Node {
+	fmt.Println("\nDeleted from first node")
+	head = head.Next
+	PrintAllNode(head)
+	return head
+}
+
+func DeleteFromLast(head *Node) {
+	fmt.Println("\nDeleted from last node")
+	curr := head
+	for curr.Next.Next != nil {
+		curr = curr.Next
+	}
+	curr.Next = nil
+	PrintAllNode(head)
+}
+
+func DeleteFromGivenPosition(head *Node, idx int) {
+	fmt.Println("\nDeleted from given position", idx)
+	curr := head
+	count := 1
+	if idx == 1 {
+		head = head.Next
+	} else {
+		for count < idx-1 {
+			curr = curr.Next
+			count++
 		}
-		if newHead == nil {
-			newHead = &temp
-			preNode = newHead
+	}
+	curr.Next = curr.Next.Next
+	PrintAllNode(head)
+}
+
+func DeleteGivenKey(key int, head *Node) {
+	fmt.Println("\nDeleted given key", key)
+	curr := head
+	pre := &Node{}
+	for curr.Next != nil {
+		pre = curr
+		curr = curr.Next
+		if curr.Value == key {
+			pre.Next = curr.Next
+			break
+		}
+	}
+	PrintAllNode(head)
+}
+
+func AddNodeAsSorted(newNode Node, head *Node) {
+	fmt.Println("\nInserted as sorted list Node ", newNode)
+	curr := head
+	pre := &Node{}
+	for curr != nil && curr.Value <= newNode.Value {
+		pre = curr
+		curr = curr.Next
+	}
+	newNode.Next = curr
+	pre.Next = &newNode
+	PrintAllNode(head)
+}
+
+func RemoveDuplicateFromSorted(head *Node) {
+	fmt.Println("\nRemove duplicate from sorted list")
+	curr := head
+	for curr.Next != nil && curr != nil {
+		if curr.Value == curr.Next.Value {
+			curr.Next = curr.Next.Next
 		} else {
-			preNode.Next = &temp
+			curr = curr.Next
 		}
-		hashMap[currentNode] = preNode
-		currentNode = currentNode.Next
 	}
-	currentNode = head
-	newCuurent := newHead
-	for currentNode != nil {
-		if currentNode.Random == nil {
-			newCuurent.Random = nil
-		} else {
-			newCuurent.Random = hashMap[currentNode]
-		}
-		newCuurent = newCuurent.Next
-		currentNode = currentNode.Next
-	}
-	return newHead
+	PrintAllNode(head)
 }
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
-func ReverseLinkedList_II(head *ListNode, left, right int) *ListNode {
-	if head == nil || head.Next == nil {
-		return head
-	}
-	dummy := ListNode{}
-	dummy.Next = head
-	pre := &dummy
 
-	for i := 1; i < left; i++ {
-		pre = pre.Next
-	}
-	curr := pre.Next
-	for i := 1; i <= right-left; i++ {
-		temp := pre.Next
-		pre.Next = curr.Next
-		curr.Next = curr.Next.Next
-		pre.Next.Next = temp
-	}
-	return dummy.Next
-}
+
+
+
+
+
+
+
+
