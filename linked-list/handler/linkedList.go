@@ -1,6 +1,8 @@
 package handler
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node struct {
 	Value int
@@ -13,12 +15,18 @@ func CreateLinkedList() *Node {
 	node3 := Node{Value: 30}
 	node4 := Node{Value: 40}
 	node5 := Node{Value: 50}
+	node6 := Node{Value: 60}
+	node7 := Node{Value: 70}
+	node8 := Node{Value: 80}
 
 	// link all node
 	head.Next = &node2
 	node2.Next = &node3
 	node3.Next = &node4
 	node4.Next = &node5
+	node5.Next = &node6
+	node6.Next = &node7
+	node7.Next = &node8
 
 	return &head
 }
@@ -148,13 +156,71 @@ func RemoveDuplicateFromSorted(head *Node) {
 	PrintAllNode(head)
 }
 
+func SearchKey(SearchKey int, head *Node) {
+	curr := head
+	for curr != nil {
+		if curr.Value == SearchKey {
+			fmt.Println("Node is present in list")
+			return
+		}
+		curr = curr.Next
+	}
+	fmt.Println("Node is not present in list")
+}
 
+func ReverseList(head *Node) *Node {
+	fmt.Println("\nReverse the list")
+	var pre *Node
+	curr := head
+	for curr != nil {
+		next := curr.Next
+		curr.Next = pre
+		pre = curr
+		curr = next
+	}
+	PrintAllNode(pre)
+	return pre
+}
 
+func ModdleNodeinList(head *Node) {
+	slow, fast := head, head
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	fmt.Println("\nMiddle node of list", slow.Value)
+}
 
+func FindNthNodeFromEnd(n int, head *Node) {
+	refNode := head
+	count := 0
+	for count < n {
+		refNode = refNode.Next
+		count++
+	}
+	mainNode := head
+	for refNode != nil {
+		refNode = refNode.Next
+		mainNode = mainNode.Next
+	}
+	fmt.Println("\nNth node from end", n, mainNode.Value)
+}
 
-
-
-
-
-
-
+func RemoveNthNodeFromEndofList(head *Node, n int) {
+	fmt.Println("\n19. Remove Nth Node From End of List", n)
+	count := 0
+	refNode := head
+	for count < n {
+		refNode = refNode.Next
+		count++
+	}
+	mainNode := head
+	var prev *Node
+	for refNode != nil {
+		prev = mainNode
+		refNode = refNode.Next
+		mainNode = mainNode.Next
+	}
+	prev.Next = mainNode.Next
+	PrintAllNode(head)
+}

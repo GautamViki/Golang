@@ -15,4 +15,9 @@ func main() {
 	handler.AddNodeAsSorted(handler.Node{Value: 30}, head)
 	handler.AddNodeAsSorted(handler.Node{Value: 30}, head)
 	handler.RemoveDuplicateFromSorted(head)
+	handler.SearchKey(30, head)
+	head = handler.ReverseList(head)
+	handler.ModdleNodeinList(head)
+	handler.FindNthNodeFromEnd(3, head)
+	handler.RemoveNthNodeFromEndofList(head,3)
 }
