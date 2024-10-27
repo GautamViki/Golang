@@ -1464,23 +1464,29 @@ func findSubstring(s string, words []string) []int {
 	return result
 }
 
+func LongestValidParentheses() {
+	s := "()(()"
+	// stack, used to record index of parenthesis
+	// initialized to -1 as dummy head for valid parenthesis length computation
+	stack := []int{-1}
+	maxLength := 0
+	// linear scan each index and character in input string s
+	for curIdx, char := range s {
+		if char == '(' {
+			// push when current char is (
+			stack = append(stack, curIdx)
+		} else {
+			// pop when current char is )
+			stack = stack[:len(stack)-1]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			if len(stack) == 0 {
+				// stack is empty, push current index into stack
+				stack = append(stack, curIdx)
+			} else {
+				// stack is non-empty, update maximal valud parentheses length
+				maxLength = max(maxLength, curIdx-stack[len(stack)-1])
+			}
+		}
+	}
+	fmt.Println("32. Longest Valid Parentheses", maxLength)
+}

@@ -153,6 +153,7 @@ func main() {
 	sortedArr := v1.QuickSort([]int{10, 9, 2, 5, 3, 7, 101, 18}, 0, 7)
 	fmt.Println("Sorted Array Quick Sort :", sortedArr)
 	v1.LongestHappyString()
+	v1.LongestValidParentheses()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
