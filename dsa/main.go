@@ -154,6 +154,7 @@ func main() {
 	fmt.Println("Sorted Array Quick Sort :", sortedArr)
 	v1.LongestHappyString()
 	v1.LongestValidParentheses()
+	v1.Permute()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

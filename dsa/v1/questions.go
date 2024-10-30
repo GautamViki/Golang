@@ -1478,15 +1478,43 @@ func LongestValidParentheses() {
 		} else {
 			// pop when current char is )
 			stack = stack[:len(stack)-1]
-
 			if len(stack) == 0 {
 				// stack is empty, push current index into stack
 				stack = append(stack, curIdx)
 			} else {
 				// stack is non-empty, update maximal valud parentheses length
 				maxLength = max(maxLength, curIdx-stack[len(stack)-1])
+				fmt.Println("maxLength", maxLength)
 			}
 		}
 	}
 	fmt.Println("32. Longest Valid Parentheses", maxLength)
+}
+
+func Permute() {
+	nums := []int{1, 2, 3}
+	var res [][]int
+	permutation := make([]int, len(nums))
+	visit := make([]bool, len(nums))
+
+	var backtrack func(int)
+	backtrack = func(index int) {
+		if index == len(nums) {
+			copiedPermutation := make([]int, len(nums))
+			copy(copiedPermutation, permutation)
+			res = append(res, copiedPermutation)
+			return
+		}
+
+		for i := 0; i < len(nums); i++ {
+			if !visit[i] {
+				visit[i] = true
+				permutation[index] = nums[i]
+				backtrack(index + 1)
+				visit[i] = false
+			}
+		}
+	}
+	backtrack(0)
+	fmt.Println("Permutation ", res)
 }
