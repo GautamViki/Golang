@@ -155,6 +155,9 @@ func main() {
 	v1.LongestHappyString()
 	v1.LongestValidParentheses()
 	v1.Permute()
+	v1.MultiplyStrings()
+	v1.MultiplyStrings_1()
+	v1.MinimumTotalDistanceTraveled()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
@@ -177,5 +180,5 @@ func main() {
 		}
 	}(numCh, &wg)
 	wg.Wait()
-	fmt.Println("111111111111111111111111111111", sum)
+	fmt.Println("\n111111111111111111111111111111", sum)
 }

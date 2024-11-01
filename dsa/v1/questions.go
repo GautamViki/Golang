@@ -3,6 +3,7 @@ package v1
 import (
 	"fmt"
 	"math"
+	"math/big"
 	"slices"
 	"sort"
 	"strconv"
@@ -1517,4 +1518,94 @@ func Permute() {
 	}
 	backtrack(0)
 	fmt.Println("Permutation ", res)
+}
+
+func MultiplyStrings() {
+	num1, num2 := "498828660196", "840477629533"
+
+	// Use big.Int for arbitrary-precision integers
+	x := new(big.Int)
+	y := new(big.Int)
+
+	// Set the values of x and y from the strings
+	x.SetString(num1, 10)
+	y.SetString(num2, 10)
+
+	// Multiply x and y
+	pro := new(big.Int).Mul(x, y)
+
+	fmt.Println("Multiply Strings:", pro.String())
+}
+
+func MultiplyStrings_1() {
+	num1, num2 := "498828660196", "840477629533"
+	x, _ := strconv.ParseInt(num1, 10, 64)
+	var sum, p int64 = 0, 0
+	runes := []rune(num2)
+	i, j := 0, len(num2)-1
+	for i < j {
+		runes[i], runes[j] = runes[j], runes[i]
+		i++
+		j--
+	}
+
+	for _, digit := range runes {
+		y, _ := strconv.ParseInt(string(digit), 10, 64)
+		var tempSum int64 = y * x
+		sum += tempSum * p
+		p *= 10
+	}
+	fmt.Println("MultiplyStrings", sum)
+}
+
+func MinimumTotalDistanceTraveled() {
+	robot := []int{
+		-333539942, 359275673, 89966494, 949684497, -733065249,
+		241002388, 325009248, 403868412, -390719486, -670541382,
+		563735045, 119743141, 323190444, 534058139, -684109467,
+		425503766, 761908175,
+	}
+
+	factory := [][]int{
+		{-590277115, 0}, {-80676932, 3}, {396659814, 0},
+		{480747884, 9}, {118956496, 10},
+	}
+	slices.Sort(robot)
+	sort.Slice(factory, func(i, j int) bool {
+		return factory[i][0] < factory[j][0]
+	})
+
+	positions := []int{}
+	for _, lim := range factory {
+		i := 0
+		for i < lim[1] {
+			positions = append(positions, lim[0])
+			i++
+		}
+	}
+	dp := make([][]int64, len(robot)+1)
+	for i := range dp {
+		dp[i] = make([]int64, len(positions)+1)
+		for j := range dp[i] {
+			dp[i][j] = -1
+		}
+	}
+	maxDistance := MinimumTotalDistanceTraveledRecursion(0, 0, robot, positions, dp)
+	fmt.Println("2463. Minimum Total Distance Traveled", maxDistance)
+}
+
+func MinimumTotalDistanceTraveledRecursion(rp, fp int, robo, pos []int, dp [][]int64) int64 {
+	if rp >= len(robo) {
+		return 0
+	}
+	if fp >= len(pos) {
+		return 1e13
+	}
+	if dp[rp][fp] != -1 {
+		return dp[rp][fp]
+	}
+	includeFac := int64(math.Abs(float64(robo[rp]-pos[fp]))) + MinimumTotalDistanceTraveledRecursion(rp+1, fp+1, robo, pos, dp)
+	excludeFac := MinimumTotalDistanceTraveledRecursion(rp, fp+1, robo, pos, dp)
+	dp[rp][fp] = min(includeFac, excludeFac)
+	return dp[rp][fp]
 }
