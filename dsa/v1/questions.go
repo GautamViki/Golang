@@ -1609,3 +1609,24 @@ func MinimumTotalDistanceTraveledRecursion(rp, fp int, robo, pos []int, dp [][]i
 	dp[rp][fp] = min(includeFac, excludeFac)
 	return dp[rp][fp]
 }
+
+func DeleteCharacterstoMakeFancyString() {
+	s := "leeetcode"
+	count := 1
+	tempStr := s[0]
+	var builder strings.Builder
+	builder.WriteByte(s[0])
+	for i := 1; i < len(s); i++ {
+		str := s[i]
+		if str == tempStr && count < 2 {
+			count++
+			builder.WriteByte(s[i])
+		}
+		if str != tempStr {
+			count = 1
+			builder.WriteByte(s[i])
+			tempStr = s[i]
+		}
+	}
+	fmt.Println("1957. Delete Characters to Make Fancy String", builder.String())
+}

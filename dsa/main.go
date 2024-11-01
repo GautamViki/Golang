@@ -158,6 +158,7 @@ func main() {
 	v1.MultiplyStrings()
 	v1.MultiplyStrings_1()
 	v1.MinimumTotalDistanceTraveled()
+	v1.DeleteCharacterstoMakeFancyString()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
