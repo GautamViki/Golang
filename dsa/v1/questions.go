@@ -1675,3 +1675,20 @@ func RotateString() {
 		fmt.Println("796. Rotate String", false)
 	}
 }
+
+func CircularSentence() {
+	sentence := "Leetcode is cool"
+	sliceSen := strings.Split(sentence, " ")
+	for i := 1; i < len(sliceSen); i++ {
+		pre := len(sliceSen[i-1]) - 1
+		if sliceSen[i-1][pre] != sliceSen[i][0] {
+			fmt.Println("2490. Circular Sentence", false)
+			return
+		}
+	}
+	if sentence[0] != sentence[len(sentence)-1] {
+		fmt.Println("2490. Circular Sentence", false)
+		return
+	}
+	fmt.Println("2490. Circular Sentence", true)
+}
