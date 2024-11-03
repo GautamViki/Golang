@@ -159,6 +159,8 @@ func main() {
 	v1.MultiplyStrings_1()
 	v1.MinimumTotalDistanceTraveled()
 	v1.DeleteCharacterstoMakeFancyString()
+	v1.MinimumNumberofRemovalstoMountainArray()
+	v1.RotateString()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

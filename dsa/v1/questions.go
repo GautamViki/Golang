@@ -1630,3 +1630,48 @@ func DeleteCharacterstoMakeFancyString() {
 	}
 	fmt.Println("1957. Delete Characters to Make Fancy String", builder.String())
 }
+
+func MinimumNumberofRemovalstoMountainArray() {
+	nums := []int{2, 1, 1, 5, 6, 2, 3, 1}
+	lis := make([]int, len(nums))
+	lds := make([]int, len(nums))
+
+	for i := 0; i < len(nums); i++ {
+		lis[i] = 1
+		lds[i] = 1
+	}
+	for i := 0; i < len(lis); i++ {
+		for j := i - 1; j >= 0; j-- {
+			if nums[i] > nums[j] {
+				lis[i] = max(lis[i], lis[j]+1)
+			}
+		}
+	}
+
+	for i := len(lds) - 1; i >= 0; i-- {
+		for j := i + 1; j < len(lds); j++ {
+			if nums[i] > nums[j] {
+				lds[i] = max(lds[i], lds[j]+1)
+			}
+		}
+	}
+	minRemovel := len(nums)
+	for i := 0; i < len(nums); i++ {
+		if lis[i] > 1 && lds[i] > 1 {
+			minRemovel = min(minRemovel, len(nums)-lis[i]-lds[i]+1)
+		}
+	}
+	fmt.Println("MinimumNumberofRemovalstoMountainArray", minRemovel)
+}
+
+func RotateString() {
+	s := "gjumiuxqtsxfncllblivhvjqfmybyktgljifsrkkooatqecsghpdtatsczpsbmyxtrhsmfdexlwxzcqqqwoxyaoakthjnculyyqv"
+
+	goal := "johmdlzifsqoilazplzfrbogewgpscoltfgkilnfobfjyjnxnotujnoqqdentzkrtfqlbhubcememnvcrtdnvmhbdhpsgjvjkotg"
+	str := s + s
+	if len(s) == len(goal) && strings.Contains(str, goal) {
+		fmt.Println("796. Rotate String", true)
+	} else {
+		fmt.Println("796. Rotate String", false)
+	}
+}
