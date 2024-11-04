@@ -1692,3 +1692,59 @@ func CircularSentence() {
 	}
 	fmt.Println("2490. Circular Sentence", true)
 }
+
+func StringCompressionIII() {
+	word := "aaaaaaaaaaaaaaaaaaaabbccccccccee"
+	charArr := []string{}
+	countArr := []int{}
+	count, tempChar := 0, word[0]
+	for _, char := range word {
+		if byte(char) == tempChar {
+			count++
+		} else {
+			charArr = append(charArr, string(tempChar))
+			countArr = append(countArr, count)
+			count = 1
+			tempChar = byte(char)
+		}
+	}
+	charArr = append(charArr, string(tempChar))
+	countArr = append(countArr, count)
+	var comp strings.Builder
+	for i, val := range countArr {
+		n := val / 9
+		rem := val % 9
+		var str strings.Builder
+		str.WriteString(strings.Repeat(strconv.Itoa(9)+charArr[i], n))
+		if rem > 0 {
+			str.WriteString(strconv.Itoa(rem) + charArr[i])
+		}
+		comp.WriteString(str.String())
+	}
+	fmt.Println("3163. String Compression III", comp.String())
+}
+
+func CompressedString() string {
+	word := "aaaaaaaaaaaaaaaaaaaabbccccccccee"
+	if len(word) == 0 {
+		return ""
+	}
+	var comp strings.Builder
+	cnt := 1
+	ch := word[0]
+
+	for i := 1; i < len(word); i++ {
+		if word[i] == ch && cnt < 9 {
+			cnt++
+		} else {
+			comp.WriteByte(byte('0' + cnt))
+			comp.WriteByte(ch)
+			ch = word[i]
+			cnt = 1
+		}
+	}
+
+	comp.WriteByte(byte('0' + cnt))
+	comp.WriteByte(ch)
+	return comp.String()
+}

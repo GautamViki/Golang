@@ -162,6 +162,8 @@ func main() {
 	v1.MinimumNumberofRemovalstoMountainArray()
 	v1.RotateString()
 	v1.CircularSentence()
+	v1.StringCompressionIII()
+	v1.CompressedString()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
