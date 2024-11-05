@@ -1748,3 +1748,48 @@ func CompressedString() string {
 	comp.WriteByte(ch)
 	return comp.String()
 }
+
+func MinimumNumberofChangestoMakeBinaryStringBeautiful() {
+	s := "100100011110011100"
+	resCount := 0
+	count0, count1 := 0, 0
+	for idx, digit := range s {
+		if digit == '0' {
+			count0++
+		} else {
+			count1++
+		}
+		if idx%2 == 1 {
+			if count0 != 0 && count1 != 0 {
+				if count0 < count1 {
+					resCount += count0
+				} else {
+					resCount += count1
+				}
+			}
+			count0, count1 = 0, 0
+
+		}
+	}
+	fmt.Println("2914. Minimum Number of Changes to Make Binary String Beautiful", resCount)
+}
+
+func LetterCombination() {
+	mapping := []string{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
+	ans := letterCombination("23", "", 0, mapping)
+	fmt.Println("17. Letter Combinations of a Phone Number", ans)
+}
+func letterCombination(digit, curr string, idx int, mapping []string) []string {
+	if idx >= len(digit) {
+		return []string{curr}
+	}
+	num, _ := strconv.Atoi(string(digit[idx]))
+	mapStr := mapping[num]
+	val := []string{}
+	for _, str := range mapStr {
+		curr = curr + string(str)
+		val = append(val, letterCombination(digit, curr, idx+1, mapping)...)
+		curr = curr[:len(curr)-1]
+	}
+	return val
+}

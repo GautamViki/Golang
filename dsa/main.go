@@ -164,6 +164,8 @@ func main() {
 	v1.CircularSentence()
 	v1.StringCompressionIII()
 	v1.CompressedString()
+	v1.MinimumNumberofChangestoMakeBinaryStringBeautiful()
+	v1.LetterCombination()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)
