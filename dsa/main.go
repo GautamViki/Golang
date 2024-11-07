@@ -166,6 +166,7 @@ func main() {
 	v1.CompressedString()
 	v1.MinimumNumberofChangestoMakeBinaryStringBeautiful()
 	v1.LetterCombination()
+	v1.LargestCombinationWithBitwiseANDGreaterThanZero()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

@@ -1778,6 +1778,7 @@ func LetterCombination() {
 	mapping := []string{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
 	ans := letterCombination("23", "", 0, mapping)
 	fmt.Println("17. Letter Combinations of a Phone Number", ans)
+	fmt.Println("Subsequences:", Subsequence_1("abc", "", 0))
 }
 func letterCombination(digit, curr string, idx int, mapping []string) []string {
 	if idx >= len(digit) {
@@ -1792,4 +1793,31 @@ func letterCombination(digit, curr string, idx int, mapping []string) []string {
 		curr = curr[:len(curr)-1]
 	}
 	return val
+}
+
+func Subsequence_1(s, curr string, idx int) []string {
+	if idx >= len(s) {
+		if len(curr) >= 2 {
+			return []string{curr}
+		}
+		return []string{}
+	}
+	exclude := Subsequence_1(s, curr, idx+1)
+	include := Subsequence_1(s, curr+string(s[idx]), idx+1)
+	return append(exclude, include...)
+}
+
+func LargestCombinationWithBitwiseANDGreaterThanZero() {
+	candidates := []int{16, 17, 71, 62, 12, 24, 14}
+	maxFreq := 0
+	for i := 0; i < 32; i++ {
+		currFreq := 0
+		for _, num := range candidates {
+			if num&(1<<i) != 0 {
+				currFreq++
+			}
+		}
+		maxFreq = max(maxFreq, currFreq)
+	}
+	fmt.Println("2275. Largest Combination With Bitwise AND Greater Than Zero", maxFreq)
 }
