@@ -1884,9 +1884,8 @@ func CounttheNumberofFairPairs() {
 	sort.Ints(nums)
 	upperBound := countPairs(nums, upper)
 	lowerBound := countPairs(nums, lower-1)
-	fmt.Println("11111111111111111111111111111", upperBound)
 	res := upperBound - lowerBound
-	fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res)
+	fmt.Println("2563. Count the Number of Fair Pairs", res)
 }
 
 func countPairs(nums []int, target int) int64 {
