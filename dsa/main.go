@@ -167,6 +167,9 @@ func main() {
 	v1.MinimumNumberofChangestoMakeBinaryStringBeautiful()
 	v1.LetterCombination()
 	v1.LargestCombinationWithBitwiseANDGreaterThanZero()
+	v1.MinimumArrayEnd()
+	fmt.Println("Prime Subtraction Operation", v1.PrimeSubtractionOperation())
+	v1.CounttheNumberofFairPairs()
 
 	nums = []int{10, 20, 30, 40, 50}
 	numCh := make(chan int)

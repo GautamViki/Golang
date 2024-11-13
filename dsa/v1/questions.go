@@ -1821,3 +1821,85 @@ func LargestCombinationWithBitwiseANDGreaterThanZero() {
 	}
 	fmt.Println("2275. Largest Combination With Bitwise AND Greater Than Zero", maxFreq)
 }
+
+func MinimumArrayEnd() {
+	n, x := 2, 7
+	num := x
+	for i := 0; i < n-1; i++ {
+		num = (num + 1) | x
+	}
+	fmt.Println("3133. Minimum Array End", num)
+}
+
+func PrimeSubtractionOperation() bool {
+	nums := []int{8, 4, 8, 7}
+	isSorted, idx := isSortedArr(nums)
+	if isSorted {
+		return isSorted
+	}
+	for i := 0; i < idx && idx > 0; i++ {
+		temp := nums[i] - 1
+		if i > 0 {
+			temp = nums[i] - nums[i-1]
+		}
+		for k := temp; k >= 1; k-- {
+			if isPrimeNum(k) {
+				nums[i] -= k
+				break
+			}
+		}
+		isSorted, idx = isSortedArr(nums)
+		if isSorted {
+			return isSorted
+		}
+	}
+	return isSorted
+}
+
+func isSortedArr(nums []int) (bool, int) {
+	num := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if num >= nums[i] {
+			return false, i + 1
+		}
+		num = nums[i]
+	}
+	return true, -1
+}
+
+func isPrimeNum(num int) bool {
+	if num == 1 {
+		return false
+	}
+	for i := 2; i*i <= num; i++ {
+		if num%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func CounttheNumberofFairPairs() {
+	nums, lower, upper := []int{0, 1, 7, 4, 4, 5}, 3, 6
+	sort.Ints(nums)
+	upperBound := countPairs(nums, upper)
+	lowerBound := countPairs(nums, lower-1)
+	fmt.Println("11111111111111111111111111111", upperBound)
+	res := upperBound - lowerBound
+	fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", res)
+}
+
+func countPairs(nums []int, target int) int64 {
+	var count int64 = 0
+	left, right := 0, len(nums)-1
+
+	for left < right {
+		if nums[left]+nums[right] > target {
+			right--
+		} else {
+			count += int64(right - left)
+			left++
+		}
+	}
+	return count
+}
